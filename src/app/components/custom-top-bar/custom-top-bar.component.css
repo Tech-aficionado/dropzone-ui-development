@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+
+.topBarPallete {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 37px;
+  color: white;
+  background: black;
+  padding: 1px 10px;
+}
+.topBarHeading__box {
+  margin-left: 20px;
+}
+.topBarHeading {
+  font-family: "Raleway", sans-serif;
+  font-weight: 800;
+}
+li {
+  display: inline-block;
+  font-weight: 700;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Ubuntu", sans-serif;
+  margin: 0px 9px;
+}
+li:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.topBarNavItems {
+  margin-left: 38rem;
+}
+.topBarTrigger__box {
+  margin-right: 10px;
+}

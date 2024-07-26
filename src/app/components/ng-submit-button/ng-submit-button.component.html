@@ -1,0 +1,27 @@
+<div
+  [style]="{
+    marginTop: marginTop,
+    marginBottom: marginBottom,
+    marginLeft: marginLeft,
+  }"
+  class="ng-submit-button"
+  *ngIf="isDisables"
+></div>
+<p-button
+  [style]="{
+    background: 'yellow',
+    'border-radius': '0px',
+    color: 'black',
+    'justify-content': 'center',
+    width: '265px',
+    border: '0px',
+    transform: 'translate3d(75px, -63px, -10px)',
+  }"
+  class="p-button-submit"
+  >{{ label }}
+  <i
+    [style]="{ marginLeft: '10px' }"
+    class="pi pi-arrow-right"
+    (mouseover)="onHoverButton()"
+  ></i
+></p-button>

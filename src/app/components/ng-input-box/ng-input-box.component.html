@@ -1,0 +1,20 @@
+<span
+  class="p-input-icon-left p-float-label"
+  [style]="{
+    marginTop: marginTop,
+    marginBottom: marginBottom,
+    marginLeft: marginLeft,
+  }"
+>
+  <i [class]="fieldIconName"></i>
+  <input
+    type="text"
+    [style]="{ width: width }"
+    [type]="inputType"
+    [id]="fieldId"
+    pInputText
+  />
+  <label [style]="{ color: '#919191' }" [htmlFor]="fieldId">{{
+    fieldLabel
+  }}</label>
+</span>

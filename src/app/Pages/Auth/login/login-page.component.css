@@ -1,0 +1,32 @@
+.loginPage__Pallete {
+  height: 600px;
+  width: 380px;
+  margin-top: 100px;
+  margin-left: 250px;
+  justify-content: right;
+}
+
+.loginPage {
+  display: flex;
+  margin: 60px 60px 15px 60px;
+  justify-content: center;
+  border: 1px solid #424242;
+  align-items: center;
+  background-color: #121212;
+}
+.loginPage__welcome {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+.loginPage__fields {
+  margin-top: 88px;
+}
+.loginPage__tag {
+  font-weight: 100;
+  font-size: 15px;
+  margin-left: 10px;
+  letter-spacing: 0.5px;
+}
+.loginPage__welcome {
+  font-size: 40px;
+}

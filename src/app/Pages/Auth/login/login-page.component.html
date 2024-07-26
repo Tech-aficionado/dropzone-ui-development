@@ -1,0 +1,39 @@
+<app-custom-top-bar Heading="Login" [Triggering]="true"></app-custom-top-bar>
+<main class="loginPage">
+  <div></div>
+  <div class="loginPage__Pallete">
+    <h3 class="loginPage__welcome">Welcome back</h3>
+    <small class="loginPage__tag">Please Login to your account</small>
+    <br />
+    <div class="loginPage__fields">
+      <ng-input-box
+        [marginBottom]="'20px'"
+        [marginTop]="'10px'"
+        [marginLeft]="'20px'"
+        [width]="'350px'"
+        [fieldIconName]="'pi pi-user'"
+        [fieldId]="'login__username'"
+        [fieldLabel]="'Username'"
+        [inputType]="'text'"
+      >
+      </ng-input-box>
+      <ng-input-box
+        [marginBottom]="'10px'"
+        [marginTop]="'30px'"
+        [marginLeft]="'20px'"
+        [width]="'350px'"
+        [fieldIconName]="'pi pi-lock'"
+        [fieldId]="'login__password'"
+        [fieldLabel]="'Password'"
+        [inputType]="'password'"
+      >
+      </ng-input-box>
+      <ng-submit-button
+        [label]="'Login to Jholi'"
+        [marginBottom]="'10px'"
+        [marginTop]="'30px'"
+        [marginLeft]="'64px'"
+      ></ng-submit-button>
+    </div>
+  </div>
+</main>
