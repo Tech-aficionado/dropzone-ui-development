@@ -13,6 +13,9 @@ import { ChipsModule } from 'primeng/chips';
 import { NgInputBoxComponent } from './components/ng-input-box/ng-input-box.component';
 import { NgButtonComponent } from './components/ng-button/ng-button.component';
 import { NgSubmitButtonComponent } from './components/ng-submit-button/ng-submit-button.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import { GetFormControlPipe } from './pipes/get-form-control.pipe';
+import {DialogModule} from "primeng/dialog";
 
 @NgModule({
   declarations: [
@@ -25,8 +28,9 @@ import { NgSubmitButtonComponent } from './components/ng-submit-button/ng-submit
     NgInputBoxComponent,
     NgButtonComponent,
     NgSubmitButtonComponent,
+    GetFormControlPipe,
   ],
-  imports: [BrowserModule, AppRoutingModule, ButtonModule, ChipsModule],
+    imports: [BrowserModule, AppRoutingModule, ButtonModule, ChipsModule, ReactiveFormsModule, DialogModule],
   providers: [],
   bootstrap: [AppComponent],
 })

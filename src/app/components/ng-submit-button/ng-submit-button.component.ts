@@ -10,9 +10,5 @@ export class NgSubmitButtonComponent {
   @Input() marginLeft!: string;
   @Input() marginTop!: string;
   @Input() marginBottom!: string;
-  public isDisables: boolean = true;
-
-  public onHoverButton = () => {
-    this.isDisables = false;
-  };
+  @Input() type!: string
 }

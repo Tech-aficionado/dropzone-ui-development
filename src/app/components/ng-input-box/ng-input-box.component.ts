@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'ng-input-box',
@@ -14,4 +15,10 @@ export class NgInputBoxComponent {
   @Input() fieldLabel!: string;
   @Input() marginLeft!: string;
   @Input() inputType!: string;
+  @Input() form!: FormGroup
+
+  constructor() {
+
+  }
+
 }

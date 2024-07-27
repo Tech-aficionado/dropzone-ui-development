@@ -3,6 +3,7 @@
 @import "primeicons/primeicons.css";
 html,
 body {
+  /*background-image: url("assets/bg-img.gif");*/
   background: black;
   color: white;
   margin: 0px;
@@ -19,4 +20,8 @@ body {
   height: 39px;
   padding: 0px 12px 0px 37px;
   color: #919191;
+}
+.p-inputtext:enabled:focus{
+  border: 1px solid blue !important;
+  box-shadow: 0 0 0 0rem;
 }

@@ -5,9 +5,9 @@
     marginLeft: marginLeft,
   }"
   class="ng-submit-button"
-  *ngIf="isDisables"
 ></div>
 <p-button
+  pFocusTrapDisabled
   [style]="{
     background: 'yellow',
     'border-radius': '0px',
@@ -18,10 +18,10 @@
     transform: 'translate3d(75px, -63px, -10px)',
   }"
   class="p-button-submit"
+  [type]="type"
   >{{ label }}
   <i
     [style]="{ marginLeft: '10px' }"
     class="pi pi-arrow-right"
-    (mouseover)="onHoverButton()"
   ></i
 ></p-button>

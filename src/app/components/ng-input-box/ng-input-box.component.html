@@ -8,6 +8,8 @@
 >
   <i [class]="fieldIconName"></i>
   <input
+    pFocusTrapDisabled
+    [formControl] = "form | getFormControl: fieldId"
     type="text"
     [style]="{ width: width }"
     [type]="inputType"
