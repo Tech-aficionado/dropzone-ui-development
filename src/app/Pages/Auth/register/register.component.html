@@ -1,2 +1,91 @@
-<app-custom-top-bar [Heading]="'Register'" [Triggering]="false">
-</app-custom-top-bar>
+<div class="grid customStyleCss">
+  <div class="col-fixed register__sideImage" >
+    <img src="https://wallpaperaccess.com/full/164868.jpg" class="register__image">
+  </div>
+  <div class="col-5 registerPage__Page">
+    <form [formGroup]="form" class="register__pallete" autocomplete="off"  (ngSubmit)="onFormSubmit()">
+      <h3 class="registerPage__welcome">Hi There!!!</h3>
+      <small class="registerPage__tag">Kindly register with valid details!!</small>
+      <br />
+      <div class="flex flex-wrap align-items-center" style="max-width: 500px">
+        <ng-input-box
+          [form]="form"
+          [marginBottom]="'10px'"
+          [marginTop]="'30px'"
+          label_color="white"
+          input_bg="transparent"
+          input_color="#222222"
+          color="white"
+          [marginLeft]="'20px'"
+          [width]="'350px'"
+          [fieldIconName]="'pi pi-user'"
+          [fieldId]="'register_username'"
+          [fieldLabel]="'Username'"
+          [inputType]="'text'"
+        >
+        </ng-input-box>
+        <ng-input-box
+          [form]="form"
+          [marginBottom]="'10px'"
+          label_color="white"
+          [marginTop]="'30px'"
+          [marginLeft]="'20px'"
+          input_bg="transparent"
+          input_color="#222222"
+          [width]="'350px'"
+          [fieldIconName]="'pi pi-user'"
+          [fieldId]="'register_fullname'"
+          [fieldLabel]="'Full Name'"
+          color="white"
+          [inputType]="'text'"
+        >
+        </ng-input-box>
+        <ng-input-box
+        [form]="form"
+        [marginBottom]="'10px'"
+        [marginTop]="'30px'"
+          label_color="white"
+          input_bg="transparent"
+          input_color="#222222"
+        [marginLeft]="'20px'"
+        [width]="'350px'"
+        [fieldIconName]="'pi pi-envelope'"
+        [fieldId]="'register_email'"
+        [fieldLabel]="'E-mail'"
+          color="white"
+        [inputType]="'email'"
+      >
+      </ng-input-box>
+      <ng-input-box
+      [form]="form"
+      [marginBottom]="'10px'"
+      [marginTop]="'30px'"
+      [marginLeft]="'20px'"
+      [width]="'350px'"
+          input_bg="transparent"
+          input_color="white"
+      [fieldIconName]="'pi pi-lock'"
+      [fieldId]="'register_password'"
+      [fieldLabel]="'Password'"
+          color="white"
+          label_color="white"
+      [inputType]="'password'"
+    >
+    </ng-input-box>
+        <ng-submit-button
+          [label]="'Register'"
+          [marginBottom]="'10px'"
+          [marginTop]="'30px'"
+          [loading]="isloading"
+          [marginLeft]="'64px'"
+        ></ng-submit-button>
+        <small 
+      style="min-width: 500px; min-height: 100px;margin-left: 77px;font-size: 15px;">Already A User? <a href="/login" style="text-decoration:none;font-size: 15px;">login your account</a></small>
+    
+      </div>
+      
+    </form>
+  </div>
+
+  
+</div>

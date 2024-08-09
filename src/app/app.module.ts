@@ -1,6 +1,8 @@
+import { NgDompurifySanitizer } from "@tinkoff/ng-dompurify";
+import { TuiRootModule, TuiDialogModule, TuiAlertModule, TUI_SANITIZER, TuiThemeNightModule, TuiModeModule } from "@taiga-ui/core";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { VoiceCommandComponent } from './components/voice-command/voice-command.component';
@@ -16,6 +18,16 @@ import { NgSubmitButtonComponent } from './components/ng-submit-button/ng-submit
 import {ReactiveFormsModule} from "@angular/forms";
 import { GetFormControlPipe } from './pipes/get-form-control.pipe';
 import {DialogModule} from "primeng/dialog";
+import { HttpClientModule } from '@angular/common/http';
+import { TabMenuModule } from 'primeng/tabmenu';
+import { ProductsComponent } from './Pages/products/products.component';
+import { CartComponent } from './Pages/cart/cart.component';
+import { CarouselModule } from 'primeng/carousel';
+import { TagModule } from 'primeng/tag';
+import { AboutUsComponent } from './Pages/about-us/about-us.component';
+import { HomePageComponent } from './Pages/home-page/home-page.component';
+import { AdminComponent } from './Pages/admin/admin.component';
+import { CustomerComponent } from './Pages/customer/customer.component';
 
 @NgModule({
   declarations: [
@@ -29,9 +41,15 @@ import {DialogModule} from "primeng/dialog";
     NgButtonComponent,
     NgSubmitButtonComponent,
     GetFormControlPipe,
+    ProductsComponent,
+    CartComponent,
+    AboutUsComponent,
+    HomePageComponent,
+    AdminComponent,
+    CustomerComponent,
   ],
-    imports: [BrowserModule, AppRoutingModule, ButtonModule, ChipsModule, ReactiveFormsModule, DialogModule],
-  providers: [],
+    imports: [BrowserModule, AppRoutingModule,TagModule, CarouselModule,ButtonModule, ChipsModule, ReactiveFormsModule, DialogModule,HttpClientModule,TabMenuModule, BrowserAnimationsModule],
+  providers: [{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

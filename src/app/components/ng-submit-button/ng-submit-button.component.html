@@ -7,17 +7,18 @@
   class="ng-submit-button"
 ></div>
 <p-button
-  pFocusTrapDisabled
+  pFocusTrap
   [style]="{
-    background: 'yellow',
+  'background-image': 'linear-gradient(90deg,#6220fb,#7353d4)',
     'border-radius': '0px',
     color: 'black',
     'justify-content': 'center',
     width: '265px',
     border: '0px',
-    transform: 'translate3d(75px, -63px, -10px)',
+    transform: 'translate3d(74px, -69px, 8px)',
   }"
   class="p-button-submit"
+  [loading]="loading" 
   [type]="type"
   >{{ label }}
   <i

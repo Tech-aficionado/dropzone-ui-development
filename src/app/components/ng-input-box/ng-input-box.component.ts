@@ -16,7 +16,11 @@ export class NgInputBoxComponent {
   @Input() marginLeft!: string;
   @Input() inputType!: string;
   @Input() form!: FormGroup
-
+  @Input() inputToolTip!: string
+  @Input() color: string = '#919191'
+  @Input() label_color: string = '#919191'
+  @Input() input_bg:string = '#222222'
+  @Input() input_color: string = '#919191'
   constructor() {
 
   }

@@ -6,17 +6,19 @@
     marginLeft: marginLeft,
   }"
 >
-  <i [class]="fieldIconName"></i>
+  <i [class]="fieldIconName" [style]="{color: label_color}" ></i>
   <input
     pFocusTrapDisabled
     [formControl] = "form | getFormControl: fieldId"
     type="text"
-    [style]="{ width: width }"
+    autocomplete="off"
+    [style]="{width: width,'background-color': input_bg, }"
+    style="color: input_color !important"
     [type]="inputType"
     [id]="fieldId"
     pInputText
   />
-  <label [style]="{ color: '#919191' }" [htmlFor]="fieldId">{{
+  <label [style]="{ color: color ,fontWeight:'300' }" style="font-weight: 900;" [htmlFor]="fieldId">{{
     fieldLabel
   }}</label>
 </span>
