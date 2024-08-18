@@ -40,7 +40,6 @@ import { FileUploadModule } from 'primeng/fileupload';
 export function tokenGetter() {
   return localStorage.getItem('access_token');
 }
-import {ImageCropperComponent} from 'ngx-image-cropper';
 import { AccountComponent } from './Pages/account/account.component'
 
 @NgModule({
@@ -75,7 +74,6 @@ import { AccountComponent } from './Pages/account/account.component'
     ButtonModule,
     ChipsModule,
     FileUploadModule,
-    ImageCropperComponent,
     ReactiveFormsModule,
     DialogModule,
     HttpClientModule,
