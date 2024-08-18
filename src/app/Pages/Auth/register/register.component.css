@@ -1,110 +1,106 @@
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&display=swap");
 .registerPage__Pallete {
-    height: 65vh;
-    width: 380px;
-    justify-content: right;
-    margin-left: 550px;
-    padding-top: 173px;
-
-  }
-  
-  .registerPage {
-    display: flex;
-    margin: 60px 60px 15px 60px;
-    justify-content: center;
-    border: 1px solid #424242;
-    align-items: center;
-    background: #121212; /* #121212*/
-  }
-  .registerPage__welcome {
-    margin-bottom: 0px;
-    margin-left: 15px;
-    padding-bottom: 0px;
-  }
-  .registerPage__fields {    
-    margin-top: 40px;
-    margin-left: -10px;
-  }
-  .registerPage__tag {
-
-    font-family: "Comfortaa", cursive;
-    font-weight: 100;
-    font-size: 15px;
-    margin-left: 16px;
-    letter-spacing: 0.5px;
-  }
-  .registerPage__welcome {
-    font-size: 40px;
-    padding-bottom: 0px;
-    margin-bottom: 14px;
-  }
-  .registerPage__Page{
-   position: relative;
-   margin-top: 0px;
-  }
-  .registerPage__Page::before{
-    content: '';
-    position: absolute;
-    opacity: 3%;
-    background-image: url(https://wallpapercave.com/wp/wp8529249.jpg);
-    width: 161%;
-    height: 838px;
-    background-size: cover;
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
-    box-shadow: 0 0 90px 90px rgba(0, 0, 0, 0.5) inset;
-      background-color: #fff;
-  }
-  .code{
-    backdrop-filter: blur(2px);    
-    border: 1px solid #d5d0c7;
-    border-radius: 23px;
-    box-shadow: 3px 4px 17px 6px black;
+  height: 65vh;
+  width: 380px;
+  justify-content: right;
+  margin-left: 550px;
+  padding-top: 173px;
 }
 
-.register__image{
+.registerPage {
+  display: flex;
+  margin: 60px 60px 15px 60px;
+  justify-content: center;
+  border: 1px solid #424242;
+  align-items: center;
+  background: #121212; /* #121212*/
+}
+.registerPage__welcome {
+  margin-bottom: 0px;
+  margin-left: 15px;
+  padding-bottom: 0px;
+}
+.registerPage__fields {
+  margin-top: 40px;
+  margin-left: -10px;
+}
+.registerPage__tag {
+  font-family: "Comfortaa", cursive;
+  font-weight: 100;
+  font-size: 15px;
+  margin-left: 16px;
+  letter-spacing: 0.5px;
+}
+.registerPage__welcome {
+  font-size: 40px;
+  padding-bottom: 0px;
+  margin-bottom: 14px;
+}
+.registerPage__Page {
+  position: relative;
+  margin-top: 0px;
+}
+.registerPage__Page::before {
+  content: "";
+  position: absolute;
+  opacity: 3%;
+  background-image: url(https://wallpapercave.com/wp/wp8529249.jpg);
+  width: 99%;
+  height: 838px;
+  background-size: cover;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  box-shadow: 0 0 90px 90px rgba(0, 0, 0, 0.5) inset;
+  background-color: #fff;
+}
+.code {
+  backdrop-filter: blur(2px);
+  border: 1px solid #d5d0c7;
+  border-radius: 23px;
+  box-shadow: 3px 4px 17px 6px black;
+}
+
+.register__image {
   height: 100%;
   margin: 0px;
   border-top-right-radius: 10%;
   border-bottom-right-radius: 10%;
   width: 500px;
 }
-.register__pallete{
+.register__pallete {
   margin-top: 173px;
   position: relative;
   margin-left: 36px;
-  
 }
-.topBar{
-  position:relative;
+.topBar {
+  position: relative;
   background: transparent;
   backdrop-filter: blur(3px);
 }
-.customStyleCss{
+.customStyleCss {
   margin-top: 0px !important;
   margin-right: 0px !important;
   margin-left: 0px !important;
 }
 @media (min-height: 880px) {
-  .register__image{
+  .register__image {
     height: 100%;
     margin: -4px;
     border-top-right-radius: 10%;
     border-bottom-right-radius: 10%;
     width: 500px;
   }
-
 }
 
-
-.register__sideImage{
+.register__sideImage {
   width: 500px;
   height: 98vh;
-  padding: 0px !important}
+  padding: 0px !important;
+}
 @media (min-height: 880px) {
-    .register__sideImage{
-      width: 500px;
-      height: 100vh;
-      padding: 0px !important
-    }
+  .register__sideImage {
+    width: 500px;
+    height: 100vh;
+    padding: 0px !important;
   }
+}

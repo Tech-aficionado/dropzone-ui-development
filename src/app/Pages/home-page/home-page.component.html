@@ -1,12 +1,25 @@
 <app-custom-top-bar></app-custom-top-bar>
 <div class="card">
-    <p-carousel [value]="products" [numVisible]="1" [numScroll]="1" [showNavigators]="false" [showIndicators]="false" [circular]="false" [responsiveOptions]="responsiveOptions" [autoplayInterval]=3000>
-        <ng-template let-product pTemplate="item">
-            <div class=" m-2 text-center">
-                <div class="mb-3">
-                    <img src="../../../assets/images/{{product.image }}" [alt]="product.name" class="border border-round-lg w-7 shadow-2" />
-                </div>
-            </div>
-        </ng-template>
-    </p-carousel>
+  <p-carousel
+    [value]="products"
+    [numVisible]="1"
+    [numScroll]="1"
+    [showNavigators]="false"
+    [showIndicators]="false"
+    [circular]="false"
+    [responsiveOptions]="responsiveOptions"
+    [autoplayInterval]="3000"
+  >
+    <ng-template let-product pTemplate="item">
+      <div class="m-2 text-center">
+        <div class="mb-3">
+          <img
+            src="../../../assets/images/{{ product.image }}"
+            [alt]="product.name"
+            class="border border-round-lg w-7 shadow-2"
+          />
+        </div>
+      </div>
+    </ng-template>
+  </p-carousel>
 </div>

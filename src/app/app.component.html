@@ -1,4 +1,5 @@
-
-<router-outlet> </router-outlet>
-
-
+<div *ngIf="loading" class="justify-content-center align-items-center">
+  <app-loader></app-loader>
+</div>
+<router-outlet *ngIf="!loading"> </router-outlet>
+<p-toast></p-toast>

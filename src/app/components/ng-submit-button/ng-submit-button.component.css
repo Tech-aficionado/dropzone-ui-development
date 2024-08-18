@@ -1,5 +1,5 @@
 .ng-submit-button {
-  background-image: linear-gradient(90deg,#413661,#6220fb);
+  background-image: linear-gradient(90deg, #413661, #6220fb);
   height: 43.2px;
   margin: 0px;
   padding: 0px;
@@ -7,8 +7,7 @@
 }
 
 p-button:focus {
-
-  outline: 0 none; 
+  outline: 0 none;
   outline-offset: 0;
-  box-shadow: 0
-  }
+  box-shadow: 0;
+}

@@ -1,13 +1,24 @@
 <div class="flex overflow-hidden">
-  <nav class="flex-none flex align-items-center justify-content-center  font-bold px-3 border-round" >
+  <nav
+    class="flex-none flex align-items-center justify-content-center font-bold px-3 border-round"
+  >
     <h2 class="topBarHeading">Jhola</h2>
   </nav>
-  <p-tabMenu 
-  class="topBarNavItems flex-grow-1 flex align-items-center justify-content-center font-bold px-3 border-round"
-        [model]="items" 
-        [activeItem]="activeItem" 
-        (activeItemChange)="onActiveItemChange($event)" />
-  <nav class="topBarTrigger__box flex-none flex align-items-center justify-content-center font-bold px-3 border-round">
-    <p-button pFocusTrapDisabled (click)="navigation()" *ngIf="Triggering"  [outlined]="true">{{NavButtonText}}</p-button>
+  <p-tabMenu
+    class="topBarNavItems flex-grow-1 flex align-items-center justify-content-center font-bold px-3 border-round"
+    [model]="items"
+    [activeItem]="activeItem"
+    (activeItemChange)="onActiveItemChange($event)"
+  />
+  <nav
+    class="topBarTrigger__box flex-none flex align-items-center justify-content-center font-bold px-3 border-round"
+  >
+    <p-button
+      pFocusTrapDisabled
+      (click)="navigation()"
+      *ngIf="Triggering"
+      [outlined]="true"
+      >{{ NavButtonText }}</p-button
+    >
   </nav>
 </div>

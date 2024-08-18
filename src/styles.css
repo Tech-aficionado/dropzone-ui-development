@@ -1,4 +1,4 @@
-@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/themes/soho-dark/theme.css";
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
 /* @import '~@taiga-ui/core/styles/taiga-ui-dark.css'; */
@@ -24,7 +24,7 @@ body {
   height: 39px;
   padding: 0px 12px 0px 37px;
 }
-.p-inputtext:enabled:focus{
+.p-inputtext:enabled:focus {
   border: 1px solid blue !important;
   box-shadow: 0 0 0 0rem;
 }
@@ -35,7 +35,7 @@ input:-internal-autofill-selected {
   color: inherit !important;
 }
 
-.p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link{
+.p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link {
   background: transparent !important;
   color: white;
   margin: 0px;
@@ -57,7 +57,11 @@ input:-internal-autofill-selected {
   border-bottom: 0px;
   border-top-left-radius: 0px;
 }
-.p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link .p-menuitem-link-active{
+.p-tabmenu
+  .p-tabmenu-nav
+  .p-tabmenuitem
+  .p-menuitem-link
+  .p-menuitem-link-active {
   background: transparent !important;
   color: rgb(222, 14, 14);
   margin: 0px;
@@ -73,5 +77,3 @@ input:-internal-autofill-selected {
   border-top-right-radius: 0px;
   border-top-left-radius: 0px;
 }
-
-

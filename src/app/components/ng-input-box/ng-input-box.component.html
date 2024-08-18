@@ -6,19 +6,22 @@
     marginLeft: marginLeft,
   }"
 >
-  <i [class]="fieldIconName" [style]="{color: label_color}" ></i>
+  <i [class]="fieldIconName" [style]="{ color: label_color }"></i>
   <input
     pFocusTrapDisabled
-    [formControl] = "form | getFormControl: fieldId"
+    [formControl]="form | getFormControl: fieldId"
     type="text"
     autocomplete="off"
-    [style]="{width: width,'background-color': input_bg, }"
+    [style]="{ width: width, 'background-color': input_bg }"
     style="color: input_color !important"
     [type]="inputType"
     [id]="fieldId"
     pInputText
   />
-  <label [style]="{ color: color ,fontWeight:'300' }" style="font-weight: 900;" [htmlFor]="fieldId">{{
-    fieldLabel
-  }}</label>
+  <label
+    [style]="{ color: color, fontWeight: '300' }"
+    style="font-weight: 900"
+    [htmlFor]="fieldId"
+    >{{ fieldLabel }}</label
+  >
 </span>

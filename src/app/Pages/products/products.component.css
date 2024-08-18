@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap");
+.topBarPallete {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  color: white;
+  background: black;
+  padding: 1px 10px;
+}
+.topBarNavItems{
+    padding-left: 27rem;
+}
+.topBarHeading__box {
+  margin-left: 30px;
+}
+.topBarHeading {
+  font-family: "Orbitron", sans-serif;
+  font-weight: 900;
+}
+li {
+  display: inline-block;
+  font-weight: 700;
+  justify-content: center;
+  align-items: center;
+  font-family: "Ubuntu", sans-serif;
+}
+li:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.topBarTrigger__box {
+  margin-right: 0px;
+}
+.cart_logo{
+    font-size: 23px;
+    padding: 5px 10px;
+}
+.cart_logo:hover{
+    background: #35293b;
+    padding: 5px 10px;
+    border-radius: 27px;
+}
+
+.Products__Listing__page{
+    height: 100%;
+    width: 100%;
+}

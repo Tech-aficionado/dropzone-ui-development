@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Observer } from 'rxjs';
+import { BehaviorSubject, Observer } from 'rxjs';
 
 @Component({
   selector: 'ng-submit-button',
@@ -11,6 +11,6 @@ export class NgSubmitButtonComponent {
   @Input() marginLeft!: string;
   @Input() marginTop!: string;
   @Input() marginBottom!: string;
-  @Input() type!: string
-  @Input() loading!: boolean
+  @Input() type!: string;
+  @Input() loading!: any;
 }

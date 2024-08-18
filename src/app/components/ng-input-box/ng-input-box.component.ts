@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'ng-input-box',
@@ -15,14 +15,11 @@ export class NgInputBoxComponent {
   @Input() fieldLabel!: string;
   @Input() marginLeft!: string;
   @Input() inputType!: string;
-  @Input() form!: FormGroup
-  @Input() inputToolTip!: string
-  @Input() color: string = '#919191'
-  @Input() label_color: string = '#919191'
-  @Input() input_bg:string = '#222222'
-  @Input() input_color: string = '#919191'
-  constructor() {
-
-  }
-
+  @Input() form!: FormGroup;
+  @Input() inputToolTip!: string;
+  @Input() color: string = '#919191';
+  @Input() label_color: string = '#919191';
+  @Input() input_bg: string = '#222222';
+  @Input() input_color: string = '#919191';
+  constructor() {}
 }
