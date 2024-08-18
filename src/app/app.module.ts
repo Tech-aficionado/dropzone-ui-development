@@ -1,12 +1,5 @@
 import { NgDompurifySanitizer } from '@tinkoff/ng-dompurify';
-import {
-  TuiRootModule,
-  TuiDialogModule,
-  TuiAlertModule,
-  TUI_SANITIZER,
-  TuiThemeNightModule,
-  TuiModeModule,
-} from '@taiga-ui/core';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -91,7 +84,6 @@ import { AccountComponent } from './Pages/account/account.component'
     ImageCropperUiComponent,
   ],
   providers: [
-    { provide: TUI_SANITIZER, useClass: NgDompurifySanitizer },
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
     JwtHelperService,
     MessageService,

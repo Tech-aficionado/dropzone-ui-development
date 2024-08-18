@@ -8,14 +8,7 @@ import {
   RouterEvent,
 } from '@angular/router';
 
-import {
-  TuiRootModule,
-  TuiDialogModule,
-  TuiAlertModule,
-  TUI_SANITIZER,
-  TuiThemeNightModule,
-  TuiModeModule,
-} from '@taiga-ui/core';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
