@@ -1,4 +1,5 @@
 import { Component, Inject } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import {
   NavigationCancel,
   NavigationEnd,

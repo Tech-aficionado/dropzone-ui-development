@@ -1,19 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { BehaviorSubject, map, tap } from 'rxjs';
 import { AuthService } from 'src/app/Services/Auth/auth.service';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { BrowserModule } from '@angular/platform-browser';
+import { SecureLocalStorageService } from 'src/app/Services/SecureLocalStorage/secure-local-storage.service';
+import gsap from 'gsap';
 
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.css'],
-  providers:[MessageService]
+  providers:[MessageService],
 })
 export class LoginPageComponent implements OnInit {
   form: FormGroup;
   response!: any
+  otpValue: any = ""
+  loading =new BehaviorSubject<Boolean>(false)
   isUserLoggedIn = new BehaviorSubject<any>(false);
   isloading = new BehaviorSubject<boolean>(false);
   visible: boolean = false;
@@ -22,6 +27,7 @@ export class LoginPageComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
+    private localstorage: SecureLocalStorageService,
     private messageService: MessageService
   ) {
     this.form = this.fb.group({
@@ -29,7 +35,8 @@ export class LoginPageComponent implements OnInit {
       login__password: ['', Validators.required],
     });
   }
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   onFormSubmit() {
     const values = {
@@ -63,13 +70,66 @@ export class LoginPageComponent implements OnInit {
           summary: 'Credentail Match',
           detail: "Please Proceed further to authenticate 😀😀😀",
         });
+       setTimeout(()=>{
+        this.localstorage.setItem('UserEmail',values.login_email)
         this.visible = true
+        this.loading.next(true)
+        this.activateOtpAuthentication(values.login_email)
+       },1000)
       }
     }); 
   }
-
-  activateOtpAuthentication(userEmail: string){
+  Phase2Authentication(){
+    const input = {
+      user_email: this.localstorage.getItem('UserEmail'),
+      otp: this.otpValue
+    }
+    this.authService.Phase2Verification(input,(res)=>{
+      if(res.LoginStatus == true){
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Login Successful',
+          detail: "Let's Move On 😀😀😀",
+        });
+        setTimeout(() => {
+          
+        this.router.navigate(['products'])
+        }, 2000);
+      }else{
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Otp Error',
+          detail: "Please try again...😨😨😨",
+        });
+      }
+    })
+  }
+  ResendOtpAuthentication(){
 
   }
+
+  activateOtpAuthentication(userEmail: string){
+    this.authService.OtpAuth(userEmail,(response)=>{
+      if (response.statuscode == 200){
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Otp Sent',
+          detail: "Please check your mailbox 😀😀😀",
+        });
+
+        this.loading.next(false)
+        console.log(this.loading)
+      }else{
+        this.messageService.add({
+          severity: 'error',
+          summary: "Otp Error",
+          detail: "Something went wrong",
+        });
+      }
+    })
+  }
+
+
+
 
 }

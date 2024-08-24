@@ -1,5 +1,5 @@
 {
-  "name": "e-commerce-app",
+  "name": "dropzone",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -16,6 +16,7 @@
     "@angular/common": "^17.3.12",
     "@angular/compiler": "^17.3.12",
     "@angular/core": "^17.3.12",
+    "@angular/fire": "^18.0.1",
     "@angular/forms": "^17.3.12",
     "@angular/platform-browser": "^17.3.12",
     "@angular/platform-browser-dynamic": "^17.3.12",
@@ -27,6 +28,8 @@
     "crypto-js": "^4.2.0",
     "dompurify": "3.0.6",
     "encrypt-storage": "^2.13.3",
+    "firebase": "^10.13.0",
+    "gsap": "^3.12.5",
     "jose": "^5.6.3",
     "ngx-image-cropper": "^8.0.0",
     "primeflex": "3.3.1",

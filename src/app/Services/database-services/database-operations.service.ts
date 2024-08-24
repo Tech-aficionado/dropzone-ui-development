@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, observeOn, Observer } from 'rxjs';
 import { ExistingUserSchema, NewUserSchema } from '../Schemas/Auth-schema';
-import { map, values } from 'lodash';
+
 const BackendServer = 'http://127.0.0.1:8000/jholi-services';
 
 @Injectable({
@@ -21,7 +21,7 @@ export class DatabaseOperationsService {
     };
 
     return this.Http.post(
-      BackendServer + '/users/existingUser',
+      BackendServer + '/users/phase1loginAuth',
       UserDetails,
       httpOptions,
     )
@@ -39,5 +39,35 @@ export class DatabaseOperationsService {
       UserDetails,
       httpOptions,
     );
+  }
+
+  sendOtp(userEmail:string){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+    };
+    const input = {
+      user_email: userEmail
+    }
+
+    return this.Http.post(
+      BackendServer + '/users/activateOtp',
+      input,
+      httpOptions,
+    )
+  }
+  verifyOtp(userInput: any){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+    };
+
+    return this.Http.post(
+      BackendServer + '/users/phase2loginAuth',
+      userInput,
+      httpOptions,
+    )
   }
 }

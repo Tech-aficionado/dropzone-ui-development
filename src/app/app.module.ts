@@ -3,6 +3,7 @@ import { NgDompurifySanitizer } from '@tinkoff/ng-dompurify';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { InputOtpModule } from 'primeng/inputotp';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SelectButtonModule } from 'primeng/selectbutton';
@@ -16,7 +17,7 @@ import { ChipsModule } from 'primeng/chips';
 import { NgInputBoxComponent } from './components/ng-input-box/ng-input-box.component';
 import { NgButtonComponent } from './components/ng-button/ng-button.component';
 import { NgSubmitButtonComponent } from './components/ng-submit-button/ng-submit-button.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GetFormControlPipe } from './pipes/get-form-control.pipe';
 import { DialogModule } from 'primeng/dialog';
 import { HttpClientModule } from '@angular/common/http';
@@ -72,10 +73,12 @@ import { AccountComponent } from './Pages/account/account.component'
     ToastModule,
     CarouselModule,
     ButtonModule,
+    InputOtpModule,
     ChipsModule,
     FileUploadModule,
     ReactiveFormsModule,
     DialogModule,
+    FormsModule,
     HttpClientModule,
     TabMenuModule,
     BrowserAnimationsModule,
