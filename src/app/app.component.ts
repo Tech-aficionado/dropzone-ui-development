@@ -9,7 +9,6 @@ import {
   RouterEvent,
 } from '@angular/router';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -34,7 +33,7 @@ export class AppComponent {
     ) {
       setTimeout(() => {
         this.loading = false;
-      }, 2000);
+      }, 1000);
     }
   }
 }

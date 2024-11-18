@@ -13,4 +13,5 @@ export class NgSubmitButtonComponent {
   @Input() marginBottom!: string;
   @Input() type!: string;
   @Input() loading!: any;
+  @Input() width!: any;
 }

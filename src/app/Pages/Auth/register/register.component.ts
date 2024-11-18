@@ -1,5 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { AuthService } from 'src/app/Services/Auth/auth.service';
 import { user_register_props } from './register-response-map';
 import { Router } from '@angular/router';
@@ -15,31 +20,37 @@ interface UploadEvent {
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  providers:[MessageService],
+  providers: [MessageService],
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
   form: FormGroup;
   @Input() usernameId!: string;
-  isImageDashboardView: boolean = false
+  isImageDashboardView: boolean = false;
   isloading = new BehaviorSubject<boolean>(false);
-  imageChangedEvent:any
-  uploadedimageFile!: any
-  profilePicture: any = "profile__logo.png"
+  imageChangedEvent: any;
+  uploadedimageFile!: any;
+  profilePicture: any = 'profile__logo.png';
+  register_user_type!: FormControl;
   croppedImage: string | null | undefined;
-  completeImage = "../../../../assets/images/" + this.profilePicture
+  stateOptions: any[] = [
+    { label: 'Buyer', value: 'Y' },
+    { label: 'Seller', value: 'N' },
+  ];
+  completeImage = '../../../../assets/images/' + this.profilePicture;
 
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private messageService: MessageService
+    private messageService: MessageService,
   ) {
     this.form = this.fb.group({
       register_username: ['', Validators.required],
       register_fullname: ['', Validators.required],
       register_email: ['', Validators.required, Validators.email],
       register_password: ['', Validators.required],
+      register_user_type: ['', Validators.required],
     });
   }
 
@@ -72,7 +83,7 @@ export class RegisterComponent implements OnInit {
   }
   ngOnInit() {}
 
-responsiveOptions: any[] | undefined;
+  responsiveOptions: any[] | undefined;
   products = [
     {
       image: 'avatar__1.png',
@@ -106,10 +117,10 @@ responsiveOptions: any[] | undefined;
     },
   ];
 
-  selectImage(image:any){
-    console.log(image)
-    this.profilePicture=image
-    this.completeImage = "../../../../assets/Avatars/" + this.profilePicture
-    this.visible=  false
+  selectImage(image: any) {
+    console.log(image);
+    this.profilePicture = image;
+    this.completeImage = '../../../../assets/Avatars/' + this.profilePicture;
+    this.visible = false;
   }
 }

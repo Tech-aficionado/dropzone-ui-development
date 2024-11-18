@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-home-page',
@@ -57,6 +58,7 @@ export class HomePageComponent {
       rating: 5,
     },
   ];
+  items!: MenuItem[];
 
   constructor() {}
 
@@ -76,6 +78,16 @@ export class HomePageComponent {
         breakpoint: '767px',
         numVisible: 1,
         numScroll: 1,
+      },
+    ];
+    this.items = [
+      { label: 'Home', icon: 'pi pi-home', routerLink: '/home' },
+      { label: 'Products', icon: 'pi pi-list', routerLink: '/products' },
+      { label: 'Cart', icon: 'pi pi-shopping-cart', routerLink: '/cart' },
+      {
+        label: 'About Us',
+        icon: 'pi pi-address-book',
+        routerLink: '/about-us',
       },
     ];
   }

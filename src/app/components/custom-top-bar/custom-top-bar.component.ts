@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MenuItem } from 'primeng/api';
+import { MenuItem, MessageService } from 'primeng/api';
+import { SecureLocalStorageService } from 'src/app/Services/SecureLocalStorage/secure-local-storage.service';
 
 @Component({
   selector: 'app-custom-top-bar',
@@ -8,37 +9,39 @@ import { MenuItem } from 'primeng/api';
   styleUrls: ['./custom-top-bar.component.css'],
 })
 export class CustomTopBarComponent implements OnInit {
-  @Input() Heading!: string;
+  @Input() Heading: string = 'DropZone';
   @Input() Triggering!: boolean;
   @Input() NavigateTo!: string;
   @Input() NavButtonText!: string;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private localStorage: SecureLocalStorageService,
+    private messageService: MessageService,
+  ) {}
 
   navigation() {
     this.router.navigate([`${this.NavigateTo}`]);
   }
 
-  items!: MenuItem[];
+  @Input() items!: MenuItem[];
 
   activeItem: MenuItem | undefined;
 
   ngOnInit() {
-    this.items = [
-      { label: 'Home', icon: 'pi pi-home', routerLink: '/home' },
-      { label: 'Products', icon: 'pi pi-list', routerLink: '/products' },
-      { label: 'Cart', icon: 'pi pi-shopping-cart', routerLink: '/cart' },
-      {
-        label: 'About Us',
-        icon: 'pi pi-address-book',
-        routerLink: '/about-us',
-      },
-    ];
-
     this.activeItem = this.items[0];
   }
 
   onActiveItemChange(event: MenuItem) {
     this.activeItem = event;
   }
+  // onLogOut() {
+  //   localStorage.clear();
+  //   this.router.navigate(['/login']);
+  //   this.messageService.add({
+  //     severity: 'error',
+  //     summary: 'Logged Out',
+  //     detail: 'Damn!! Have a great day...',
+  //   });
+  // }
 }

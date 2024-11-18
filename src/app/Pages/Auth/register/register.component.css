@@ -1,20 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&display=swap");
 .registerPage__Pallete {
-  height: 65vh;
+  height: 67vh;
   width: 380px;
   justify-content: right;
   margin-left: 550px;
   padding-top: 173px;
 }
 
-.registerPage {
-  display: flex;
-  margin: 60px 60px 15px 60px;
-  justify-content: center;
-  border: 1px solid #424242;
-  align-items: center;
-  background: #121212; /* #121212*/
-}
 .registerPage__welcome {
   margin-bottom: 0px;
   margin-left: 15px;
@@ -39,14 +31,15 @@
 .registerPage__Page {
   position: relative;
   margin-top: 0px;
+  padding: 0px;
 }
 .registerPage__Page::before {
   content: "";
   position: absolute;
   opacity: 3%;
   background-image: url(https://wallpapercave.com/wp/wp8529249.jpg);
-  width: 99%;
-  height: 838px;
+  width: 70vw;
+  height: 100vh;
   background-size: cover;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
@@ -57,7 +50,7 @@
   backdrop-filter: blur(2px);
   border: 1px solid #d5d0c7;
   border-radius: 23px;
-  box-shadow: 3px 4px 17px 6px black;
+  box-shadow: 3px 4px 17px 6px #141a21;
 }
 
 .register__image {
@@ -65,7 +58,7 @@
   margin: 0px;
   border-top-right-radius: 10%;
   border-bottom-right-radius: 10%;
-  width: 500px;
+  width: 100%;
 }
 .register__pallete {
   margin-top: 173px;
@@ -82,7 +75,7 @@
   margin-right: 0px !important;
   margin-left: 0px !important;
 }
-@media (min-height: 880px) {
+/* @media (min-height: 880px) {
   .register__image {
     height: 100%;
     margin: -4px;
@@ -90,17 +83,23 @@
     border-bottom-right-radius: 10%;
     width: 500px;
   }
-}
+} */
 
 .register__sideImage {
-  width: 500px;
+  width: 30vw;
+  margin: 0px;
+  padding: 0px;
   height: 98vh;
   padding: 0px !important;
 }
-@media (min-height: 880px) {
+/* @media (min-height: 880px) {
   .register__sideImage {
     width: 500px;
     height: 100vh;
     padding: 0px !important;
   }
+} */
+.avatarImg {
+  background: #141a21;
+  backdrop-filter: invert(1);
 }

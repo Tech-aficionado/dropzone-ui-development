@@ -1,10 +1,12 @@
-import { NgDompurifySanitizer } from '@tinkoff/ng-dompurify';
+
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { InputOtpModule } from 'primeng/inputotp';
 import { AppRoutingModule } from './app-routing.module';
+import { CheckboxModule } from 'primeng/checkbox';
+import { RatingModule } from 'primeng/rating';
 import { AppComponent } from './app.component';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { VoiceCommandComponent } from './components/voice-command/voice-command.component';
@@ -41,8 +43,13 @@ import { FileUploadModule } from 'primeng/fileupload';
 export function tokenGetter() {
   return localStorage.getItem('access_token');
 }
-import { AccountComponent } from './Pages/account/account.component'
-
+import { ChipModule } from 'primeng/chip';
+import { ToolbarModule } from 'primeng/toolbar';
+import { MenubarModule } from 'primeng/menubar';
+import { AccountComponent } from './Pages/account/account.component';
+import { ProductTileViewComponent } from './components/product-tile-view/product-tile-view.component';
+import { ScrollerModule } from 'primeng/scroller';
+import { AppCustomFooterComponent } from './components/app-custom-footer/app-custom-footer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,20 +69,28 @@ import { AccountComponent } from './Pages/account/account.component'
     AdminComponent,
     CustomerComponent,
     LoaderComponent,
+    AppCustomFooterComponent,
     Button1Component,
     AccountComponent,
+    ProductTileViewComponent,
   ],
   imports: [
     BrowserModule,
+    MenubarModule,
+    ToolbarModule,
     TagModule,
     AppRoutingModule,
     SelectButtonModule,
     ToastModule,
+    ScrollerModule,
     CarouselModule,
+    ChipModule,
     ButtonModule,
     InputOtpModule,
+    RatingModule,
     ChipsModule,
     FileUploadModule,
+    CheckboxModule,
     ReactiveFormsModule,
     DialogModule,
     FormsModule,

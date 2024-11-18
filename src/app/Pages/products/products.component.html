@@ -1,23 +1,146 @@
-<div class="flex " style="
-    height: 48px;">
-  <nav
-    class="flex-none flex align-items-center justify-content-center font-bold px-3 border-round"
-  >
-    <h2 class="topBarHeading">Dropzone</h2>
-  </nav>
-  <p-tabMenu
-    class="topBarNavItems flex-grow-1 flex align-items-center justify-content-center font-bold px-1 border-round"
-    [model]="items"
-    [activeItem]="activeItem"
-    (activeItemChange)="onActiveItemChange($event)"
-  />
-  <nav
-    class="topBarTrigger__box flex-none flex align-items-center justify-content-center font-bold px-3 border-round"
-  >
-    <a href="cart"><i class="cart_logo pi pi-shopping-cart"></i></a>
-    
-  </nav>
-</div>
+<app-custom-top-bar [items]="items"></app-custom-top-bar>
 <div class="Products__Listing__page">
-
+  <div
+    class="flex justify-content-center align-items-center"
+    [style]="{ background: 'transparent'}"
+    (click)="router.navigate(['/login'])"
+  >
+    <img
+      [style]="{ background: 'transparent' }"
+      style="height: 50px; width: auto"
+      src="https://logos-world.net/wp-content/uploads/2020/04/Adidas-Logo.png"
+      alt="Adidas"
+    />
+    <h2
+      [style]="{ background: 'transparent' }"
+      style="font-family: Orbitron, sans-serif"
+    >
+      Sneakers
+    </h2>
+  </div>
+  <p-carousel
+    [value]="products_shoes"
+    [numVisible]="5"
+    [numScroll]="1"
+    [showNavigators]="true"
+    [showIndicators]="false"
+    [circular]="true"
+    [responsiveOptions]="responsiveOptions"
+  >
+    <ng-template let-product pTemplate="item">
+      <div class="product-item">
+        <app-product-tile-view
+          [product_description]="product.pd"
+          [product_image_source]="product.pis"
+          [product_title]="product.pt"
+          [product_price]="product.pp"
+          [product_rating]="product.pr"
+        >
+        </app-product-tile-view>
+      </div>
+    </ng-template>
+  </p-carousel>
+  <div
+    class="flex justify-content-center align-items-center"
+    [style]="{ background: 'transparent'}"
+    (click)="router.navigate(['/login'])"
+  >
+    <img
+      style="height: 110px; width: auto"
+      src="https://brandlogos.net/wp-content/uploads/2013/06/us-polo-assn-vector-logo.png"
+      alt="Adidas"
+    />
+    <h2 style="font-family: Orbitron, sans-serif">Shirts</h2>
+  </div>
+  <p-carousel
+    [value]="products_sweatshirts"
+    [numVisible]="5"
+    [numScroll]="1"
+    [showNavigators]="true"
+    [showIndicators]="false"
+    [circular]="true"
+    [responsiveOptions]="responsiveOptions"
+  >
+    <ng-template let-product pTemplate="item">
+      <div class="product-item">
+        <app-product-tile-view
+          [product_description]="product.pd"
+          [product_image_source]="product.pis"
+          [product_title]="product.pt"
+          [product_price]="product.pp"
+          [product_rating]="product.pr"
+        >
+        </app-product-tile-view>
+      </div>
+    </ng-template>
+  </p-carousel>
+  <div
+    class="flex justify-content-center align-items-center"
+    [style]="{ background: 'transparent'}"
+    (click)="router.navigate(['/login'])"
+  >
+    <img
+      style="height: 100px; width: auto"
+      src="https://logosmarcas.net/wp-content/uploads/2020/04/Levis-Logo.png"
+      alt="Adidas"
+    />
+    <h2 style="font-family: Orbitron, sans-serif">Jeans</h2>
+  </div>
+  <p-carousel
+    [value]="products_jeans"
+    [numVisible]="5"
+    [numScroll]="1"
+    [showNavigators]="true"
+    [showIndicators]="false"
+    [circular]="true"
+    [responsiveOptions]="responsiveOptions"
+  >
+    <ng-template let-product pTemplate="item">
+      <div class="product-item">
+        <app-product-tile-view
+          [product_description]="product.pd"
+          [product_image_source]="product.pis"
+          [product_title]="product.pt"
+          [product_price]="product.pp"
+          [product_rating]="product.pr"
+        >
+        </app-product-tile-view>
+      </div>
+    </ng-template>
+  </p-carousel>
+  <div
+  class="flex justify-content-center align-items-center"
+  [style]="{ background: 'transparent'}"
+  (click)="router.navigate(['/login'])"
+>
+  <img
+    style="height: 70px; width: auto"
+    src="https://logo-marque.com/wp-content/uploads/2020/04/Nike-Logo.png"
+    alt="Adidas"
+  />
+  <h2 style="font-family: Orbitron, sans-serif">Sporty Wear</h2>
 </div>
+  <p-carousel
+    [value]="products_sports_shoes"
+    [numVisible]="5"
+    [numScroll]="1"
+    [showNavigators]="true"
+    [showIndicators]="false"
+    [circular]="true"
+    [responsiveOptions]="responsiveOptions"
+  >
+    <ng-template let-product pTemplate="item">
+      <div class="product-item">
+        <app-product-tile-view
+          [product_description]="product.pd"
+          [product_image_source]="product.pis"
+          [product_title]="product.pt"
+          [product_price]="product.pp"
+          [product_rating]="product.pr"
+        >
+        </app-product-tile-view>
+      </div>
+    </ng-template>
+  </p-carousel>
+</div>
+<app-app-custom-footer></app-app-custom-footer>

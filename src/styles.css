@@ -1,4 +1,4 @@
-@import "primeng/resources/themes/soho-dark/theme.css";
+@import "primeng/resources/themes/viva-dark/theme.css";
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
 /* @import '~@taiga-ui/core/styles/taiga-ui-dark.css'; */
@@ -40,7 +40,7 @@ input:-internal-autofill-selected {
   color: white;
   margin: 0px;
   text-decoration: none;
-  border: 10px solid black !important;
+  border: 10px solid #141a21 !important;
   border-width: 0 0 4px 0 !important;
   border-top-right-radius: 0px;
   border-bottom: 0px;
@@ -51,7 +51,7 @@ input:-internal-autofill-selected {
   color: white;
   margin: 0px;
   text-decoration: none;
-  border: 10px solid black !important;
+  border: 10px solid #000000 !important;
   border-width: 0 0 4px 0 !important;
   border-top-right-radius: 0px;
   border-bottom: 0px;
@@ -66,7 +66,7 @@ input:-internal-autofill-selected {
   color: rgb(222, 14, 14);
   margin: 0px;
   text-decoration: none;
-  border: 10px solid black !important;
+  border: 10px solid #141a21 !important;
   border-width: 0 0 4px 0 !important;
   border-top-right-radius: 0px;
   border-top-left-radius: 0px;
@@ -76,4 +76,16 @@ input:-internal-autofill-selected {
   border-width: 0 0 0 0 !important;
   border-top-right-radius: 0px;
   border-top-left-radius: 0px;
+}
+.p-button:focus {
+  box-shadow: none;
+}
+
+.p-carousel .p-carousel-content .p-carousel-prev,
+.p-carousel .p-carousel-content .p-carousel-next {
+  color: black;
+}
+
+.p-rating .p-rating-item.p-rating-item-active .p-rating-icon {
+  color: red;
 }

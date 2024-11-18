@@ -16,24 +16,25 @@ import { provideHttpClient } from '@angular/common/http';
 import { ImageCropperUiComponent } from './Features/image-cropper-ui/image-cropper-ui.component';
 import { AccountComponent } from './Pages/account/account.component';
 
-const AppName = ' |  Jhola';
+const AppName = ' |  DropZone';
 
 const routes: Routes = [
   {
     path: 'login',
     component: LoginPageComponent,
+    canActivate: [AuthenticationGaurds],
     title: `Login${AppName}`,
   },
   {
     path: 'register',
     component: RegisterComponent,
+    canActivate: [AuthenticationGaurds],
     title: `Register${AppName}`,
   },
   {
-    path: 'account/:usernameId',
-
+    path: 'account',
     component: AccountComponent,
-    title: `Register${AppName}`,
+    title: `Account Section${AppName}`,
   },
   {
     path: 'home',

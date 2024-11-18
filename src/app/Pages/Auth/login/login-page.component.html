@@ -1,35 +1,58 @@
-<p-dialog #otpDialog  [(visible)]="visible" [modal]="true" (onHide)="visible = false">
-  <ng-template pTemplate="header" class="flex justify-content-center align-items-center">
+<p-dialog
+  #otpDialog
+  [(visible)]="visible"
+  [modal]="true"
+  (onHide)="visible = false"
+>
+  <ng-template
+    pTemplate="header"
+    class="flex justify-content-center align-items-center"
+  >
     <div class="flex flex-column align-items-center">
       <div class="font-bold text-xl mb-2">Authenticate Your Account</div>
     </div>
   </ng-template>
   <ng-template pTemplate="content">
     <div class="flex flex-column align-items-center">
-      <p class="text-color-secondary block mb-5">Please enter the code sent to your mailbox.</p>
+      <p class="text-color-secondary block mb-5">
+        Please enter the code sent to your mailbox.
+      </p>
       <p-inputOtp [(ngModel)]="otpValue" [length]="6" style="gap: 0">
-        <ng-template pTemplate="input" let-token let-events="events" let-index="index">
-            <input 
-                
-                type="text" 
-                [maxLength]="1" 
-                (input)="events.input($event)" 
-                (keydown)="events.keydown($event)" 
-                [attr.value]="token" 
-                class="custom-otp-input" />
-            <div *ngIf="index === 3" class="px-3">
-                <i class="pi pi-minus"></i>
-            </div>
+        <ng-template
+          pTemplate="input"
+          let-token
+          let-events="events"
+          let-index="index"
+        >
+          <input
+            type="text"
+            [maxLength]="1"
+            (input)="events.input($event)"
+            (keydown)="events.keydown($event)"
+            [attr.value]="token"
+            class="custom-otp-input"
+          />
+          <div *ngIf="index === 3" class="px-3">
+            <i class="pi pi-minus"></i>
+          </div>
         </ng-template>
-    </p-inputOtp>
-  </div>
+      </p-inputOtp>
+    </div>
   </ng-template>
   <ng-template pTemplate="footer">
     <div class="flex flex-column align-items-center">
       <div class="flex justify-content-between mt-5 align-self-stretch">
-        <p-button label="Resend Code" class="p-0" (click)="ResendOtpAuthentication()"/>
-        <p-button label="Submit Code" (click)="Phase2Authentication()" [loading]="loading.getValue()" />
-    </div>
+        <p-button
+          label="Resend Code"
+          class="p-0"
+          (click)="ResendOtpAuthentication()"
+        />
+        <p-button
+          label="Submit Code"
+          (click)="Phase2Authentication()"
+          [loading]="loading.getValue()"
+        />
+      </div>
     </div>
   </ng-template>
 </p-dialog>
@@ -41,7 +64,7 @@
       class="login__image"
     />
   </div>
-  <div class="col-5 loginpage__pallete">
+  <div class="col-fixed loginpage__pallete">
     <form
       [formGroup]="form"
       class="login__pallete"
@@ -51,13 +74,15 @@
       <h3 class="loginPage__welcome">Welcome back</h3>
       <small class="loginPage__tag">Please Login to your account</small>
       <br />
-      <div class="flex flex-wrap align-items-center" style="max-width: 500px">
+      <div
+        class="flex flex-wrap align-items-center justify-content-center"
+        style="max-width: 500px"
+      >
         <ng-input-box
           style="min-width: 400px; min-height: 100px"
           [form]="form"
           [marginBottom]="'10px'"
           [marginTop]="'60px'"
-          [marginLeft]="'10px'"
           [width]="'350px'"
           label_color="white"
           input_bg="transparent"
@@ -74,7 +99,6 @@
           [form]="form"
           [marginBottom]="'10px'"
           [marginTop]="'30px'"
-          [marginLeft]="'10px'"
           label_color="white"
           input_bg="transparent"
           input_color="#222222"
@@ -87,22 +111,13 @@
         >
         </ng-input-box>
         <ng-submit-button
-          [label]="'Login to Jholi'"
-          [marginBottom]="'10px'"
-          [loading]="isloading.value"
-          [marginTop]="'40px'"
-          style="margin-left: -10px"
-          [marginLeft]="'60px'"
+          [label]="'Login to Continue'"
+          [marginBottom]="'40px'"
+          [width]="'200px'"
+          [marginTop]="'410px'"
+          style="margin-left: -51px"
         ></ng-submit-button>
-        <br />
-        <br />
-        <small
-          style="
-            min-width: 500px;
-            min-height: 100px;
-            margin-left: 101px;
-            font-size: 15px;
-          "
+        <small style="min-width: 400px; margin-left: 160px; font-size: 15px"
           >Not a User?
           <a href="/register" style="text-decoration: none">
             Create a Account</a

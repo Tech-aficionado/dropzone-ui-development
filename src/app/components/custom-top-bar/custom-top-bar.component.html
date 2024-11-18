@@ -1,24 +1,39 @@
-<div class="flex overflow-hidden">
-  <nav
+<p-toolbar
+  class="flex align-items-center justify-content-space-between"
+  [style]="{
+    width: '100%',
+    height: '65px',
+    padding: '0px',
+    'background-color': 'white',
+    'border-radius': '0px',
+    border: '0px',
+    color: 'black',
+  }"
+>
+  <ng-template
+    pTemplate="start"
     class="flex-none flex align-items-center justify-content-center font-bold px-3 border-round"
   >
-    <h2 class="topBarHeading">Jhola</h2>
-  </nav>
-  <p-tabMenu
-    class="topBarNavItems flex-grow-1 flex align-items-center justify-content-center font-bold px-3 border-round"
-    [model]="items"
-    [activeItem]="activeItem"
-    (activeItemChange)="onActiveItemChange($event)"
-  />
-  <nav
-    class="topBarTrigger__box flex-none flex align-items-center justify-content-center font-bold px-3 border-round"
-  >
-    <p-button
-      pFocusTrapDisabled
-      (click)="navigation()"
-      *ngIf="Triggering"
-      [outlined]="true"
-      >{{ NavButtonText }}</p-button
+    <h2 class="topBarHeading">{{ Heading }}</h2>
+  </ng-template>
+  <ng-template pTemplate="center">
+    <p-menubar
+      [style]="{ height: '40px', background: 'black', border: '0px' }"
+      class="topBarNavItems flex-grow-1 flex align-items-center justify-content-center font-bold px-1 border-round"
+      [model]="items"
+    />
+  </ng-template>
+  <ng-template pTemplate="end">
+    <nav
+      class="topBarTrigger__box flex-none flex align-items-center justify-content-center font-bold px-3 border-round"
     >
-  </nav>
-</div>
+      <a href="cart"><i class="cart_logo pi pi-shopping-cart"></i></a>
+      <button
+        [style]="{ background: 'white', border: '0px' }"
+        
+      >
+        <i class="logout_logo pi pi-sign-out"></i>
+      </button>
+    </nav>
+  </ng-template>
+</p-toolbar>

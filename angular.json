@@ -23,7 +23,7 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/primeng/resources/themes/lara-dark-teal/theme.css",
+              "node_modules/primeng/resources/themes/soho-dark/theme.css",
               "src/styles.css"
             ],
             "scripts": []

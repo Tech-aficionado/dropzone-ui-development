@@ -7,7 +7,7 @@
   align-items: center;
   height: 52px;
   color: white;
-  background: black;
+  background: #141a21;
   padding: 1px 10px;
 }
 .topBarHeading__box {
@@ -16,6 +16,27 @@
 .topBarHeading {
   font-family: "Orbitron", sans-serif;
   font-weight: 900;
+  padding-left: 10px;
+}
+.cart_logo {
+  font-size: 23px;
+  padding: 5px 10px;
+  color: black;
+}
+.cart_logo:hover {
+  background: #d8d8d8;
+  padding: 9px 10px;
+  border-radius: 100%;
+}
+.logout_logo {
+  font-size: 23px;
+  padding: 5px 10px;
+  color: rgb(255, 0, 0);
+}
+.logout_logo:hover {
+  background: #efdcdc;
+  padding: 9px 10px;
+  border-radius: 100%;
 }
 li {
   display: inline-block;

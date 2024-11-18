@@ -24,8 +24,7 @@ export class DatabaseOperationsService {
       BackendServer + '/users/phase1loginAuth',
       UserDetails,
       httpOptions,
-    )
-
+    );
   }
   registerUser(UserDetails: NewUserSchema): Observable<any> {
     const httpOptions = {
@@ -41,23 +40,23 @@ export class DatabaseOperationsService {
     );
   }
 
-  sendOtp(userEmail:string){
+  sendOtp(userEmail: string) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
       }),
     };
     const input = {
-      user_email: userEmail
-    }
+      user_email: userEmail,
+    };
 
     return this.Http.post(
       BackendServer + '/users/activateOtp',
       input,
       httpOptions,
-    )
+    );
   }
-  verifyOtp(userInput: any){
+  verifyOtp(userInput: any) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -68,6 +67,6 @@ export class DatabaseOperationsService {
       BackendServer + '/users/phase2loginAuth',
       userInput,
       httpOptions,
-    )
+    );
   }
 }
