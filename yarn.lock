@@ -183,7 +183,7 @@
     symbol-observable "4.0.0"
     yargs "17.7.2"
 
-"@angular/common@^17.0.0 || ^18.0.0", "@angular/common@^17.3.12", "@angular/common@^18.0.0", "@angular/common@>=14.0.0", "@angular/common@>=16.0.0", "@angular/common@17.3.12":
+"@angular/common@^17.0.0 || ^18.0.0", "@angular/common@^17.3.12", "@angular/common@^18.0.0", "@angular/common@>=14.0.0", "@angular/common@>=16.0.0", "@angular/common@>=19.0.0 <20.0.0", "@angular/common@17.3.12":
   version "17.3.12"
   resolved "https://registry.npmjs.org/@angular/common/-/common-17.3.12.tgz"
   integrity sha512-vabJzvrx76XXFrm1RJZ6o/CyG32piTB/1sfFfKHdlH1QrmArb8It4gyk9oEjZ1IkAD0HvBWlfWmn+T6Vx3pdUw==
@@ -211,7 +211,7 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/core@^17.0.0 || ^18.0.0", "@angular/core@^17.3.12", "@angular/core@^18.0.0", "@angular/core@>=16.0.0", "@angular/core@17.3.12":
+"@angular/core@^17.0.0 || ^18.0.0", "@angular/core@^17.3.12", "@angular/core@^18.0.0", "@angular/core@>=16.0.0", "@angular/core@>=19.0.0 <20.0.0", "@angular/core@17.3.12":
   version "17.3.12"
   resolved "https://registry.npmjs.org/@angular/core/-/core-17.3.12.tgz"
   integrity sha512-MuFt5yKi161JmauUta4Dh0m8ofwoq6Ino+KoOtkYMBGsSx+A7dSm+DUxxNwdj7+DNyg3LjVGCFgBFnq4g8z06A==
@@ -5408,6 +5408,13 @@ ngx-image-cropper@^8.0.0:
   version "8.1.1"
   resolved "https://registry.npmjs.org/ngx-image-cropper/-/ngx-image-cropper-8.1.1.tgz"
   integrity sha512-2XM0CNqi+CjcZVudtjyjK1EZJPL6eL6ss18qSAHS6EXVFKOhHcGPywmeMM/2pyxXwJTJBVdx5Mw+zOkjQfbm7A==
+  dependencies:
+    tslib "^2.3.0"
+
+ngx-infinite-scroll@^19.0.0:
+  version "19.0.0"
+  resolved "https://registry.npmjs.org/ngx-infinite-scroll/-/ngx-infinite-scroll-19.0.0.tgz"
+  integrity sha512-Ft4xNNDLXoDGi2hF6ylehjxbG8JIgfoL6qDWWcebGMcbh1CEfEsh0HGkDuFlX/cBBMenRh2HFbXlYq8BAtbvLw==
   dependencies:
     tslib "^2.3.0"
 
