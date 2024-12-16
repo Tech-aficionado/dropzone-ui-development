@@ -69,4 +69,32 @@ export class DatabaseOperationsService {
       httpOptions,
     );
   }
+
+  getAllProducts(){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+    };
+
+    return this.Http.get(
+      BackendServer + '/products/getProducts',
+      httpOptions,
+    );
+    
+  }
+
+  getProductCategories(){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+    };
+
+    return this.Http.get(
+      BackendServer + '/products/getProductCategories',
+      httpOptions,
+    );
+    
+  }
 }

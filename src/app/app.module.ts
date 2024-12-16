@@ -43,6 +43,7 @@ import { FileUploadModule } from 'primeng/fileupload';
 export function tokenGetter() {
   return localStorage.getItem('access_token');
 }
+import { SkeletonModule } from 'primeng/skeleton';
 import { ChipModule } from 'primeng/chip';
 import { ToolbarModule } from 'primeng/toolbar';
 import { MenubarModule } from 'primeng/menubar';
@@ -50,6 +51,8 @@ import { AccountComponent } from './Pages/account/account.component';
 import { ProductTileViewComponent } from './components/product-tile-view/product-tile-view.component';
 import { ScrollerModule } from 'primeng/scroller';
 import { AppCustomFooterComponent } from './components/app-custom-footer/app-custom-footer.component';
+import { ProductCategoryPanelComponent } from './components/product-category-panel/product-category-panel.component';
+import { ProductTileViewSkeletonComponent } from './components/product-tile-view-skeleton/product-tile-view-skeleton.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,6 +76,8 @@ import { AppCustomFooterComponent } from './components/app-custom-footer/app-cus
     Button1Component,
     AccountComponent,
     ProductTileViewComponent,
+    ProductCategoryPanelComponent,
+    ProductTileViewSkeletonComponent
   ],
   imports: [
     BrowserModule,
@@ -84,6 +89,7 @@ import { AppCustomFooterComponent } from './components/app-custom-footer/app-cus
     ToastModule,
     ScrollerModule,
     CarouselModule,
+    SkeletonModule,
     ChipModule,
     ButtonModule,
     InputOtpModule,

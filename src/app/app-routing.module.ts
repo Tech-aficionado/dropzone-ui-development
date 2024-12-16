@@ -22,13 +22,13 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginPageComponent,
-    canActivate: [AuthenticationGaurds],
+    // canActivate: [AuthenticationGaurds],
     title: `Login${AppName}`,
   },
   {
     path: 'register',
     component: RegisterComponent,
-    canActivate: [AuthenticationGaurds],
+    // canActivate: [AuthenticationGaurds],
     title: `Register${AppName}`,
   },
   {

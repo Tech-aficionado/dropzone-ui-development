@@ -12,7 +12,7 @@ export const AuthenticationGaurds: CanActivateFn = (route: any, state: any) => {
   const messageService = inject(MessageService);
   const localstorage = inject(SecureLocalStorageService);
   const token = localstorage.getItem('Access_token') ?? false;
-  if (typeof token == 'boolean') {
+  if (typeof(token) == 'boolean') {
     router.navigate(['/login']);
     messageService.add({
       severity: 'error',
