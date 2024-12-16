@@ -75,9 +75,9 @@ import { ProductTileViewSkeletonComponent } from './components/product-tile-view
     AppCustomFooterComponent,
     Button1Component,
     AccountComponent,
-    ProductTileViewComponent,
     ProductCategoryPanelComponent,
-    ProductTileViewSkeletonComponent
+    ProductTileViewSkeletonComponent,
+    ProductTileViewComponent,
   ],
   imports: [
     BrowserModule,
