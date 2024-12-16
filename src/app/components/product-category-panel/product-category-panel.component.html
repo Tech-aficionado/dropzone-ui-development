@@ -1,0 +1,35 @@
+<div
+    class="flex justify-content-center align-items-center"
+    [style]="{ background: 'transparent'}"
+    (click)="router.navigate(['#'])"
+  >
+    <h2
+      [style]="{ background: 'transparent' }"
+      style="font-family: Orbitron, sans-serif"
+    >
+      {{product__category[0]['CategoryName']}}
+    </h2>
+  </div>
+  <p-carousel
+    [value]="product__category"
+    [numVisible]="5"
+    [numScroll]="1"
+    [showNavigators]="true"
+    [showIndicators]="false"
+    [circular]="true"
+    [responsiveOptions]="responsiveOptions"
+  >
+    <ng-template let-product pTemplate="item">
+      <div class="product-item">
+        <app-product-tile-view
+          [product_description]="product.Description"
+          [product_image_source]="product.ImageRef"
+          [product_title]="product.ProductName"
+          [product_price]="product.Price"
+          [product_rating]="product.StarCount"
+        >
+        </app-product-tile-view>
+        
+      </div>
+    </ng-template>
+  </p-carousel>
