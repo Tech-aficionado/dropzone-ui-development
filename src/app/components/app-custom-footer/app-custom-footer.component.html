@@ -1,30 +1,26 @@
-<p-toolbar >
-    <ng-template
+<p-toolbar class="flex  justify-content-center" [style]="{lineHeight: '0px',}">
+  <ng-template
     pTemplate="start"
     class="flex-none flex align-items-center justify-content-center font-bold px-3 border-round"
   >
     <h2 class="topBarHeading">DropZone</h2>
   </ng-template>
   <ng-template pTemplate="center">
-    <nav
-    class="topBarTrigger__box flex-none flex align-items-center justify-content-center font-bold px-3 border-round"
-  >
-    <h4 style="padding-right: 15px;">Home</h4>
-    <br>
-    <h4 style="padding-right: 15px;">Services</h4>
-    <br>
-    <h4 style="padding-right: 15px;">Contact Us</h4>
-    <br>
-    <h4 style="padding-right: 15px;">About Us</h4>
-  </nav>
+    <nav style="display: flex;"
+      class="topBarTrigger__box flex-none flex align-items-center justify-content-center font-bold px-3 border-round"
+    >
+      <h4 style="padding-right: 15px;color: white;" [routerLink]="'/home'">Home</h4>
+      <br />
+      <h4 style="padding-right: 15px;color: white;" >Contact Us</h4>
+      <br />
+      <h4 style="padding-right: 15px;color: white;"[routerLink]="'/about-us'">About Us</h4>
+    </nav>
   </ng-template>
   <ng-template pTemplate="end">
     <nav
       class="topBarTrigger__box flex-none flex align-items-center justify-content-center font-bold px-3 border-round"
     >
-    
-    <h4>2024-25 Copyrights Reserved</h4>
-      
+      <h4 style="color: white;">2024-25 Copyrights Reserved</h4>
     </nav>
   </ng-template>
 </p-toolbar>
