@@ -1,17 +1,17 @@
-@import "primeng/resources/themes/viva-dark/theme.css";
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
+
 /* @import '~@taiga-ui/core/styles/taiga-ui-dark.css'; */
 /* @import '@taiga-ui/core/styles/taiga-ui-theme.less';
 @import '@taiga-ui/core/styles/taiga-ui-fonts.less';
 @import '@taiga-ui/styles/taiga-ui-global.less'; */
 html,
 body {
-  /*background-image: url("assets/bg-img.gif");*/
-  background: black;
-  color: white;
+  /* background-image: url("assets/bg-img.gif"); */
+  color: rgb(0, 0, 0);
   margin: 0px;
   padding: 0px;
+  background-color: rgb(255, 255, 255);
 }
 
 .p-button-outlined {
@@ -80,6 +80,12 @@ input:-internal-autofill-selected {
 .p-button:focus {
   box-shadow: none;
 }
+/* .p-menubar .p-menuitem-link:hover {
+  background-color: rgba(199, 199, 57, 0);
+  transition: background-color 0.3s;
+  height: 4px;
+  border-radius: 20px;
+} */
 
 .p-carousel .p-carousel-content .p-carousel-prev,
 .p-carousel .p-carousel-content .p-carousel-next {

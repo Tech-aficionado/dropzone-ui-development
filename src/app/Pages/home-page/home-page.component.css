@@ -12,3 +12,7 @@
   padding: 9px 10px;
   border-radius: 100%;
 }
+.home__page__1__parent__div {
+  height: 100vh;
+  width: 100vw;
+}

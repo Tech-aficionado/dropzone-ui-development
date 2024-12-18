@@ -4,27 +4,25 @@ import { DatabaseOperationsService } from '../database-services/database-operati
 import { SecureLocalStorageService } from '../SecureLocalStorage/secure-local-storage.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class GetProductCateogriesService {
-
   constructor(
     private databaseOperation: DatabaseOperationsService,
     private JWTService: JwtHelperService,
     private localStorage: SecureLocalStorageService,
   ) {}
 
-  public getProductCategories(
-    callback: (result: any) => void,){
+  public getProductCategories(callback: (result: any) => void) {
     this.databaseOperation.getProductCategories().subscribe({
       next: (value) => {
-        console.log(value)
-        callback(value)
+        console.log(value);
+        callback(value);
       },
       error(err) {
-        console.log(err)
-        return err
+        console.log(err);
+        return err;
       },
-    })
+    });
   }
 }

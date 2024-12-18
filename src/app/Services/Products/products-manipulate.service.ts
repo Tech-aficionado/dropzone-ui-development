@@ -2,10 +2,9 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductsManipulateService {
-
   private productsSubject = new BehaviorSubject<any[]>([]);
   products$ = this.productsSubject.asObservable();
 

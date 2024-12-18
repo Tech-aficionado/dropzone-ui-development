@@ -23,7 +23,8 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/primeng/resources/themes/soho-dark/theme.css",
+              "node_modules/primeng/resources/themes/bootstrap4-dark-blue/theme.css",
+              "node_modules/animate.css/animate.css",
               "src/styles.css"
             ],
             "scripts": []

@@ -15,6 +15,7 @@ import { AuthenticationGaurds } from './Services/Auth/auth-gaurds.guard';
 import { provideHttpClient } from '@angular/common/http';
 import { ImageCropperUiComponent } from './Features/image-cropper-ui/image-cropper-ui.component';
 import { AccountComponent } from './Pages/account/account.component';
+import { AdminComponent } from './Pages/admin/admin.component';
 
 const AppName = ' |  DropZone';
 

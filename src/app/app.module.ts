@@ -1,5 +1,3 @@
-
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -53,6 +51,9 @@ import { ScrollerModule } from 'primeng/scroller';
 import { AppCustomFooterComponent } from './components/app-custom-footer/app-custom-footer.component';
 import { ProductCategoryPanelComponent } from './components/product-category-panel/product-category-panel.component';
 import { ProductTileViewSkeletonComponent } from './components/product-tile-view-skeleton/product-tile-view-skeleton.component';
+import { AuthButtonComponent } from './Elements/auth-button/auth-button.component';
+import { TooltipModule } from 'primeng/tooltip';
+import { NgOptimizedImage } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -78,13 +79,16 @@ import { ProductTileViewSkeletonComponent } from './components/product-tile-view
     ProductCategoryPanelComponent,
     ProductTileViewSkeletonComponent,
     ProductTileViewComponent,
+    AuthButtonComponent,
   ],
   imports: [
     BrowserModule,
     MenubarModule,
     ToolbarModule,
     TagModule,
+    TooltipModule,
     AppRoutingModule,
+    NgOptimizedImage,
     SelectButtonModule,
     ToastModule,
     ScrollerModule,

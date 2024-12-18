@@ -13,7 +13,10 @@ const BackendServer = 'http://127.0.0.1:8000/jholi-services';
 export class DatabaseOperationsService {
   res!: any;
 
-  constructor(private Http: HttpClient,public messageservice: MessageService) {}
+  constructor(
+    private Http: HttpClient,
+    public messageservice: MessageService,
+  ) {}
   loginExistingUser(UserDetails: ExistingUserSchema) {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -26,7 +29,7 @@ export class DatabaseOperationsService {
       UserDetails,
       httpOptions,
     ).pipe(
-      catchError(error => {
+      catchError((error) => {
         if (error.status === 0) {
           console.error('Server is offline or unreachable');
           this.messageservice.add({
@@ -38,7 +41,7 @@ export class DatabaseOperationsService {
           return of(null); // Return a default value or cached data
         }
         throw error; // Rethrow other errors
-      })
+      }),
     );
   }
   registerUser(UserDetails: NewUserSchema): Observable<any> {
@@ -53,7 +56,7 @@ export class DatabaseOperationsService {
       UserDetails,
       httpOptions,
     ).pipe(
-      catchError(error => {
+      catchError((error) => {
         if (error.status === 0) {
           console.error('Server is offline or unreachable');
           this.messageservice.add({
@@ -65,7 +68,7 @@ export class DatabaseOperationsService {
           return of(null); // Return a default value or cached data
         }
         throw error; // Rethrow other errors
-      })
+      }),
     );
   }
 
@@ -84,7 +87,7 @@ export class DatabaseOperationsService {
       input,
       httpOptions,
     ).pipe(
-      catchError(error => {
+      catchError((error) => {
         if (error.status === 0) {
           console.error('Server is offline or unreachable');
           this.messageservice.add({
@@ -96,7 +99,7 @@ export class DatabaseOperationsService {
           return of(null); // Return a default value or cached data
         }
         throw error; // Rethrow other errors
-      })
+      }),
     );
   }
   verifyOtp(userInput: any) {
@@ -111,7 +114,7 @@ export class DatabaseOperationsService {
       userInput,
       httpOptions,
     ).pipe(
-      catchError(error => {
+      catchError((error) => {
         if (error.status === 0) {
           console.error('Server is offline or unreachable');
           this.messageservice.add({
@@ -123,11 +126,11 @@ export class DatabaseOperationsService {
           return of(null); // Return a default value or cached data
         }
         throw error; // Rethrow other errors
-      })
+      }),
     );
   }
 
-  getAllProducts(){
+  getAllProducts() {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -138,7 +141,7 @@ export class DatabaseOperationsService {
       BackendServer + '/products/getProducts',
       httpOptions,
     ).pipe(
-      catchError(error => {
+      catchError((error) => {
         if (error.status === 0) {
           console.error('Server is offline or unreachable');
           this.messageservice.add({
@@ -150,12 +153,11 @@ export class DatabaseOperationsService {
           return of(null); // Return a default value or cached data
         }
         throw error; // Rethrow other errors
-      })
+      }),
     );
-    
   }
 
-  getProductCategories(){
+  getProductCategories() {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -166,7 +168,7 @@ export class DatabaseOperationsService {
       BackendServer + '/products/getProductCategories',
       httpOptions,
     ).pipe(
-      catchError(error => {
+      catchError((error) => {
         if (error.status === 0) {
           console.error('Server is offline or unreachable');
           this.messageservice.add({
@@ -178,8 +180,7 @@ export class DatabaseOperationsService {
           return of(null); // Return a default value or cached data
         }
         throw error; // Rethrow other errors
-      })
+      }),
     );
-    
   }
 }
