@@ -1,4 +1,5 @@
-<p-toolbar
+
+<!-- <p-toolbar
   class="flex align-items-center justify-content-space-between"
   [style]="{
     width: '100%',
@@ -36,4 +37,35 @@
       </button>
     </nav>
   </ng-template>
-</p-toolbar>
+<!-- </p-toolbar> -->
+
+ <!-- <p-menubar
+      class="child___tb___div"
+      [model]="items"
+      [style]="{
+        backgroundColor: 'rgba(255, 255, 255, 0.5)',
+        height: '40px',
+        width: 'inherit',
+        color:'black',
+        alignItems: 'Center',
+        borderRadius: '20px/50%',
+    display: 'flex',
+    justifyContent: 'space-between',
+      }"
+    /> -->
+
+<div class="parent___tb___div">
+  <h2 >DropZone</h2>
+  <div class="child___tb___div animate__animated animate__bounce" >
+@for (item of items; track $index) {
+      <nav class="" routerLink="{{item.routerLink}}"><i class="{{item.icon}}"></i>{{item.label}}</nav>
+}
+  </div>
+  <div class="AuthButton" *ngIf="!Authenticated">
+  <app-auth-button Auth__Label="Sign In"></app-auth-button>
+  <app-auth-button Auth__Label="Sign Up"></app-auth-button>
+  </div>
+  <div class="AuthButton" *ngIf="Authenticated">
+    <app-auth-button Auth__Label="Log Out"></app-auth-button>
+    </div>
+</div>

@@ -13,6 +13,7 @@ export class CustomTopBarComponent implements OnInit {
   @Input() Triggering!: boolean;
   @Input() NavigateTo!: string;
   @Input() NavButtonText!: string;
+  Authenticated!:boolean
 
   constructor(
     private router: Router,
@@ -30,6 +31,7 @@ export class CustomTopBarComponent implements OnInit {
 
   ngOnInit() {
     this.activeItem = this.items[0];
+    this.Authenticated = typeof(this.localStorage.getItem('Access_token')) == "boolean" ? false : true
   }
 
   onActiveItemChange(event: MenuItem) {
