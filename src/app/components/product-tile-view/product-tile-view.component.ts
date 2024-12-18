@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
+import { Tooltip } from 'primeng/tooltip';
 
 @Component({
   selector: 'app-product-tile-view',

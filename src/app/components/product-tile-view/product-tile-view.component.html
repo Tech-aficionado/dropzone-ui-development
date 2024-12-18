@@ -1,19 +1,64 @@
 <div class="product-card">
   <div class="product-image-container">
-    <img [src]="product_image_source" loading="lazy" [alt]="product_title" class="product-image">
+    <img
+      [src]="product_image_source"
+      loading="lazy"
+      [alt]="product_title"
+      class="product-image"
+    />
   </div>
   <div class="product-details">
     <div class="rating-container">
-      <p-rating [readonly]="true" [cancel]="false" [(ngModel)]="product_rating"></p-rating>
+      <p-rating
+        [readonly]="true"
+        [cancel]="false"
+        [(ngModel)]="product_rating"
+      ></p-rating>
     </div>
     <h3 class="product-title">{{ product_title }}</h3>
-    <p class="product-description">{{ product_description }}</p>
-    <hr class="divider">
+    <p class="product-description" 
+    [pTooltip]="product_description"
+    showDelay="1000" >{{ product_description }}</p>
+    <hr class="divider" />
     <div class="price-container">
-      <p-chip styleClass="price-chip">
-        <span class="currency-symbol">$</span>
-        <span class="price-value">{{ product_price }}</span>
-      </p-chip>
+      <span class="card-tag">Price: {{ product_price }}</span>
+      <a class="card-button" href="#">Buy</a>
     </div>
   </div>
 </div>
+<!-- <div class="card">
+  <div
+    aria-label="Abstract gradient background"
+    role="img"
+    class="card-image"
+  ><img  [src]="product_image_source"
+  class="product-image"></div>
+  <div class="card-content">
+    <p class="card-title">{{product_title}}</p>
+    <p class="card-description">
+      {{product_description}}
+    </p>
+    <div class="card-tags">
+      <span class="card-tag">Design</span>
+      <span class="card-tag">CSS</span>
+    </div>
+    <div class="card-footer">
+      <div class="card-stats">
+        <span class="card-stat">
+          {{product_price}}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            class="card-stat-icon"
+          >
+            <path
+              d="M10 3.22l-.61-.6a5.5 5.5 0 0 0-7.78 7.77L10 18.78l8.39-8.4a5.5 5.5 0 0 0-7.78-7.77l-.61.61z"
+            ></path>
+          </svg>
+          {{product_rating}}
+        </span>
+      </div>
+      <a class="card-button" href="#">Buy</a>
+    </div>
+  </div>
+</div> -->
