@@ -1,169 +1,36 @@
-
-<div class="Products__Listing__page">
-  <!-- <div
-    class="flex justify-content-center align-items-center"
-    [style]="{ background: 'transparent'}"
-    (click)="router.navigate(['#'])"
-  >
-    <img
-      [style]="{ background: 'transparent' }"
-      style="height: 50px; width: auto"
-      loading="lazy"
-      src="https://logos-world.net/wp-content/uploads/2020/04/Adidas-Logo.png"
-      alt="Adidas"
-    />
-    <h2
-      [style]="{ background: 'transparent' }"
-      style="font-family: Orbitron, sans-serif"
+<!-- <div>
+  
+<div class="card flex justify-content-center">
+  <p-selectButton 
+      [options]="stateOptions" 
+      [(ngModel)]="value" 
+      optionLabel="label" 
+      optionValue="value" />
+</div> -->
+<app-product-dual-view></app-product-dual-view>
+  <!-- <div *ngIf="value" class="Products__Listing__page">
+    <app-product-category-panel
+      *ngFor="let item of FinalizedProducts"
+      [product__category]="item"
     >
-      Sneaker
-    </h2>
+    </app-product-category-panel>
+  
+    <p-carousel
+      [value]="skeletonItems"
+      [numVisible]="5"
+      [numScroll]="1"
+      [circular]="true"
+      showIndicators="false"
+    >
+      <ng-template let-item pTemplate="item">
+        <app-product-tile-view-skeleton
+          *ngIf="!flag"
+        ></app-product-tile-view-skeleton>
+      </ng-template>
+    </p-carousel>
   </div>
-  <p-carousel
-    [value]="products_shoes"
-    [numVisible]="5"
-    [numScroll]="1"
-    [showNavigators]="true"
-    [showIndicators]="false"
-    [circular]="true"
-    [responsiveOptions]="responsiveOptions"
-  >
-    <ng-template let-product pTemplate="item">
-      <div class="product-item">
-        <app-product-tile-view
-          [product_description]="product.Description"
-          [product_image_source]="product.ImageRef"
-          [product_title]="product.ProductName"
-          [product_price]="product.Price"
-          [product_rating]="product.StarCount"
-        >
-        </app-product-tile-view>
-      </div>
-    </ng-template>
-  </p-carousel>
-  <div
-    class="flex justify-content-center align-items-center"
-    [style]="{ background: 'transparent'}"
-    (click)="router.navigate(['#'])"
-  >
-    <img
-      style="height: 110px; width: auto"
-      loading="lazy"
-      src="https://brandlogos.net/wp-content/uploads/2013/06/us-polo-assn-vector-logo.png"
-      alt="Adidas"
-    />
-    <h2 style="font-family: Orbitron, sans-serif">Shirts</h2>
-  </div>
-  <p-carousel
-    [value]="products_sweatshirts"
-    [numVisible]="5"
-    [numScroll]="1"
-    [showNavigators]="true"
-    [showIndicators]="false"
-    [circular]="true"
-    [responsiveOptions]="responsiveOptions"
-  >
-    <ng-template let-product pTemplate="item">
-      <div class="product-item">
-        <app-product-tile-view
-          [product_description]="product.pd"
-          [product_image_source]="product.pis"
-          [product_title]="product.pt"
-          [product_price]="product.pp"
-          [product_rating]="product.pr"
-        >
-        </app-product-tile-view>
-      </div>
-    </ng-template>
-  </p-carousel>
-  <div
-    class="flex justify-content-center align-items-center"
-    [style]="{ background: 'transparent'}"
-    (click)="router.navigate(['#'])"
-  >
-    <img
-      style="height: 100px; width: auto"
-      loading="lazy"
-      src="https://logosmarcas.net/wp-content/uploads/2020/04/Levis-Logo.png"
-      alt="Adidas"
-    />
-    <h2 style="font-family: Orbitron, sans-serif">Jeans</h2>
-  </div>
-  <p-carousel
-    [value]="products_jeans"
-    [numVisible]="5"
-    [numScroll]="1"
-    [showNavigators]="true"
-    [showIndicators]="false"
-    [circular]="true"
-    [responsiveOptions]="responsiveOptions"
-  >
-    <ng-template let-product pTemplate="item">
-      <div class="product-item">
-        <app-product-tile-view
-          [product_description]="product.pd"
-          [product_image_source]="product.pis"
-          [product_title]="product.pt"
-          [product_price]="product.pp"
-          [product_rating]="product.pr"
-        >
-        </app-product-tile-view>
-      </div>
-    </ng-template>
-  </p-carousel>
-  <div
-  class="flex justify-content-center align-items-center"
-  [style]="{ background: 'transparent'}"
-  (click)="router.navigate(['#'])"
->
-  <img
-  loading="lazy"
-    style="height: 70px; width: auto"
-    src="https://logo-marque.com/wp-content/uploads/2020/04/Nike-Logo.png"
-    alt="Adidas"
-  />
-  <h2 style="font-family: Orbitron, sans-serif">Sporty Wear</h2>
-</div>
-  <p-carousel
-    [value]="products_sports_shoes"
-    [numVisible]="5"
-    [numScroll]="1"
-    [showNavigators]="true"
-    [showIndicators]="false"
-    [circular]="true"
-    [responsiveOptions]="responsiveOptions"
-  >
-    <ng-template let-product pTemplate="item">
-      <div class="product-item">
-        <app-product-tile-view
-          [product_description]="product.pd"
-          [product_image_source]="product.pis"
-          [product_title]="product.pt"
-          [product_price]="product.pp"
-          [product_rating]="product.pr"
-        >
-        </app-product-tile-view>
-      </div>
-    </ng-template>
-  </p-carousel> -->
-  <app-product-category-panel
-    *ngFor="let item of FinalizedProducts"
-    [product__category]="item"
-  >
-  </app-product-category-panel>
-
-  <p-carousel
-    [value]="skeletonItems"
-    [numVisible]="5"
-    [numScroll]="1"
-    [circular]="true"
-    showIndicators="false"
-  >
-    <ng-template let-item pTemplate="item">
-      <app-product-tile-view-skeleton
-        *ngIf="!flag"
-      ></app-product-tile-view-skeleton>
-    </ng-template>
-  </p-carousel>
-</div>
-<app-app-custom-footer></app-app-custom-footer>
+  <app-app-custom-footer></app-app-custom-footer>
+  <p-contextMenu [model]="pContextItems" [global]="true" />
+</div> -->
+  <app-app-custom-footer></app-app-custom-footer>
+  <p-contextMenu [model]="pContextItems" [global]="true" />

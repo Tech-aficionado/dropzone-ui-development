@@ -2045,6 +2045,53 @@
   resolved "https://registry.npmjs.org/@socket.io/component-emitter/-/component-emitter-3.1.2.tgz"
   integrity sha512-9BCxFwvbGg/RsZK9tjXd8s4UcwR0MWeFQ1XEKIQVVvAGJyINdrqKMcTRyLoK8Rse1GjzLV9cwjWV1olXRWEXVA==
 
+"@tanstack/angular-query-experimental@^5.62.8":
+  version "5.62.8"
+  resolved "https://registry.npmjs.org/@tanstack/angular-query-experimental/-/angular-query-experimental-5.62.8.tgz"
+  integrity sha512-4p+9lZBE61+2SO6b4uQCbiNGX4zzxQidrSEZ6oyrZdY+WhR6zWnE6C66WCDBJrKKtUbTbX7mNz09jSOdjKK/tg==
+  dependencies:
+    "@tanstack/query-core" "5.62.8"
+    "@tanstack/query-devtools" "5.61.4"
+
+"@tanstack/query-core@5.62.8":
+  version "5.62.8"
+  resolved "https://registry.npmjs.org/@tanstack/query-core/-/query-core-5.62.8.tgz"
+  integrity sha512-4fV31vDsUyvNGrKIOUNPrZztoyL187bThnoQOvAXEVlZbSiuPONpfx53634MKKdvsDir5NyOGm80ShFaoHS/mw==
+
+"@tanstack/query-devtools@5.61.4":
+  version "5.61.4"
+  resolved "https://registry.npmjs.org/@tanstack/query-devtools/-/query-devtools-5.61.4.tgz"
+  integrity sha512-21Tw+u8E3IJJj4A/Bct4H0uBaDTEu7zBrR79FeSyY+mS2gx5/m316oDtJiKkILc819VSTYt+sFzODoJNcpPqZQ==
+
+"@tanstack/query-persist-client-core@5.62.8":
+  version "5.62.8"
+  resolved "https://registry.npmjs.org/@tanstack/query-persist-client-core/-/query-persist-client-core-5.62.8.tgz"
+  integrity sha512-C5nh8hl5I3XMEmd7iuIy4JTE127Fa7oZhcoaZjUO5Vp6JeDFI9bhnWc9dtpv0Cv235NCXr7oX2vuLATlOyz9RQ==
+  dependencies:
+    "@tanstack/query-core" "5.62.8"
+
+"@tanstack/query-sync-storage-persister@^5.62.8":
+  version "5.62.8"
+  resolved "https://registry.npmjs.org/@tanstack/query-sync-storage-persister/-/query-sync-storage-persister-5.62.8.tgz"
+  integrity sha512-ZgibaydYatRlwwLge7vVdeGzM5Y6+1+OYAmrGZL5wSQUiocFtvn6REJfyCCknBOW26h5yb5+nuVwSsUrOFkUZA==
+  dependencies:
+    "@tanstack/query-core" "5.62.8"
+    "@tanstack/query-persist-client-core" "5.62.8"
+
+"@tanstack/react-query-persist-client@^5.62.8":
+  version "5.62.8"
+  resolved "https://registry.npmjs.org/@tanstack/react-query-persist-client/-/react-query-persist-client-5.62.8.tgz"
+  integrity sha512-4c/LKDsv4GuZtzDGFHjXEFpmrX+1o9dEGqURXBM7hJUHb+lno0NAmscPjzDu3OUp3vSh4UKrYKpdJyNe498oKg==
+  dependencies:
+    "@tanstack/query-persist-client-core" "5.62.8"
+
+"@tanstack/react-query@^5.62.8":
+  version "5.62.8"
+  resolved "https://registry.npmjs.org/@tanstack/react-query/-/react-query-5.62.8.tgz"
+  integrity sha512-8TUstKxF/fysHonZsWg/hnlDVgasTdHx6Q+f1/s/oPKJBJbKUWPZEHwLTMOZgrZuroLMiqYKJ9w69Abm8mWP0Q==
+  dependencies:
+    "@tanstack/query-core" "5.62.8"
+
 "@tufjs/canonical-json@2.0.0":
   version "2.0.0"
   resolved "https://registry.npmjs.org/@tufjs/canonical-json/-/canonical-json-2.0.0.tgz"
@@ -6249,6 +6296,11 @@ raw-body@2.5.2:
     http-errors "2.0.0"
     iconv-lite "0.4.24"
     unpipe "1.0.0"
+
+"react@^18 || ^19":
+  version "19.0.0"
+  resolved "https://registry.npmjs.org/react/-/react-19.0.0.tgz"
+  integrity sha512-V8AVnmPIICiWpGfm6GLzCR/W5FXLchHop40W4nXBmdlEceh16rCN8O8LNWm5bh5XUX91fh7KpA+W0TgMKmgTpQ==
 
 read-cache@^1.0.0:
   version "1.0.0"

@@ -1,5 +1,12 @@
-import { Component, Input } from '@angular/core';
+import {
+  Component,
+  effect,
+  Injector,
+  Input,
+  runInInjectionContext,
+} from '@angular/core';
 import { Router } from '@angular/router';
+import { injectQuery } from '@tanstack/angular-query-experimental';
 import { MenuItem } from 'primeng/api';
 import { BehaviorSubject } from 'rxjs';
 import { GetAllProductsService } from 'src/app/Services/Products/get-all-products.service';
@@ -22,32 +29,24 @@ export class ProductsComponent {
 
   FinalizedProducts: any[] = [];
   flag = 0;
-
-  products: Array<
-    [
-      {
-        CategoryID: Number;
-        Description: String;
-        ImageRef: String;
-        Price: Number;
-        ProductID: Number;
-        ProductName: String;
-        Reviews: String;
-        StarCount: Number;
-      },
-    ]
-  > = [];
+  pContextItems!: any
+  products: any = [];
 
   constructor(
     public router: Router,
     public getAllProduct: GetAllProductsService,
     public getProductCat: GetProductCateogriesService,
     public malproduct: ProductsManipulateService,
+    private injector: Injector,
   ) {}
 
   navigation() {
     this.router.navigate([`${this.NavigateTo}`]);
   }
+  stateOptions: any[] = [{ label: 'UX/UI', value: true },{ label: 'PrimeNg', value: false }];
+
+    value: string = 'on';
+    
   responsiveOptions = [
     {
       breakpoint: '1024px',
@@ -71,6 +70,35 @@ export class ProductsComponent {
   activeItem: MenuItem | undefined;
 
   ngOnInit() {
+    this.pContextItems = [
+            {
+                label: 'Translate',
+                icon: 'pi pi-language'
+            },
+            {
+                label: 'Speech',
+                icon: 'pi pi-volume-up',
+                items: [
+                    {
+                        label: 'Start',
+                        icon: 'pi pi-caret-right'
+                    },
+                    {
+                        label: 'Stop',
+                        icon: 'pi pi-pause'
+                    }
+                ]
+            },
+            {
+                separator: true
+            },
+            {
+                label: 'Print',
+                icon: 'pi pi-print'
+                
+            }
+        ]
+    
     this.items = [
       { label: 'Home', icon: 'pi pi-home', routerLink: '/home' },
 
@@ -160,19 +188,44 @@ export class ProductsComponent {
     this.getProductCat.getProductCategories((response) => {
       this.categories = response['details'];
       // console.log(this.categories.at(1))
-      this.getAllProduct.getAllProducts((response) => {
-        console.log(response['details']);
-        this.products = response['details'];
-        this.FinalizedProducts = this.productCategoryMapping(
-          this.categories,
-          this.products,
-        );
-        setTimeout(() => {
-          this.FinalizedProducts = Object.values(this.FinalizedProducts);
-        }, 1000);
-        setTimeout(() => {
-          this.flag = 1;
-        }, 5000);
+      // ... rest of your component c
+      //   (response) => {
+      //   console.log(response['details']);
+      //   this.products = response['details'];
+      //   this.FinalizedProducts = this.productCategoryMapping(
+      //     this.categories,
+      //     this.products,
+      //   );
+      //   setTimeout(() => {
+      //     this.FinalizedProducts = Object.values(this.FinalizedProducts);
+      //   }, 1000);
+      //   setTimeout(() => {
+      //     this.flag = 1;
+      //   }, 5000);
+      // }
+
+      runInInjectionContext(this.injector, () => {
+        const query = injectQuery(() => this.getAllProduct.getAllProducts(
+          
+        ));
+        // Use query here
+        // Access the data signal
+        effect(() => {
+          if (query.isPending()) {
+            console.log('Query is still loading...');
+            this.flag = 0;
+          } else if (query.isError()) {
+            console.error('Query error:', query.error());
+          } else if (query.isSuccess()) {
+            this.products = query.data().details;
+            this.FinalizedProducts = Object.values(
+              this.productCategoryMapping(this.categories, this.products),
+            );
+            console.log(this.FinalizedProducts);
+            this.flag = 1;
+            
+          }
+        });
       });
     });
   }
