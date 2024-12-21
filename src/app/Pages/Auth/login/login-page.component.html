@@ -8,16 +8,18 @@
   <ng-template
     pTemplate="header"
     styleClass="pDialog"
-    [style]="{background:'black'}"
+    [style]="{ background: 'black' }"
     class="flex justify-content-center align-items-center"
   >
     <div class="flex flex-column align-items-center">
       <div class="font-bold text-xl mb-2">Authenticate Your Account</div>
     </div>
   </ng-template>
-  <ng-template pTemplate="content"
-  styleClass="pDialog"
-  [style]="{background:'black'}">
+  <ng-template
+    pTemplate="content"
+    styleClass="pDialog"
+    [style]="{ background: 'black' }"
+  >
     <div class="flex flex-column align-items-center">
       <p class="text-color-secondary block mb-5">
         Please enter the code sent to your mailbox.
@@ -44,9 +46,11 @@
       </p-inputOtp>
     </div>
   </ng-template>
-  <ng-template pTemplate="footer"
-  styleClass="pDialog"
-  [style]="{background:'black'}">
+  <ng-template
+    pTemplate="footer"
+    styleClass="pDialog"
+    [style]="{ background: 'black' }"
+  >
     <div class="flex flex-column align-items-center">
       <div class="flex justify-content-between mt-5 align-self-stretch">
         <p-button
@@ -64,7 +68,11 @@
   </ng-template>
 </p-dialog>
 
-<div class="grid customStyleCss" style="background-color: black; color: white;" *ngIf="!isloading.value">
+<div
+  class="grid customStyleCss"
+  style="background-color: black; color: white"
+  *ngIf="!isloading.value"
+>
   <div class="col-fixed login__sideImage">
     <img
       src="https://wallpaperaccess.com/full/164868.jpg"
@@ -81,51 +89,51 @@
       <h3 class="loginPage__welcome">Welcome back</h3>
       <small class="loginPage__tag">Please Login to your account</small>
       <br />
-      <div
-        class="flex flex-column justify-content-center"
-        
-      >
-      <div class="flex align-items-center justify-content-center">
+      <div class="flex flex-column justify-content-center">
+        <div class="flex align-items-center justify-content-center">
           <ng-input-box
-          [form]="form"
-          [marginBottom]="'10px'"
-          [marginTop]="'60px'"
-          [width]="'270px'"
-          label_color="white"
-          input_bg="transparent"
-          input_color="#222222"
-          color="white"
-          [fieldIconName]="'pi pi-user'"
-          [fieldId]="'login__username'"
-          [fieldLabel]="'Email'"
-          [inputType]="'email'"
-        >
-      </ng-input-box>
+            [form]="form"
+            [marginBottom]="'10px'"
+            [marginTop]="'60px'"
+            [width]="'270px'"
+            label_color="white"
+            input_bg="transparent"
+            input_color="#222222"
+            color="white"
+            [fieldIconName]="'pi pi-user'"
+            [fieldId]="'login__username'"
+            [fieldLabel]="'Email'"
+            [inputType]="'email'"
+          >
+          </ng-input-box>
         </div>
         <div class="flex align-items-center justify-content-center">
-        <ng-input-box
-          [form]="form"
-          [marginBottom]="'10px'"
-          [marginTop]="'30px'"
-          label_color="white"
-          input_bg="transparent"
-          input_color="#222222"
-          color="white"
-          [width]="'270px'"
-          [fieldIconName]="'pi pi-lock'"
-          [fieldId]="'login__password'"
-          [fieldLabel]="'Password'"
-          [inputType]="'password'"
-        >
-        </ng-input-box>
+          <ng-input-box
+            [form]="form"
+            [marginBottom]="'10px'"
+            [marginTop]="'30px'"
+            label_color="white"
+            input_bg="transparent"
+            input_color="#222222"
+            color="white"
+            [width]="'270px'"
+            [fieldIconName]="'pi pi-lock'"
+            [fieldId]="'login__password'"
+            [fieldLabel]="'Password'"
+            [inputType]="'password'"
+          >
+          </ng-input-box>
         </div>
-        <div style="margin-top: 15px;margin-bottom: 15px;" class="flex align-items-center justify-content-center">
-        <ng-submit-button
-          [label]="'Login to Continue'"
-          [width]="'200px'"
-        ></ng-submit-button>
-      </div>
-        <small 
+        <div
+          style="margin-top: 15px; margin-bottom: 15px"
+          class="flex align-items-center justify-content-center"
+        >
+          <ng-submit-button
+            [label]="'Login to Continue'"
+            [width]="'200px'"
+          ></ng-submit-button>
+        </div>
+        <small
           >Not a User?
           <a href="/register" style="text-decoration: none">
             Create a Account</a
