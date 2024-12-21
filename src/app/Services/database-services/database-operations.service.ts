@@ -130,7 +130,7 @@ export class DatabaseOperationsService {
     );
   }
 
-  getAllProducts() {
+  getAllProducts(): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',

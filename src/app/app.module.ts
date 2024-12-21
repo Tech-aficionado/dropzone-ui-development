@@ -41,6 +41,7 @@ import { FileUploadModule } from 'primeng/fileupload';
 export function tokenGetter() {
   return localStorage.getItem('access_token');
 }
+import { DataViewModule } from 'primeng/dataview';
 import { SkeletonModule } from 'primeng/skeleton';
 import { ChipModule } from 'primeng/chip';
 import { ToolbarModule } from 'primeng/toolbar';
@@ -54,6 +55,14 @@ import { ProductTileViewSkeletonComponent } from './components/product-tile-view
 import { AuthButtonComponent } from './Elements/auth-button/auth-button.component';
 import { TooltipModule } from 'primeng/tooltip';
 import { NgOptimizedImage } from '@angular/common';
+import { DragDropModule } from 'primeng/dragdrop';
+import { BadgeModule } from 'primeng/badge';
+import {
+  provideTanStackQuery,
+  QueryClient,
+} from '@tanstack/angular-query-experimental';
+import { ContextMenuModule } from 'primeng/contextmenu';
+import { ProductDualViewComponent } from './components/product-dual-view/product-dual-view.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,20 +89,22 @@ import { NgOptimizedImage } from '@angular/common';
     ProductTileViewSkeletonComponent,
     ProductTileViewComponent,
     AuthButtonComponent,
+    ProductDualViewComponent
   ],
   imports: [
     BrowserModule,
     MenubarModule,
+    DragDropModule,
     ToolbarModule,
-    TagModule,
+    TagModule,DataViewModule,
     TooltipModule,
     AppRoutingModule,
     NgOptimizedImage,
     SelectButtonModule,
-    ToastModule,
+    ToastModule,BadgeModule,
     ScrollerModule,
     CarouselModule,
-    SkeletonModule,
+    SkeletonModule,ContextMenuModule,
     ChipModule,
     ButtonModule,
     InputOtpModule,
@@ -113,6 +124,7 @@ import { NgOptimizedImage } from '@angular/common';
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
     JwtHelperService,
     MessageService,
+    provideTanStackQuery(new QueryClient()),
   ],
   bootstrap: [AppComponent],
 })

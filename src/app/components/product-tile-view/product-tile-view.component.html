@@ -16,9 +16,13 @@
       ></p-rating>
     </div>
     <h3 class="product-title">{{ product_title }}</h3>
-    <p class="product-description" 
-    [pTooltip]="product_description"
-    showDelay="1000" >{{ product_description }}</p>
+    <p
+      class="product-description"
+      [pTooltip]="product_description"
+      showDelay="1000"
+    >
+      {{ product_description }}
+    </p>
     <hr class="divider" />
     <div class="price-container">
       <span class="card-tag">Price: {{ product_price }}</span>

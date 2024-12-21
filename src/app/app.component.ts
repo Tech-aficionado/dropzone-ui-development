@@ -8,6 +8,8 @@ import {
   Router,
   RouterEvent,
 } from '@angular/router';
+import { QueryClient } from '@tanstack/angular-query-experimental';
+import { createSyncStoragePersister } from '@tanstack/query-sync-storage-persister';
 
 @Component({
   selector: 'app-root',
@@ -36,4 +38,6 @@ export class AppComponent {
       }, 1000);
     }
   }
+  queryClient = new QueryClient(/* ... */);
+  persister = createSyncStoragePersister({ storage: window.localStorage });
 }
