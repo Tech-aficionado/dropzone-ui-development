@@ -53,8 +53,7 @@ li:hover {
   margin-right: 0px;
 }
 
-
-.parent___tb___div{
+.parent___tb___div {
   width: 100vw;
   height: 50px;
   margin: 0px;
@@ -65,10 +64,10 @@ li:hover {
   flex-direction: row;
   justify-content: space-between;
 }
-h2{
+h2 {
   margin-top: 0px;
 }
-.AuthButton{
+.AuthButton {
   padding-top: 7px;
   display: flex;
   flex-direction: row;
@@ -76,9 +75,7 @@ h2{
 }
 
 @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-
-  .child___tb___div{
-    
+  .child___tb___div {
     width: calc(100vh - 380px);
     border-radius: 20px / 50%;
     height: calc(100% - 10px);
@@ -88,12 +85,12 @@ h2{
     justify-content: space-between;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    background-color: rgba(255, 255, 255, 0.5);  
+    background-color: rgba(255, 255, 255, 0.5);
     padding: 0px;
   }
 }
 
-nav{
+nav {
   display: flex;
   margin: 0px 10px;
   justify-content: space-between;
@@ -102,15 +99,13 @@ nav{
   padding: 10px;
 }
 
-nav:hover{
+nav:hover {
   background-color: #7a7a7626;
   border-radius: 20px / 50%;
   cursor: pointer;
 }
 
-.pi{
+.pi {
   margin-right: 4px;
   font-weight: 100;
 }
-
-

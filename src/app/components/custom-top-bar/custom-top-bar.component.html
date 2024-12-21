@@ -1,4 +1,3 @@
-
 <!-- <p-toolbar
   class="flex align-items-center justify-content-space-between"
   [style]="{
@@ -39,7 +38,7 @@
   </ng-template>
 <!-- </p-toolbar> -->
 
- <!-- <p-menubar
+<!-- <p-menubar
       class="child___tb___div"
       [model]="items"
       [style]="{
@@ -55,17 +54,19 @@
     /> -->
 
 <div class="parent___tb___div">
-  <h2 >DropZone</h2>
-  <div class="child___tb___div animate__animated animate__bounce" >
-@for (item of items; track $index) {
-      <nav class="" routerLink="{{item.routerLink}}"><i class="{{item.icon}}"></i>{{item.label}}</nav>
-}
+  <h2>DropZone</h2>
+  <div class="child___tb___div animate__animated animate__bounce">
+    @for (item of items; track $index) {
+      <nav class="" routerLink="{{ item.routerLink }}">
+        <i class="{{ item.icon }}"></i>{{ item.label }}
+      </nav>
+    }
   </div>
   <div class="AuthButton" *ngIf="!Authenticated">
-  <app-auth-button Auth__Label="Sign In"></app-auth-button>
-  <app-auth-button Auth__Label="Sign Up"></app-auth-button>
+    <app-auth-button Auth__Label="Sign In"></app-auth-button>
+    <app-auth-button Auth__Label="Sign Up"></app-auth-button>
   </div>
   <div class="AuthButton" *ngIf="Authenticated">
     <app-auth-button Auth__Label="Log Out"></app-auth-button>
-    </div>
+  </div>
 </div>
