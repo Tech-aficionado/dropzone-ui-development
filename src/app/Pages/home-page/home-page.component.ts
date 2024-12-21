@@ -8,7 +8,7 @@ import { MenuItem } from 'primeng/api';
 })
 export class HomePageComponent {
   responsiveOptions: any[] | undefined;
-  
+
   items!: MenuItem[];
 
   constructor() {}
