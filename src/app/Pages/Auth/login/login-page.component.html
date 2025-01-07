@@ -1,150 +1,106 @@
-<p-dialog
-  #otpDialog
-  [(visible)]="visible"
-  [modal]="true"
-  (onHide)="visible = false"
-  [style]="{ 'background-color': 'pink' }"
->
-  <ng-template
-    pTemplate="header"
-    styleClass="pDialog"
-    [style]="{ background: 'black' }"
-    class="flex justify-content-center align-items-center"
-  >
-    <div class="flex flex-column align-items-center">
-      <div class="font-bold text-xl mb-2">Authenticate Your Account</div>
-    </div>
-  </ng-template>
-  <ng-template
-    pTemplate="content"
-    styleClass="pDialog"
-    [style]="{ background: 'black' }"
-  >
-    <div class="flex flex-column align-items-center">
-      <p class="text-color-secondary block mb-5">
-        Please enter the code sent to your mailbox.
-      </p>
-      <p-inputOtp [(ngModel)]="otpValue" [length]="6" style="gap: 0">
-        <ng-template
-          pTemplate="input"
-          let-token
-          let-events="events"
-          let-index="index"
-        >
-          <input
-            type="text"
-            [maxLength]="1"
-            (input)="events.input($event)"
-            (keydown)="events.keydown($event)"
-            [attr.value]="token"
-            class="custom-otp-input"
-          />
-          <div *ngIf="index === 3" class="px-3">
-            <i class="pi pi-minus"></i>
-          </div>
-        </ng-template>
-      </p-inputOtp>
-    </div>
-  </ng-template>
-  <ng-template
-    pTemplate="footer"
-    styleClass="pDialog"
-    [style]="{ background: 'black' }"
-  >
-    <div class="flex flex-column align-items-center">
-      <div class="flex justify-content-between mt-5 align-self-stretch">
-        <p-button
-          label="Resend Code"
-          class="p-0"
-          (click)="ResendOtpAuthentication()"
-        />
-        <p-button
-          label="Submit Code"
-          (click)="Phase2Authentication()"
-          [loading]="loading.getValue()"
-        />
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<div class="card auth-page lines">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+  
+  <div class="auth-card p-1">
+    <div class="pt-3 pl-2 pb-2 flex auth-card-top-header flex-row"><div class="flex"><img src="../../../../assets/parachute.png" height="36px" width="36px" alt=""></div><div class="flex"><h3 style="margin: 0px;padding: 0px;">DropZone</h3></div></div>
+    
+    <div class="pl-3 pt-3 auth-card-header">Log in</div>
+    <div class="pl-3 pb-1 font-semibold auth-card-subheader"><p>Access your exclusive shopping experience</p></div>
+    <div class="p-1 flex flex-column auth-card-content">
+        <ng-input-box
+        [form]="form"
+        [width]="'100%'"
+        label_color="black"
+        input_bg="transparent"
+        input_color="#222222"
+        color="black"
+        class="w-full pl-3 pr-3 pt-1"
+        [fieldIconName]="'pi pi-user'"
+        [fieldId]="'login__email'"
+        [fieldLabel]="'E-mail'"
+        [ngClass]="{ 'ng-invalid' : (form.invalid ) || (form.dirty && form.invalid) }"
+        errorMessage="Email is Required"
+        HelperText="Enter a valid email address (e.g. name@example.com)"
+        [inputType]="'email'"
+        (blur)="checkEmail()"
+      >
+      </ng-input-box>
+      <ng-input-box
+        [form]="form"
+        [width]="'100%'"
+        label_color="black"
+        input_bg="transparent"
+        [hidden]="isEmailRegistered"
+        input_color="#222222"
+        class="w-full pl-3 pr-3 pt-4"
+        color="black"
+        errorMessage="Password is Required"
+        [fieldIconName]="'pi pi-key'"
+        [fieldId]="'login__password'"
+        [fieldLabel]="'Password'"
+        HelperText="Use the password associated with your account"
+        [inputType]="'password'"
+      >
+      </ng-input-box>
+      <app-auth-card-button (click)="onFormSubmit()" [style]="{'width':'100%'}"  [disabled]="isEmailRegistered" class="pt-4 pl-3 pr-3" Title="Continue with Email"></app-auth-card-button>
+
+        <p-divider class="w-full pt-3 pl-2 pr-2" layout="horizontal" [style]="{'backgroundColor':'white'}" [align]="'center'">
+          <b>OR</b>
+      </p-divider>
+      <div class="flex flex-row align-items-center justify-content-center gap-5 pt-1">
+        <app-google-auth-button 
+        (click)="signInWithGoogle()"></app-google-auth-button>
+        <app-github-auth-button  (click)="signInWithGithub()"
+        ></app-github-auth-button>
+      </div>
+      <div>
+        <p class="text-xs flex-end font-semibold">New to Dropzone ? <a class="text-blue-500 font-italic font-medium" href="register?mode=all" >Get Started <i class="text-xs underline text-blue-500 pi pi-arrow-right"></i></a></p>
       </div>
     </div>
-  </ng-template>
-</p-dialog>
-
-<div
-  class="grid customStyleCss"
-  style="background-color: black; color: white"
-  *ngIf="!isloading.value"
->
-  <div class="col-fixed login__sideImage">
-    <img
-      src="https://wallpaperaccess.com/full/164868.jpg"
-      class="login__image"
-    />
-  </div>
-  <div class="col-fixed loginpage__pallete">
-    <form
-      [formGroup]="form"
-      class="login__pallete"
-      autocomplete="off"
-      (ngSubmit)="onFormSubmit()"
-    >
-      <h3 class="loginPage__welcome">Welcome back</h3>
-      <small class="loginPage__tag">Please Login to your account</small>
-      <br />
-      <div class="flex flex-column justify-content-center">
-        <div class="flex align-items-center justify-content-center">
-          <ng-input-box
-            [form]="form"
-            [marginBottom]="'10px'"
-            [marginTop]="'60px'"
-            [width]="'270px'"
-            label_color="white"
-            input_bg="transparent"
-            input_color="#222222"
-            color="white"
-            [fieldIconName]="'pi pi-user'"
-            [fieldId]="'login__username'"
-            [fieldLabel]="'Email'"
-            [inputType]="'email'"
-          >
-          </ng-input-box>
-        </div>
-        <div class="flex align-items-center justify-content-center">
-          <ng-input-box
-            [form]="form"
-            [marginBottom]="'10px'"
-            [marginTop]="'30px'"
-            label_color="white"
-            input_bg="transparent"
-            input_color="#222222"
-            color="white"
-            [width]="'270px'"
-            [fieldIconName]="'pi pi-lock'"
-            [fieldId]="'login__password'"
-            [fieldLabel]="'Password'"
-            [inputType]="'password'"
-          >
-          </ng-input-box>
-        </div>
-        <div
-          style="margin-top: 15px; margin-bottom: 15px"
-          class="flex align-items-center justify-content-center"
-        >
-          <ng-submit-button
-            [label]="'Login to Continue'"
-            [width]="'200px'"
-          ></ng-submit-button>
-        </div>
-        <small
-          >Not a User?
-          <a href="/register" style="text-decoration: none">
-            Create a Account</a
-          ></small
-        >
-      </div>
-    </form>
   </div>
 </div>
+<p-toast
+    key="confirm" 
+    (onClose)="onClose()" 
+    styleClass="pl-4 sm:pl-4 md:pl-4 lg:pl-0 xl:pl-0"
+    [baseZIndex]="5000">
+    
+    
+    <ng-template let-message pTemplate="headless">
+        <section  class="pl-5 flex flex-column sm:flex-row p-2 gap-2 w-full bg-black-alpha-90 shadow-2 border-round-lg">
+            <app-not-user-svg class="w-3rem h-3rem mx-auto sm:mx-0"></app-not-user-svg>
+            <div class="flex flex-column gap-2 w-full">
+                <p class="m-0 font-semibold text-base text-center sm:text-left line-height-3 text-red-500">
+                    {{ message.summary }}
+                </p>
+                <div class="flex flex-column gap-1">
+                    <p-progressBar 
+                        [value]="progress" 
+                        [showValue]="false" 
+                        [style]="{ height: '4px' }" />
+                    <label class="text-center sm:text-right text-xs text-white-alpha-90">
+                        Redirecting in {{timeProgress}} sec...
+                    </label>
+                </div>
+                <div class="flex justify-content-center sm:justify-content-end">
+                    <p-button 
+                        label="Cancel" 
+                        [text]="true"
+                        icon="pi pi-times"
+                        styleClass="text-white px-2 py-1 bg-red-900" 
+                        (onClick)="onClose()" />
+                </div>
+            </div>
+        </section>
+    </ng-template>
+</p-toast>
 
-<div *ngIf="isloading.value" class="justify-content-center align-items-center">
-  <app-loader></app-loader>
-</div>
-<p-toast></p-toast>
+<p-toast 
+    key="other"
+    styleClass="pl-4 sm:pl-4 md:pl-4 lg:pl-0 xl:pl-0">
+</p-toast>
