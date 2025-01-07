@@ -29,6 +29,10 @@ export class CustomTopBarComponent implements OnInit {
 
   activeItem: MenuItem | undefined;
 
+  logout() {
+    this.localStorage.clear();
+  }
+
   ngOnInit() {
     this.activeItem = this.items[0];
     this.Authenticated =

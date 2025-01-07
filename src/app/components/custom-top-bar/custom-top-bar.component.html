@@ -67,6 +67,6 @@
     <app-auth-button Auth__Label="Sign Up"></app-auth-button>
   </div>
   <div class="AuthButton" *ngIf="Authenticated">
-    <app-auth-button Auth__Label="Log Out"></app-auth-button>
+    <app-auth-button Auth__Label="Log Out" (click)="logout()"></app-auth-button>
   </div>
 </div>
