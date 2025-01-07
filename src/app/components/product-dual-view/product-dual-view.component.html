@@ -1,98 +1,164 @@
-<div pDroppable (onDrop)="drop()" class=" w-full my-1 px-2 flex flex-direction-row justify-content-between">
-    <div class="flex">
-        <h3>DropZone</h3>
-    </div>
-    <div class="flex align-items-center justify-content-center">
-        <i class="pi pi-shopping-cart mr-4 p-text-secondary" pBadge style="font-size: 1.5em" [value]="cart_value"></i>
-    </div>
+<div
+  pDroppable
+  (onDrop)="drop()"
+  class="w-full px-4 flex flex-direction-row justify-content-between"
+>
+  <div class="flex text-white">
+    <h3>DropZone</h3>
+  </div>
+  <div class="flex align-items-center justify-content-center">
+    <p-button
+      label="Cart"
+      icon="pi pi-shopping-cart"
+      [badge]="cart_value"
+      badgeClass="p-badge-contrast"
+      outlined="true"
+    />
+  </div>
 </div>
 
-<div class="card m-4" style="border: 1px solid #e4e4e4;">
-    <p-dataView #dv [value]="products" [layout]="layout">
-            <ng-template pTemplate="header" [style]="{'borderRadius':'23px'}">
-                <div class="flex justify-content-end">
-                    <p-dataViewLayoutOptions />
-                </div>
-            </ng-template>
-            <ng-template pTemplate="list" let-products>
-                <div class="grid grid-nogutter">
-                    <div class="col-12" *ngFor="let item of products; let first = first" class="col-12">
-                        <div pDraggable (onDragStart)="dragStart(item)" 
-                        (onDragEnd)="dragEnd()" class="flex flex-column sm:flex-row sm:align-items-center p-3 gap-2 justify-content-evenly" [ngClass]="{ 'border-top-1 surface-border': !first }">
-                            <div class="md:w-10rem relative">
-                                <img class="block xl:block mx-auto border-round-xl w-full" [src]="item.ImageRef" [alt]="item.ProductName" />
-                                <!-- <p-tag [value]="item.inventoryStatus"  class="absolute" [style.left.px]="4" [style.top.px]="4" /> -->
-                            </div>
-                            <div class="flex flex-column md:flex-row justify-content-between md:align-items-center flex-1 gap-4">
-                                <div class="flex flex-row md:flex-column justify-content-between align-items-start gap-2">
-                                    <div>
-                                        <p-tag value="Clothing"  [style]="{'borderRadius':'10px'}" [style.left.px]="4" [style.top.px]="4" icon="pi pi-tag" />
-                                        <div class="text-2xl  font-bold text-900 mt-2">{{ item.ProductName }}</div>
-                                        <!-- <p-chip  styleClass="" [label]="item.CategoryID" icon="pi pi-apple" />
-                                         <span class="card-tag"><i style="font-size:small;" class="pi pi-tag mr-1 pt-1"></i> Clothing</span>-->
-                                        <div class="text-lg font-small text-400 mt-1" >{{ item.Description }}</div>
+<div class="card m-4" style="border: 1px solid #27272a">
+  <p-dataView
+    #dv
+    [value]="products"
+    [layout]="layout"
+    [rows]="4"
+    [paginator]="true"
+    [rowsPerPageOptions]="[4, 8, 16, 24]"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords}"
+    *ngIf="!loading"
+  >
+    <ng-template pTemplate="header">
+      <div class="flex justify-content-end border-round-4">
+        <p-dataViewLayoutOptions />
+      </div>
+    </ng-template>
+    <ng-template pTemplate="list" let-products>
+      <div class="grid grid-nogutter line-height-8">
+        <div
+          class="col-12 overflow-auto surface-overlay select-none"
+          *ngFor="let item of products; let first = first"
+        >
+          <div
+            pDraggable
+            (onDragStart)="dragStart(item)"
+            (onDragEnd)="dragEnd()"
+            class="flex flex-column sm:flex-row sm:align-items-center p-3 gap-4"
+            [ngClass]="{ 'border-top-1 surface-border': !first }"
+          >
+            <!-- Image container -->
+            <div class="md:w-10rem relative">
+              <img
+                class="block xl:block mx-auto border-round-xl w-full"
+                [src]="item.ImageRef"
+                [alt]="item.ProductName"
+              />
+            </div>
 
-                                    </div>
-                                    <div class="surface-100 p-1" style="border-radius: 30px">
-                                        <div class="surface-0 flex align-items-center  gap-2 justify-content-center py-1 px-2" style="border-radius: 30px; box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.04), 0px 1px 2px 0px rgba(0, 0, 0, 0.06)">
-                                            <span class="text-900 font-medium text-sm">{{ item.StarCount }}</span>
-                                            <i class="pi pi-star-fill text-yellow-500"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex flex-column md:align-items-end gap-5">
-                                    <span class="text-xl font-semibold text-900">{{ '$' + item.Price }}</span>
-                                    <div class="flex flex-row-reverse md:flex-row gap-2">
-                                        <p-button raised="true" rounded="true" [icon]="favoriteIcons[item.ProductID]|| 'pi pi-heart'" #favoriteButton [id]="'favorite-' + item.ProductID" [outlined]="true" (click)="changefavourite(item.ProductID)"  />
-                                        <p-button icon="pi pi-shopping-cart" class="flex-auto md:flex-initial white-space-nowrap" label="Buy Now"  />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <!-- Content container -->
+            <div class="flex flex-column flex-1 gap-4">
+              <!-- Left section -->
+              <div
+                class="flex flex-row gap-4 justify-content-between align-items-start"
+              >
+                <div class="flex flex-column gap-2">
+                  <div class="flex flex-row gap-2">
+                    <p-tag
+                      [value]="item.ListName"
+                      [style]="{ borderRadius: '10px' }"
+                      icon="pi pi-tag"
+                    /><p-tag
+                      [value]="item.CategoryName"
+                      [style]="{ borderRadius: '10px' }"
+                      icon="pi pi-tag"
+                    /><p-tag
+                      [value]="item.BrandName"
+                      [style]="{ borderRadius: '10px' }"
+                      icon="pi pi-tag"
+                    />
+                  </div>
+                  <div class="text-2xl font-bold text-900">
+                    {{ item.ProductName }}
+                  </div>
+                  <div class="text-lg font-small text-400">
+                    {{ item.Description }}
+                  </div>
                 </div>
-            </ng-template>
-            <ng-template let-product pTemplate="grid" let-products>
-                <div class="grid grid-nogutter flex  justify-content-center">
-                    <div  *ngFor="let product of products">
-                        <!-- <div class="p-4 border-1 surface-border surface-card border-round flex flex-column">
-                            <div class="surface-50 flex justify-content-center border-round p-3">
-                                <div class="relative mx-auto">
-                                    <img class="border-round w-full" [src]="product.ImageRef" [alt]="product.ProductName" style="max-width: 300px;" />
-                                    <p-tag [value]="product.CategoryID" ></p-tag>
-                                </div>
-                            </div>
-                            <div class="pt-4">
-                                <div class="flex flex-row justify-content-between align-items-start gap-2">
-                                    <div>
-                                        <span class="font-medium text-secondary text-sm">{{ product.category }}</span>
-                                        <div class="text-lg font-medium text-900 mt-1">{{ product.ProductName }}</div>
-                                    </div>
-                                    <div class="surface-100 p-1" style="border-radius: 30px">
-                                        <div class="surface-0 flex align-items-center gap-2 justify-content-center py-1 px-2" style="border-radius: 30px; box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.04), 0px 1px 2px 0px rgba(0, 0, 0, 0.06)">
-                                            <span class="text-900 font-medium text-sm">{{ product.StarCount }}</span>
-                                            <i class="pi pi-star-fill text-yellow-500"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex flex-column gap-4 mt-4">
-                                    <span class="text-2xl font-semibold">{{ '$' + product.Price }}</span>
-                                    <div class="flex gap-2">
-                                        <p-button icon="pi pi-shopping-cart" class="flex-auto md:flex-initial white-space-nowrap" label="Buy Now"  />
-                                        <p-button icon="pi pi-heart" [outlined]="true" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-                        <app-product-tile-view  pDraggable (onDragStart)="dragStart(product)" 
-                        (onDragEnd)="dragEnd()"
-                        [product_description]="product.Description"
-                        [product_image_source]="product.ImageRef"
-                        [product_title]="product.ProductName"
-                        [product_price]="product.Price"
-                        [product_rating]="product.StarCount"></app-product-tile-view>
-                    </div>
+
+                <!-- Rating -->
+                <div class="surface-100 p-1" style="border-radius: 30px">
+                  <div
+                    class="surface-0 flex align-items-center gap-2 justify-content-center py-1 px-2"
+                    style="
+                      border-radius: 30px;
+                      box-shadow:
+                        0px 1px 2px 0px rgba(0, 0, 0, 0.04),
+                        0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+                    "
+                  >
+                    <span class="text-900 font-medium text-sm">{{
+                      item.StarCount
+                    }}</span>
+                    <i class="pi pi-star-fill text-yellow-500"></i>
+                  </div>
                 </div>
-            </ng-template>
-    </p-dataView>
+              </div>
+
+              <!-- Right section -->
+              <div
+                class="flex flex-row justify-content-between align-items-center"
+              >
+                <span class="text-xl font-semibold text-900">{{
+                  "$ " + item.Price
+                }}</span>
+                <div
+                  class="flex gap-2 justify-content-center align-items-center"
+                >
+                  <p-button
+                    raised="true"
+                    rounded="true"
+                    [icon]="favoriteIcons[item.ProductID] || 'pi pi-heart'"
+                    #favoriteButton
+                    [id]="'favorite-' + item.ProductID"
+                    [outlined]="true"
+                    (click)="changefavourite(item.ProductID)"
+                  />
+                  <p-button
+                    icon="pi pi-shopping-cart"
+                    class="white-space-nowrap"
+                    size="small"
+                    [raised]="true"
+                    label="Buy Now"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template let-product pTemplate="grid" let-products>
+      <div class="grid grid-nogutter flex justify-content-center">
+        <div *ngFor="let product of products">
+          <app-product-tile-view
+            pDraggable
+            (onDragStart)="dragStart(product)"
+            (onDragEnd)="dragEnd()"
+            [product_description]="product.Description"
+            [product_image_source]="product.ImageRef"
+            [product_title]="product.ProductName"
+            [product_price]="product.Price"
+            [product__brand]="product.BrandName"
+            [product__list__name]="product.ListName"
+            [product__category]="product.CategoryName"
+            [product_rating]="product.StarCount"
+          ></app-product-tile-view>
+        </div>
+      </div>
+    </ng-template>
+  </p-dataView>
+  <app-grid-loading
+    class="flex justify-content-center border-round-3 p-5"
+    *ngIf="loading"
+  ></app-grid-loading>
 </div>
