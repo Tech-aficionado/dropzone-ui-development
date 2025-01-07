@@ -1,105 +1,131 @@
-@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&display=swap");
-.registerPage__Pallete {
-  height: 67vh;
-  width: 380px;
-  justify-content: right;
-  margin-left: 550px;
-  padding-top: 173px;
-}
-
-.registerPage__welcome {
-  margin-bottom: 0px;
-  margin-left: 15px;
-  padding-bottom: 0px;
-}
-.registerPage__fields {
-  margin-top: 40px;
-  margin-left: -10px;
-}
-.registerPage__tag {
-  font-family: "Comfortaa", cursive;
-  font-weight: 100;
-  font-size: 15px;
-  margin-left: 16px;
-  letter-spacing: 0.5px;
-}
-.registerPage__welcome {
-  font-size: 40px;
-  padding-bottom: 0px;
-  margin-bottom: 14px;
-}
-.registerPage__Page {
-  position: relative;
-  margin-top: 0px;
-  padding: 0px;
-}
-.registerPage__Page::before {
-  content: "";
-  position: absolute;
-  opacity: 3%;
-  background-image: url(https://wallpapercave.com/wp/wp8529249.jpg);
-  width: 70vw;
+@import url('https://fonts.googleapis.com/css2?family=Domine:wght@400..700&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Domine:wght@400..700&family=Forum&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.cdnfonts.com/css/samsung-sharp-sans');
+.auth-page{
   height: 100vh;
-  background-size: cover;
-  border-top-left-radius: 0px;
-  border-bottom-left-radius: 0px;
-  box-shadow: 0 0 90px 90px rgba(0, 0, 0, 0.5) inset;
-  background-color: #fff;
-}
-.code {
-  backdrop-filter: blur(2px);
-  border: 1px solid #d5d0c7;
-  border-radius: 23px;
-  box-shadow: 3px 4px 17px 6px #141a21;
+  background-color: black;
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  color: black;
+  align-items: center;
 }
 
-.register__image {
+.auth-card{
+  width: calc(100vh - 21%);
+  border-radius: 20px;
+  position: relative;
+  background-color: white;
+}
+
+
+@media only screen and (max-width: 640px) {
+  .auth-card{
+    width: calc(100vw - 10%);
+    border-radius: 20px;
+    position: relative;
+    background-color: white;
+  }
+}
+.auth-card-content{
+  
+  align-items: center;
+}
+.auth-card-top-header{
+  font-family: "Kanit", serif;
+  font-weight: 800;
+  font-style: normal;
+  font-size: 30px;
+}
+
+.auth-card-header{
+  font-family: 'Samsung Sharp Sans', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 24px;
+}
+
+.auth-card-subheader{
+  font-weight: 500;
+  font-style: normal;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.495);
+}
+
+.p-divider .p-divider-content {
+  background-color: #E6F0FF !important;
+  z-index: 144;
+}
+
+
+.lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 100%;
-  margin: 0px;
-  border-top-right-radius: 10%;
-  border-bottom-right-radius: 10%;
-  width: 100%;
+  margin: auto;
+  width: 90vw;
 }
-.register__pallete {
-  margin-top: 173px;
-  position: relative;
-  margin-left: 36px;
-}
-.topBar {
-  position: relative;
-  background: transparent;
-  backdrop-filter: blur(3px);
-}
-.customStyleCss {
-  margin-top: 0px !important;
-  margin-right: 0px !important;
-  margin-left: 0px !important;
-}
-/* @media (min-height: 880px) {
-  .register__image {
-    height: 100%;
-    margin: -4px;
-    border-top-right-radius: 10%;
-    border-bottom-right-radius: 10%;
-    width: 500px;
-  }
-} */
 
-.register__sideImage {
-  width: 30vw;
-  margin: 0px;
-  padding: 0px;
-  height: 98vh;
-  padding: 0px !important;
-}
-/* @media (min-height: 880px) {
-  .register__sideImage {
-    width: 500px;
-    height: 100vh;
-    padding: 0px !important;
+.line {
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  top: 0;
+  left: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 15vh;
+    width: 100%;
+    top: -50%;
+    left: 0;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 75%, #ffffff 100%);
+    animation: drop 2s 0s infinite;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
   }
-} */
-.avatarImg {
-  background: #141a21;
-  backdrop-filter: invert(1);
+  
+  &:nth-child(1) {
+    margin-left: -25%;
+    &::after {
+      animation-delay: 1s;
+    }
+  }
+  
+  &:nth-child(3) {
+    margin-left: 25%;
+    &::after {
+      animation-delay: 1.5s;
+    }
+  }
+
+  &:nth-child(4) {
+    margin-left: -50%;
+    &::after {
+      animation-delay: 2s;
+    }
+  }
+
+  &:nth-child(5) {
+    margin-left: 50%;
+    &::after {
+      animation-delay: 2.5s;
+    }
+  }
+
+}
+
+@keyframes drop {
+  0% {
+    top: -50%;
+  }
+  100% {
+    top: 110%;
+  }
 }

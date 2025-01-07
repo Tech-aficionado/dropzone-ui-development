@@ -1,170 +1,97 @@
-<p-dialog
-  #pdialog
-  appendto="div"
-  [(visible)]="visible"
-  [modal]="true"
-  [style]="{ width: '138vh', height: '65vh' }"
-  (onHide)="visible = false"
->
-  <ng-template pTemplate="header">
-    <h3>Upload Your Profile Image <i class="pi pi-user"></i></h3>
-  </ng-template>
-  <ng-template pTemplate="content">
-    <p-carousel
-      [value]="products"
-      [numVisible]="4"
-      [numScroll]="1"
-      [showNavigators]="true"
-      [showIndicators]="true"
-      [circular]="false"
-      [responsiveOptions]="responsiveOptions"
-    >
-      <ng-template let-product pTemplate="item">
-        <div class="text-center">
-          <div class="mb-3">
-            <img
-              src="../../../assets/Avatars/{{ product.image }}"
-              [alt]="product.name"
-              class="border border-round-lg w-8 shadow-2"
-              (click)="selectImage(product.image)"
-            />
-          </div>
-        </div>
-      </ng-template>
-    </p-carousel>
-  </ng-template>
-</p-dialog>
-<div class="grid customStyleCss" id="divydiv">
-  <div class="col-fixed register__sideImage">
-    <img
-      src="https://wallpaperaccess.com/full/164868.jpg"
-      class="register__image"
-    />
-  </div>
-  <div class="col-fixed registerPage__Page">
-    <div class="grid">
-      <div class="col-6">
-        <form
-          [formGroup]="form"
-          class="register__pallete"
-          autocomplete="off"
-          (ngSubmit)="onFormSubmit()"
-        >
-          <h3 class="registerPage__welcome">Hi There!!! {{ usernameId }}</h3>
-          <small class="registerPage__tag"
-            >Kindly register with valid details!!</small
-          >
-          <br />
-          <div
-            class="flex flex-wrap justify-content-center"
-            style="max-width: 500px"
-          >
-            <ng-input-box
-              [form]="form"
-              [marginBottom]="'10px'"
-              [marginTop]="'30px'"
-              label_color="white"
-              input_bg="transparent"
-              input_color="#222222"
-              color="white"
-              [marginLeft]="'20px'"
-              [width]="'350px'"
-              [fieldIconName]="'pi pi-user'"
-              [fieldId]="'register_username'"
-              [fieldLabel]="'Username'"
-              [inputType]="'text'"
-            >
-            </ng-input-box>
+<div class="card auth-page lines">
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
 
-            <ng-input-box
-              [form]="form"
-              [marginBottom]="'10px'"
-              label_color="white"
-              [marginTop]="'30px'"
-              [marginLeft]="'20px'"
-              input_bg="transparent"
-              input_color="#222222"
-              [width]="'350px'"
-              [fieldIconName]="'pi pi-user'"
-              [fieldId]="'register_fullname'"
-              [fieldLabel]="'Full Name'"
-              color="white"
-              [inputType]="'text'"
-            >
-            </ng-input-box>
-            <ng-input-box
-              [form]="form"
-              [marginBottom]="'10px'"
-              [marginTop]="'30px'"
-              label_color="white"
-              input_bg="transparent"
-              input_color="#222222"
-              [marginLeft]="'20px'"
-              [width]="'350px'"
-              [fieldIconName]="'pi pi-envelope'"
-              [fieldId]="'register_email'"
-              [fieldLabel]="'E-mail'"
-              color="white"
-              [inputType]="'email'"
-            >
-            </ng-input-box>
-            <ng-input-box
-              [form]="form"
-              [marginBottom]="'20px'"
-              [marginTop]="'30px'"
-              [marginLeft]="'20px'"
-              [width]="'350px'"
-              input_bg="transparent"
-              input_color="white"
-              [fieldIconName]="'pi pi-lock'"
-              [fieldId]="'register_password'"
-              [fieldLabel]="'Password'"
-              color="white"
-              label_color="white"
-              [inputType]="'password'"
-            >
-            </ng-input-box>
-            <p-selectButton
-              [options]="stateOptions"
-              formControlName="register_user_type"
-              optionLabel="label"
-              optionValue="value"
-            ></p-selectButton>
-            <ng-submit-button
-              [width]="'239px'"
-              [label]="'Register'"
-              [marginBottom]="'10px'"
-              [marginLeft]="'24px'"
-            ></ng-submit-button>
-            <small style="font-size: 15px"
-              >Already A User?
-              <a href="/login" style="text-decoration: none; font-size: 15px"
-                >Login your account</a
-              ></small
-            >
-          </div>
-        </form>
+<div class="auth-card p-1">
+  <div class="pt-3 pl-2 pb-2 flex auth-card-top-header flex-row"><div class="flex"><img src="../../../../assets/parachute.png" height="36px" width="36px" alt=""></div><div class="flex"><h3 style="margin: 0px;padding: 0px;">DropZone</h3></div></div>
+  
+  <div class="pl-3 pt-3 auth-card-header">Register</div>
+  <div class="pl-3 pb-2 auth-card-subheader"><p>Join for exclusive deals and perks</p></div>
+  <div class="p-1 flex flex-column auth-card-content" *ngIf="!mode">
+    
+    <ng-input-box
+      [form]="form"
+      [marginBottom]="'10px'"
+      [width]="'100%'"
+      label_color="black"
+      tabindex="1"
+      input_bg="transparent"
+      input_color="#222222"
+      color="black"
+      class="w-full pl-3 pr-3 pb-2"
+      [fieldIconName]="'pi pi-envelope'"
+      [fieldId]="'register_email'"
+      [fieldLabel]="'E-mail'"
+      [inputType]="'email'"
+    >
+    </ng-input-box>
+    <div class="flex pl-3 pr-3 pb-3 gap-3 w-full flex-row  justify-content-center align-items-center">
+      <div class="flex w-full ">
+        <ng-input-box
+        [form]="form"
+        [width]="'100%'"
+        label_color="black"
+        input_bg="transparent"
+        input_color="#222222"
+        tabindex="2"
+        color="black"
+        class=" w-full "
+        [fieldIconName]="'pi pi-user'"
+        [fieldId]="'register_firstname'"
+        [fieldLabel]="'First Name'"
+        [inputType]="'text'"
+      >
+      </ng-input-box>
       </div>
-      <div class="col-6 flex align-items-center">
-        <div
-          class="   "
-          style="border-radius: 77%; height: 325px; width: 327px"
-        >
-          <img
-            style="width: -webkit-fill-available"
-            [src]="completeImage"
-            class="avatarImg"
-            alt=""
-          />
-          <div class="flex gap-4">
-            <app-button-1
-              style="margin-left: 55px; margin-top: 28px"
-              (click)="showDialog()"
-            ></app-button-1>
-          </div>
-        </div>
+      <div class="flex w-full ">
+        <ng-input-box
+        [form]="form"
+        [width]="'100%'"
+        label_color="black"
+        input_bg="transparent"
+        input_color="#222222"
+        color="black"
+        class=" w-full "
+        tabindex="3"
+        [fieldIconName]="'pi pi-user'"
+        [fieldId]="'register_lastname'"
+        [fieldLabel]="'Last Name'"
+        [inputType]="'text'"
+      >
+      </ng-input-box>
       </div>
     </div>
+    <ng-input-box
+    [form]="form"
+    [marginBottom]="'10px'"
+    [width]="'100%'"
+    label_color="black"
+    input_bg="transparent"
+    input_color="#222222"
+    color="black"
+    class="w-full pl-3 pr-3"
+    tabindex="4"
+    [fieldIconName]="'pi pi-key'"
+    [fieldId]="'register__password'"
+    [toggleMask]="true"
+    [fieldLabel]="'Password'"
+    [inputType]="'password'"
+  >
+  </ng-input-box>
+    <app-auth-card-button [style]="{'width':'100%'}"  class="pt-2 pl-3 pr-3" Title="Get Started"></app-auth-card-button>
+  <div>
+    <p class="text-xs">Already user ? <a class="text-blue-500 font-italic" href="login" >Login <i class="text-xs underline text-blue-500 pi pi-arrow-right"></i></a></p>
   </div>
 </div>
-<p-toast></p-toast>
+<div class="p-1 flex flex-column auth-card-content" *ngIf="mode">
+    
+  <app-auth-card-button [style]="{'width':'100%'}"  class="pt-2 pl-3 pr-3" Title="Get Started"></app-auth-card-button>
+<div>
+  <p class="text-xs">Already user ? <a class="text-blue-500 font-italic" href="login" >Login <i class="text-xs underline text-blue-500 pi pi-arrow-right"></i></a></p>
+</div>
+</div>
+</div>
+</div>
