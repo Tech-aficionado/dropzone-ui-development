@@ -1,0 +1,135 @@
+<p-dialog
+  #otpDialog
+  [(visible)]="visible"
+  [modal]="true"
+  (onHide)="visible = false"
+  [style]="{ 'background-color': 'pink' }"
+>
+  <ng-template
+    pTemplate="header"
+    styleClass="pDialog"
+    [style]="{ background: 'black' }"
+    class="flex justify-content-center align-items-center"
+  >
+    <div class="flex flex-column align-items-center">
+      <div class="font-bold text-xl mb-2">Authenticate Your Account</div>
+    </div>
+  </ng-template>
+  <ng-template
+    pTemplate="content"
+    styleClass="pDialog"
+    [style]="{ background: 'black' }"
+  >
+    <div class="flex flex-column align-items-center">
+      <p class="text-color-secondary block mb-5">
+        Please enter the code sent to your mailbox.
+      </p>
+      <div class="card flex justify-content-center">
+        <p-inputOtp [(ngModel)]="otpValue" [mask]="false" />
+      </div>
+    </div>
+  </ng-template>
+  <ng-template
+    pTemplate="footer"
+    styleClass="pDialog"
+    [style]="{ background: 'black' }"
+  >
+    <div class="flex flex-column align-items-center">
+      <div class="flex justify-content-between mt-5 align-self-stretch">
+        <p-button
+          label="Resend Code"
+          class="p-0"
+          (click)="ResendOtpAuthentication()"
+        />
+        <p-button
+          label="Submit Code"
+          (click)="Phase2Authentication()"
+          [loading]="loading.getValue()"
+        />
+      </div>
+    </div>
+  </ng-template>
+</p-dialog>
+
+<div
+  class="grid customStyleCss lg:flex-row xl:flex-row md:flex-column sm:flex-column"
+  style="background-color: black; color: white"
+  *ngIf="!isloading.value"
+>
+  <div class="lg:col-3 xl:col-3 md:col-12 login__sideImage">
+    <img
+      src="https://wallpaperaccess.com/full/164868.jpg"
+      class="login__image"
+    />
+  </div>
+  <div class="lg:col-9 xl:col-9 md:col-12 loginpage__pallete">
+    <form
+      [formGroup]="form"
+      class="login__pallete"
+      autocomplete="off"
+      (ngSubmit)="onFormSubmit()"
+    >
+      <h3 class="loginPage__welcome">Welcome back</h3>
+      <small class="loginPage__tag justify-content-center"
+        >Please Login to your account</small
+      >
+      <br />
+      <div class="flex flex-column justify-content-center align-items-start">
+        <div class="flex align-items-center">
+          <ng-input-box
+            [form]="form"
+            [marginBottom]="'10px'"
+            [marginTop]="'60px'"
+            [width]="'270px'"
+            label_color="white"
+            input_bg="transparent"
+            input_color="#222222"
+            color="white"
+            [fieldIconName]="'pi pi-user'"
+            [fieldId]="'login__username'"
+            [fieldLabel]="'Email'"
+            [inputType]="'email'"
+          >
+          </ng-input-box>
+        </div>
+        <div class="flex align-items-center">
+          <ng-input-box
+            [form]="form"
+            [marginBottom]="'10px'"
+            [marginTop]="'30px'"
+            label_color="white"
+            input_bg="transparent"
+            input_color="#222222"
+            color="white"
+            [width]="'270px'"
+            [fieldIconName]="'pi pi-lock'"
+            [fieldId]="'login__password'"
+            [fieldLabel]="'Password'"
+            [inputType]="'password'"
+          >
+          </ng-input-box>
+        </div>
+        <div
+          style="margin-top: 30px; margin-bottom: 30px"
+          class="flex align-items-center"
+        >
+          <ng-submit-button
+            [label]="'Login to Continue'"
+            [width]="'200px'"
+          ></ng-submit-button>
+        </div>
+        <small
+          >Not a User?
+          <a href="/register" style="text-decoration: none">
+            Create a Account</a
+          ></small
+        >
+      </div>
+    </form>
+  </div>
+</div>
+
+<div *ngIf="isloading.value" class="justify-content-center align-items-center">
+  <app-loader></app-loader>
+</div>
+<p-toast></p-toast>

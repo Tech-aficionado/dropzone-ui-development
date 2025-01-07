@@ -1,0 +1,175 @@
+<p-dialog
+  #otpDialog
+  [(visible)]="visible"
+  [modal]="true"
+  [closable]="false"
+  [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"
+  (onHide)="visible = false"
+>
+  <p-stepper [(activeStep)]="active" [linear]="true" orientation="vertical">
+    <p-stepperPanel header="Verify Your Account">
+      <ng-template
+        pTemplate="content"
+        let-nextCallback="nextCallback"
+        let-index="index"
+      >
+        <div class="flex flex-column h-12rem w-full">
+          <div class="flex flex-column align-items-center">
+            <p class="text-color-secondary block mb-5">
+              Please enter the code sent to your mailbox.
+            </p>
+            <div class="card flex justify-content-center">
+              <p-inputOtp [(ngModel)]="otpValue" [mask]="false" />
+            </div>
+          </div>
+        </div>
+        <div class="flex pt-4 justify-content-end">
+          <p-button
+            label="Hide"
+            icon="pi pi-arrow-right"
+            [hidden]="isloading"
+            iconPos="right"
+            [loading]="loading"
+            (onClick)="nextCallback.emit()"
+          />
+          <p-button
+            label="Show"
+            icon="pi pi-arrow-right"
+            [hidden]="!isloading"
+            iconPos="right"
+            (onClick)="nextCallback.emit()"
+          />
+        </div>
+      </ng-template>
+    </p-stepperPanel>
+    <p-stepperPanel header="Generate your Virtual Persona">
+      <ng-template
+        pTemplate="content"
+        let-nextCallback="nextCallback"
+        let-index="index"
+      >
+      <app-prompt-image-generator></app-prompt-image-generator>
+      </ng-template>
+    </p-stepperPanel>
+  </p-stepper>
+</p-dialog>
+
+<div
+  class="grid customStyleCss lg:flex-row xl:flex-row md:flex-column sm:flex-column"
+  style="background-color: black; color: white"
+>
+  <div class="lg:col-3 xl:col-3 md:col-12 login__sideImage">
+    <img
+      src="https://wallpaperaccess.com/full/164868.jpg"
+      class="login__image"
+    />
+  </div>
+  <div class="lg:col-9 xl:col-9 md:col-12 loginpage__pallete">
+    <form
+      [formGroup]="form"
+      class="login__pallete"
+      autocomplete="off"
+      (ngSubmit)="onFormSubmit()"
+    >
+      <h3 class="loginPage__welcome">Welcome To DropZone</h3>
+      <small class="loginPage__tag justify-content-center"
+        >Please Register to access the program</small
+      >
+      <br />
+      <div class="flex flex-column justify-content-center align-items-start">
+        <div class="flex align-items-center">
+          <ng-input-box
+            [form]="form"
+            [marginBottom]="'10px'"
+            [marginTop]="'60px'"
+            [width]="'270px'"
+            label_color="white"
+            input_bg="transparent"
+            input_color="#222222"
+            color="white"
+            [fieldIconName]="'pi pi-user'"
+            [fieldId]="'register_username'"
+            [fieldLabel]="'UserName'"
+            [inputType]="'text'"
+            (blur)="checkUsernameIfAlreadyExists()"
+          >
+          </ng-input-box>
+        </div>
+        <div [hidden]="userCheckFail" class="m-0 p-0">
+          <small class="m-0 p-0 pl-2 text-red-700">{{ userCheck }}</small>
+        </div>
+        <div [hidden]="userCheckPass" class="m-0 p-0">
+          <small class="m-0 p-0 pl-2 text-blue-700">{{ userCheck }}</small>
+        </div>
+        <div class="flex align-items-center">
+          <ng-input-box
+            [form]="form"
+            [marginBottom]="'10px'"
+            [marginTop]="'30px'"
+            label_color="white"
+            input_bg="transparent"
+            input_color="#222222"
+            color="white"
+            [width]="'270px'"
+            [fieldIconName]="'pi pi-user'"
+            [fieldId]="'register_fullname'"
+            [fieldLabel]="'Full Name'"
+            [inputType]="'text'"
+          >
+          </ng-input-box>
+        </div>
+        <div class="flex align-items-center">
+          <ng-input-box
+            [form]="form"
+            [marginBottom]="'10px'"
+            [marginTop]="'30px'"
+            label_color="white"
+            input_bg="transparent"
+            input_color="#222222"
+            color="white"
+            [width]="'270px'"
+            [fieldIconName]="'pi pi-at'"
+            [fieldId]="'register_email'"
+            [fieldLabel]="'Email'"
+            [inputType]="'email'"
+          >
+          </ng-input-box>
+        </div>
+        <div class="flex align-items-center">
+          <ng-input-box
+            [form]="form"
+            [marginBottom]="'10px'"
+            [marginTop]="'30px'"
+            label_color="white"
+            input_bg="transparent"
+            input_color="#222222"
+            color="white"
+            [width]="'270px'"
+            [fieldIconName]="'pi pi-lock'"
+            [fieldId]="'register_password'"
+            [fieldLabel]="'Password'"
+            [inputType]="'password'"
+          >
+          </ng-input-box>
+        </div>
+        <div
+          style="margin-top: 30px; margin-bottom: 30px"
+          class="flex align-items-center"
+        >
+          <ng-submit-button
+            [label]="'Register'"
+            [width]="'200px'"
+          ></ng-submit-button>
+        </div>
+        <small
+          >Already a User?
+          <a href="/login" style="text-decoration: none"> Login</a></small
+        >
+      </div>
+    </form>
+  </div>
+</div>
+<p-toast></p-toast>
+<!-- <button (click)="onimgProcess($event)">Generate</button>
+<img [attr.src]="imageUrl" *ngIf="imageUrl" (error)="onImageError($event)"> -->
+<p-contextMenu  [global]="true" />

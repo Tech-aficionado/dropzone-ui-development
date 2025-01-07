@@ -1,0 +1,181 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&display=swap");
+.loginPage__Pallete {
+  height: 65vh;
+  margin-top: 80px;
+  justify-content: right;
+}
+
+.loginpage__pallete {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+.loginpage__pallete::before {
+  content: "";
+  position: absolute;
+  opacity: 3%;
+  background-image: url(https://wallpapercave.com/wp/wp8529249.jpg);
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  border-top-left-radius: 0px;
+  box-shadow: 90px 90px 90px 90px rgba(0, 0, 0, 0.5) inset;
+  border-bottom-left-radius: 0px;
+  background-color: #fff;
+}
+
+.login__pallete {
+  margin-top: 173px;
+  position: relative;
+  margin-left: 36px;
+}
+@media screen and (max-width: 600px) {
+  .login__pallete {
+    margin-top: 50px;
+    position: relative;
+  }
+}
+.loginPage__welcome {
+  padding-bottom: 0px;
+  margin-bottom: 14px;
+}
+.loginPage__fields {
+  margin-top: 40px;
+  margin-left: -10px;
+}
+.loginPage__tag {
+  font-family: "Comfortaa", cursive;
+  font-weight: 100;
+  font-size: 15px;
+  margin-left: 10px;
+  letter-spacing: 0.5px;
+}
+.loginPage__welcome {
+  font-size: 40px;
+}
+
+.customStyleCss {
+  display: flex;
+  margin-top: 0px !important;
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+}
+
+/* @media screen and (max-width: 600px) {
+  
+  .customStyleCss {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0px !important;
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+  }
+  } */
+
+.login__image {
+  height: 99%;
+  margin: 0px;
+  padding: 0px;
+  border-top-right-radius: 10%;
+  border-bottom-right-radius: 10%;
+  width: 100%;
+}
+/* 
+@media (min-height: 880px) {
+  .login__image {
+    height: 100%;
+    margin: -4px;
+    border-top-right-radius: 10%;
+    border-bottom-right-radius: 10%;
+    width: 500px;
+  }
+} */
+
+.login__sideImage {
+  height: 100vh;
+  padding: 0px !important;
+}
+
+@media (max-width: 768px) {
+  .login__sideImage {
+    height: 30vh;
+    transform: rotate(90);
+    padding: 0px !important;
+  }
+}
+/* @media (min-height: 880px) {
+  .login__sideImage {
+    width: 500px;
+    height: 100vh;
+    padding: 0px !important;
+  }
+} */
+
+/* Media Queries To Handle Different Screens and sizes */
+/* @media (max-width: 450px ) {
+  .customStyleCss {
+    display: flex;
+    flex-direction: column;
+  }
+
+  
+  .login__image {
+    height: 100%;
+    margin: 0px;
+    border-top-right-radius: 10%;
+    border-bottom-right-radius: 10%;
+    width: 100%;
+  }
+
+  .login__sideImage {
+    width: 100%;
+    height: 20vh;
+    padding: 0px !important;
+  }
+} */
+/* .custom-otp-input {
+  width: 48px;
+  height: 48px;
+  font-size: 24px;
+  appearance: none;
+  text-align: center;
+  transition: all 0.2s;
+  border-radius: 0;
+  border: 1px solid var(--surface-400);
+  background: transparent;
+  outline-offset: -2px;
+  outline-color: transparent;
+  border-right: 0 none;
+  transition: outline-color 0.3s;
+  color: var(--text-color);
+}
+
+.custom-otp-input:focus {
+  outline: 2px solid var(--primary-color);
+}
+
+.custom-otp-input:first-child,
+.custom-otp-input:nth-child(5) {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+.custom-otp-input:nth-child(3),
+.custom-otp-input:last-child {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  border-right-width: 1px;
+  border-right-style: solid;
+  border-color: var(--surface-400);
+}
+.custom-dialog {
+  background-color: #ab5151 !important;
+}
+
+.custom-dialog .p-dialog-header {
+  background-color: #ab5151 !important;
+}
+
+.custom-dialog .p-dialog-footer {
+  background-color: #ab5151 !important;
+} */
