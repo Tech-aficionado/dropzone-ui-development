@@ -5,3 +5,50 @@
   width: 207px;
   border: 0px;
 }
+
+.p-float-label input:focus ~ label,
+.p-float-label input.p-filled ~ label,
+.p-float-label textarea:focus ~ label,
+.p-float-label textarea.p-filled ~ label,
+.p-float-label .p-inputwrapper-focus ~ label,
+.p-float-label .p-inputwrapper-filled ~ label {
+  top: 1px;
+  font-size: 11px;
+  background: white;
+  padding: 1px 8px;
+  color: black;
+  border: #000000;
+  -webkit-text-stroke: #000000;
+
+  font-family: cursive;
+  border-radius: 22px;
+}
+.p-inputtext:enabled:focus {
+  outline: 1px solid black !important;
+  box-shadow: none;
+  border-color: #000000;
+  -webkit-text-stroke: #000000;
+}
+
+input:-internal-autofill-selected {
+  appearance: none !important;
+  background-image: none !important;
+  background-color: red !important;
+  color: fieldtext !important;
+}
+
+.p-inputtext:-webkit-autofill,
+.p-inputtext:-webkit-autofill:hover,
+.p-inputtext:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
+  -webkit-text-fill-color: #000000 !important;
+  color: black;
+  -webkit-text-stroke: #000000;
+  transition: transparent 5000s ease-in-out 0s;
+}
+.p-inputtext{
+  color: black;
+}
+.p-password-input{
+  width: 100%;
+}

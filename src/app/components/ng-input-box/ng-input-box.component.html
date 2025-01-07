@@ -1,27 +1,99 @@
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+  rel="stylesheet"
+/>
 <span
-  class="p-input-icon-left p-float-label"
+  class="w-full p-input-icon-left p-float-label"
+  *ngIf="!passwordtype"
   [style]="{
     marginTop: marginTop,
     marginBottom: marginBottom,
     marginLeft: marginLeft,
   }"
+
 >
   <i [class]="fieldIconName" [style]="{ color: label_color }"></i>
   <input
+  pInputText
     pFocusTrapDisabled
     [formControl]="form | getFormControl: fieldId"
-    type="text"
+    tabindex=""
     autocomplete="off"
-    [style]="{ width: width, 'background-color': input_bg }"
+    [style]="{
+      width: '100%',
+      'background-color': input_bg,
+      'font-family': 'Kanit, serif;',
+      fontSize: '15px',
+    }"
     style="color: input_color !important"
     [type]="inputType"
     [id]="fieldId"
-    pInputText
+    [autocomplete]="false"
+    aria-describedby="username-help" 
+    [autofocus]="false"
+    (blur)="onInputBlur()"
   />
+
   <label
-    [style]="{ color: color, fontWeight: '300' }"
+    [style]="{ color: color, fontWeight: '400' }"
     style="font-weight: 900"
     [htmlFor]="fieldId"
     >{{ fieldLabel }}</label
   >
+  
+</span>
+<small class="text-xs" *ngIf="!shouldShowError() && !shouldShowHelperText()"  id="username-help">
+  {{HelperText}}
+</small>
+<small *ngIf="shouldShowError()" class="text-xs text-red-500 p-error">
+  {{ errorMessage }}
+</small>
+<span
+  class="w-full p-input-icon-left p-float-label"
+  *ngIf="passwordtype"
+  [style]="{
+    marginTop: marginTop,
+    marginBottom: marginBottom,
+    marginLeft: marginLeft,
+  }"
+
+>
+  <!-- <i [class]="fieldIconName" [style]="{ color: label_color }"></i>
+  <p-password
+  pInputText
+    pFocusTrapDisabled
+    [formControl]="form | getFormControl: fieldId"
+    type="text"
+    [style]="{
+      width: '100%',
+      'background-color': input_bg,
+      'font-family': 'Kanit, serif;',
+      fontSize: '15px',
+    }"
+    [style]="color: input_color !important"
+    [id]="fieldId"
+    [autofocus]="false"
+    (blur)="onInputBlur()"
+  />
+  <label
+    [style]="{ color: color, fontWeight: '400' }"
+    style="font-weight: 900"
+    for="password"
+    >{{ fieldLabel }}</label
+  > -->
+
+  <p-floatLabel class="w-full">
+    <p-password [formControl]="form | getFormControl: fieldId"
+    [style]="{
+      width: '100%',
+      'background-color': input_bg,
+      'font-family': 'Kanit, serif;',
+      fontSize: '15px',
+    }"
+    class="w-full"
+     />
+    <label for="password">Password</label>
+</p-floatLabel>
 </span>
