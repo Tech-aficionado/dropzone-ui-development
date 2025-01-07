@@ -13,4 +13,7 @@ export class ProductTileViewComponent {
   @Input() product_title!: string;
   @Input() product_price!: string;
   @Input() product_description!: string;
+  @Input() product__brand!: string;
+  @Input() product__category!: string;
+  @Input() product__list__name!: string;
 }

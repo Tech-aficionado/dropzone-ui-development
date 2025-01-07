@@ -12,6 +12,7 @@
       <p-rating
         [readonly]="true"
         [cancel]="false"
+        [style]="{ color: 'white' }"
         [(ngModel)]="product_rating"
       ></p-rating>
     </div>
@@ -23,10 +24,33 @@
     >
       {{ product_description }}
     </p>
+    <div class="card-tags">
+      <!-- <span class="card-tag">{{product__brand}}</span>
+      <span class="card-tag">{{product__category}}</span> -->
+      <p-tag
+        [value]="product__list__name"
+        [style]="{ borderRadius: '10px' }"
+        icon="pi pi-tag"
+      />
+      <p-tag
+        [value]="product__category"
+        [style]="{ borderRadius: '10px' }"
+        icon="pi pi-tag"
+      />
+      <p-tag
+        [value]="product__brand"
+        [style]="{ borderRadius: '10px' }"
+        icon="pi pi-tag"
+      />
+      <!-- <span class="card-tag">{{product__list__name}}</span> -->
+    </div>
     <hr class="divider" />
     <div class="price-container">
-      <span class="card-tag">Price: {{ product_price }}</span>
-      <a class="card-button" href="#">Buy</a>
+      <span class="text-xl font-semibold text-900"
+        >&#x24; {{ product_price }}</span
+      >
+      <!-- <a class="card-button" href="#">Buy</a> -->
+      <p-button class="white-space-nowrap" size="small" label="Buy" />
     </div>
   </div>
 </div>
