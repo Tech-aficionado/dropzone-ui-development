@@ -51,9 +51,7 @@ export class AuthService {
     return res;
   }
 
-  public isAuthenticated(
-    token: string = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJAZXhhbXBsZS5jb20iLCJleHAiOjE3NTQzODk3MzAsIm1vZGUiOiJyZWZyZXNoX3Rva2VuIn0.xP9bZnz4WeeAQB6MHS1uQZIDd3ueqEd2z872sEC2aXc',
-  ) {
+  public isAuthenticated(token: string) {
     this.UserToken = token;
     const t = this.JWTService.isTokenExpired(token);
     if (!this.JWTService.isTokenExpired(token)) {
@@ -131,6 +129,32 @@ export class AuthService {
       next: (value) => {
         const verify = this.authentications180(value);
         callback(verify);
+      },
+    });
+  }
+
+  public logout() {
+    this.localStorage.clear();
+  }
+
+  public checkUsernameAvailability(
+    username: any,
+    callback: (result: any) => void,
+  ) {
+    this.databaseOperation.checkUsername(username).subscribe({
+      next(value) {
+        callback(value);
+      },
+    });
+  }
+
+  public checkEmailRegistery(
+    email: any,
+    callback: (result: any) => void,
+  ) {
+    this.databaseOperation.checkEmail(email).subscribe({
+      next(value) {
+        callback(value);
       },
     });
   }

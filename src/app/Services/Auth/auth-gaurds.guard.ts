@@ -12,7 +12,7 @@ export const AuthenticationGaurds: CanActivateFn = (route: any, state: any) => {
   const messageService = inject(MessageService);
   const localstorage = inject(SecureLocalStorageService);
   const token = localstorage.getItem('Access_token') ?? false;
-  if (typeof token == 'boolean') {
+  if (token == false) {
     router.navigate(['/login']);
     messageService.add({
       severity: 'error',
@@ -20,17 +20,25 @@ export const AuthenticationGaurds: CanActivateFn = (route: any, state: any) => {
       detail: 'Kindly Login / Register to Access',
     });
     return false;
-  } else {
+  } else if (authService.isAuthenticated(token)) {
     if (location.path() == '/login' || location.path() == '/register') {
-      router.navigate(['/account']);
       messageService.add({
         severity: 'info',
         summary: 'Authenticated',
         detail: 'No need to authenticate your identity',
       });
+
+      return false;
     }
 
     return true;
+  } else if (!authService.isAuthenticated(token)) {
+    messageService.add({
+      severity: 'error',
+      summary: 'Session Expired',
+      detail: 'Kindly login to access',
+    });
+    return false;
   }
 
   return false;
