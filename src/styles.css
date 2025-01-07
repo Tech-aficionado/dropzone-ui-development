@@ -1,4 +1,4 @@
-@import "primeng/resources/themes/saga-blue/theme.css";
+@import "primeng/resources/themes/aura-dark-noir/theme.css";
 @import "primeng/resources/primeng.min.css";
 @import "primeicons/primeicons.css";
 
@@ -12,7 +12,9 @@ body {
   color: rgb(0, 0, 0);
   margin: 0px;
   padding: 0px;
-  background-color: rgb(255, 255, 255);
+  background-color: black;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
 }
 
 .p-button-outlined {
@@ -20,11 +22,6 @@ body {
   margin-top: 4px;
 }
 
-.p-inputtext {
-  background: #222222;
-  height: 39px;
-  padding: 0px 12px 0px 37px;
-}
 .p-inputtext:enabled:focus {
   border: 1px solid blue !important;
   box-shadow: 0 0 0 0rem;
@@ -81,12 +78,6 @@ input:-internal-autofill-selected {
 .p-button:focus {
   box-shadow: none;
 }
-/* .p-menubar .p-menuitem-link:hover {
-  background-color: rgba(199, 199, 57, 0);
-  transition: background-color 0.3s;
-  height: 4px;
-  border-radius: 20px;
-} */
 
 .p-carousel .p-carousel-content .p-carousel-prev,
 .p-carousel .p-carousel-content .p-carousel-next {
@@ -95,4 +86,13 @@ input:-internal-autofill-selected {
 
 .p-rating .p-rating-item.p-rating-item-active .p-rating-icon {
   color: red;
+}
+
+.p-float-label {
+  font-size: medium;
+  font-family: cursive;
+}
+.p-divider .p-divider-content {
+  background: white !important;
+  z-index: 144;
 }

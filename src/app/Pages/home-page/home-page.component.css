@@ -15,4 +15,9 @@
 .home__page__1__parent__div {
   height: 100vh;
   width: 100vw;
+  background-image: url(../../../assets/images/hat-near-summer-wear.jpg);
+  object-fit: cover;
+  background-size: cover;
+  background-color: black;
+  color: black;
 }

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { MenuItem } from 'primeng/api';
+import { AuthGoogleService } from 'src/app/Services/Auth/auth-google.service';
 
 @Component({
   selector: 'app-home-page',
@@ -9,9 +11,12 @@ import { MenuItem } from 'primeng/api';
 export class HomePageComponent {
   responsiveOptions: any[] | undefined;
 
+
   items!: MenuItem[];
 
-  constructor() {}
+  constructor(
+      private googlesign: AuthGoogleService,
+    private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.responsiveOptions = [
@@ -40,6 +45,7 @@ export class HomePageComponent {
         routerLink: '/about-us',
       },
     ];
+
   }
 
   getSeverity(status: string) {

@@ -1,4 +1,4 @@
-import { ApplicationConfig, NgModule } from '@angular/core';
+import { APP_INITIALIZER, ApplicationConfig, NgModule } from '@angular/core';
 import {
   provideRouter,
   RouterModule,
@@ -16,6 +16,9 @@ import { provideHttpClient } from '@angular/common/http';
 import { ImageCropperUiComponent } from './Features/image-cropper-ui/image-cropper-ui.component';
 import { AccountComponent } from './Pages/account/account.component';
 import { AdminComponent } from './Pages/admin/admin.component';
+import { DynamicRouteService } from './Services/Routes/dynamic-route.service';
+import { PrivacyComponent } from './Pages/Extras/privacy/privacy.component';
+import { DeleteAllComponent } from './Pages/Extras/delete-all/delete-all.component';
 
 const AppName = ' |  DropZone';
 
@@ -35,6 +38,7 @@ const routes: Routes = [
   {
     path: 'account',
     component: AccountComponent,
+    canActivate: [AuthenticationGaurds],
     title: `Account Section${AppName}`,
   },
   {
@@ -60,6 +64,16 @@ const routes: Routes = [
     title: `About Us${AppName}`,
   },
   {
+    path: 'privacy',
+    component: PrivacyComponent,
+    title: `Privacy${AppName}`,
+  },
+  {
+    path: 'delete-all',
+    component: DeleteAllComponent,
+    title: `Delete all${AppName}`,
+  },
+  {
     path: '',
     redirectTo: 'login',
     pathMatch: 'full',
@@ -69,5 +83,18 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes, { bindToComponentInputs: true })],
   exports: [RouterModule],
+  providers: [{
+    provide: APP_INITIALIZER,
+    useFactory: (routeConfig: DynamicRouteService) => {
+      return () => routeConfig.initializeRoutes();
+    },
+    deps: [DynamicRouteService],
+    multi: true
+  }]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+  constructor(private dynamicRouteService: DynamicRouteService) {
+    
+    this.dynamicRouteService.initializeRoutes();
+  }
+}

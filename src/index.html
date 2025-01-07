@@ -6,9 +6,25 @@
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <meta name="google-signin-client_id" content="329132298298-uo4un7q14bsja5uqgbup4qtu5o29ue3a.apps.googleusercontent.com">
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src *; style-src 'self' 'unsafe-inline';"
+      content="default-src *; img-src * data:; style-src 'self' 'unsafe-inline';"
+    />
+    
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src *; img-src * data: 'unsafe-inline'; style-src 'self' 'unsafe-inline';"
+    />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src *;
+    img-src * 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' *;
+    style-src  'self' 'unsafe-inline' *"
+    />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src *; img-src * data:; style-src 'self' 'unsafe-inline';"
     />
     <link
       rel="stylesheet"
@@ -21,5 +37,6 @@
   </head>
   <body>
     <app-root></app-root>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
   </body>
 </html>

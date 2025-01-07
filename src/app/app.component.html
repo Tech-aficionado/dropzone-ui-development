@@ -1,5 +1,17 @@
 <!-- <div *ngIf="loading" class="justify-content-center align-items-center">
   <app-loader></app-loader>
 </div> -->
-<router-outlet></router-outlet>
-<p-toast></p-toast>
+<router-outlet [style]="{ position: 'relative' }"> </router-outlet>
+
+<p-speedDial
+  icon="pi pi-shopping-cart"
+  size="large"
+  
+  [model]="items" 
+  [style]="{
+    position: 'fixed',
+    bottom: '20px',
+    right: '20px',
+  }"
+/>
+<p-toast styleClass="pl-4 sm:pl-4 md:pl-4 lg:pl-0 xl:pl-0"></p-toast>
