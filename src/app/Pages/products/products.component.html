@@ -1,36 +1,5 @@
-<!-- <div>
-  
-<div class="card flex justify-content-center">
-  <p-selectButton 
-      [options]="stateOptions" 
-      [(ngModel)]="value" 
-      optionLabel="label" 
-      optionValue="value" />
-</div> -->
-<app-product-dual-view></app-product-dual-view>
-  <!-- <div *ngIf="value" class="Products__Listing__page">
-    <app-product-category-panel
-      *ngFor="let item of FinalizedProducts"
-      [product__category]="item"
-    >
-    </app-product-category-panel>
-  
-    <p-carousel
-      [value]="skeletonItems"
-      [numVisible]="5"
-      [numScroll]="1"
-      [circular]="true"
-      showIndicators="false"
-    >
-      <ng-template let-item pTemplate="item">
-        <app-product-tile-view-skeleton
-          *ngIf="!flag"
-        ></app-product-tile-view-skeleton>
-      </ng-template>
-    </p-carousel>
-  </div>
-  <app-app-custom-footer></app-app-custom-footer>
-  <p-contextMenu [model]="pContextItems" [global]="true" />
-</div> -->
-  <app-app-custom-footer></app-app-custom-footer>
-  <p-contextMenu [model]="pContextItems" [global]="true" />
+<div style="background-color: black">
+  <app-product-dual-view></app-product-dual-view>
+</div>
+
+<!-- <p-contextMenu [model]="pContextItems" [global]="flase" /> -->

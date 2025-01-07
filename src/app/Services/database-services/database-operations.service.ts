@@ -4,8 +4,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, observeOn, Observer, of } from 'rxjs';
 import { ExistingUserSchema, NewUserSchema } from '../Schemas/Auth-schema';
 import { MessageService } from 'primeng/api';
+import { BackendIP } from 'Konstants';
 
-const BackendServer = 'http://127.0.0.1:8000/jholi-services';
+const BackendServer = `${BackendIP}/jholi-services`;
 
 @Injectable({
   providedIn: 'root',
@@ -166,6 +167,70 @@ export class DatabaseOperationsService {
 
     return this.Http.get(
       BackendServer + '/products/getProductCategories',
+      httpOptions,
+    ).pipe(
+      catchError((error) => {
+        if (error.status === 0) {
+          console.error('Server is offline or unreachable');
+          this.messageservice.add({
+            severity: 'error',
+            summary: 'Offline',
+            detail: 'Woopsy Woopsy... Server is offline',
+          });
+          // Handle offline scenario (e.g., use cached data or show error message)
+          return of(null); // Return a default value or cached data
+        }
+        throw error; // Rethrow other errors
+      }),
+    );
+  }
+
+  checkUsername(username: any) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+    };
+
+    const input = {
+      user_name: username,
+    };
+
+    return this.Http.post(
+      BackendServer + '/users/checkUsername',
+      input,
+      httpOptions,
+    ).pipe(
+      catchError((error) => {
+        if (error.status === 0) {
+          console.error('Server is offline or unreachable');
+          this.messageservice.add({
+            severity: 'error',
+            summary: 'Offline',
+            detail: 'Woopsy Woopsy... Server is offline',
+          });
+          // Handle offline scenario (e.g., use cached data or show error message)
+          return of(null); // Return a default value or cached data
+        }
+        throw error; // Rethrow other errors
+      }),
+    );
+  }
+
+  checkEmail(email:any){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+    };
+
+    const input = {
+      email: email,
+    };
+
+    return this.Http.post(
+      BackendServer + '/users/checkEmailRegistry',
+      input,
       httpOptions,
     ).pipe(
       catchError((error) => {
