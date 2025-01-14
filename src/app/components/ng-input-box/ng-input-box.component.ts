@@ -19,11 +19,14 @@ export class NgInputBoxComponent {
   @Input() inputToolTip!: string;
   @Input() color: string = '#919191';
   @Input() toggleMask: boolean = false;
-  @Input() passwordtype!: boolean ;
-  @Input() HelperText!: string ;
+  @Input() passwordtype!: boolean;
+  @Input() HelperText!: string;
   @Input() label_color: string = '#919191';
   @Input() input_bg: string = '#222222';
   @Input() input_color: string = '#919191';
+  @Input() availibilityCheckErrorShow: boolean = false;
+  @Input() availibilityCheckSuccessShow: boolean = false;
+  @Input() userCheckMessage: string = '';
   @Input() errorMessage: string | undefined;
   @Output() blur = new EventEmitter<void>();
   constructor() {}
@@ -33,10 +36,15 @@ export class NgInputBoxComponent {
 
   shouldShowError(): boolean {
     const control = this.form.get(this.fieldId);
-    return (control && control.invalid && (control.dirty || control.touched)) ?? false;
+    return (
+      (control && control.invalid && (control.dirty || control.touched)) ??
+      false
+    );
   }
   shouldShowHelperText(): boolean {
     const control = this.form.get(this.fieldId);
-    return (control && control.valid && (control.dirty || control.touched)) ?? false;
+    return (
+      (control && control.valid && (control.dirty || control.touched)) ?? false
+    );
   }
 }

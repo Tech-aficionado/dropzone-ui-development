@@ -12,11 +12,10 @@
     marginBottom: marginBottom,
     marginLeft: marginLeft,
   }"
-
 >
   <i [class]="fieldIconName" [style]="{ color: label_color }"></i>
   <input
-  pInputText
+    pInputText
     pFocusTrapDisabled
     [formControl]="form | getFormControl: fieldId"
     tabindex=""
@@ -26,74 +25,99 @@
       'background-color': input_bg,
       'font-family': 'Kanit, serif;',
       fontSize: '15px',
+      color: 'black',
     }"
     style="color: input_color !important"
     [type]="inputType"
     [id]="fieldId"
     [autocomplete]="false"
-    aria-describedby="username-help" 
+    aria-describedby="username-help"
     [autofocus]="false"
     (blur)="onInputBlur()"
   />
 
   <label
-    [style]="{ color: color, fontWeight: '400' }"
+    [style]="{ color: color, fontWeight: '500' }"
     style="font-weight: 900"
     [htmlFor]="fieldId"
     >{{ fieldLabel }}</label
   >
-  
 </span>
-<small class="text-xs" *ngIf="!shouldShowError() && !shouldShowHelperText()"  id="username-help">
-  {{HelperText}}
-</small>
-<small *ngIf="shouldShowError()" class="text-xs text-red-500 p-error">
-  {{ errorMessage }}
-</small>
-<span
-  class="w-full p-input-icon-left p-float-label"
-  *ngIf="passwordtype"
-  [style]="{
-    marginTop: marginTop,
-    marginBottom: marginBottom,
-    marginLeft: marginLeft,
-  }"
-
->
-  <!-- <i [class]="fieldIconName" [style]="{ color: label_color }"></i>
+<div *ngIf="!passwordtype">
+  <small class="text-xs" *ngIf="!shouldShowError()" id="username-help">
+    {{ HelperText }}
+  </small>
+  <small
+    class="text-xs"
+    *ngIf="availibilityCheckSuccessShow"
+    id="username-help"
+  >
+    {{ userCheckMessage }}</small
+  >
+  <small
+    *ngIf="shouldShowError() || availibilityCheckErrorShow"
+    class="text-xs text-red-500 p-error"
+  >
+    {{ errorMessage }}
+  </small>
+</div>
+<span class="w-full p-input-icon-left p-float-label" *ngIf="passwordtype">
   <p-password
-  pInputText
     pFocusTrapDisabled
+    [toggleMask]="true"
     [formControl]="form | getFormControl: fieldId"
     type="text"
     [style]="{
-      width: '100%',
-      'background-color': input_bg,
+      display: 'inline-block',
+      padding: '0px',
+      margin: '0px',
+      backgroundColor: 'white',
       'font-family': 'Kanit, serif;',
       fontSize: '15px',
     }"
-    [style]="color: input_color !important"
+    class="w-full bg-white"
     [id]="fieldId"
     [autofocus]="false"
-    (blur)="onInputBlur()"
   />
   <label
     [style]="{ color: color, fontWeight: '400' }"
     style="font-weight: 900"
     for="password"
     >{{ fieldLabel }}</label
-  > -->
+  >
 
-  <p-floatLabel class="w-full">
-    <p-password [formControl]="form | getFormControl: fieldId"
-    [style]="{
-      width: '100%',
-      'background-color': input_bg,
-      'font-family': 'Kanit, serif;',
-      fontSize: '15px',
-    }"
-    class="w-full"
-     />
+  <!-- <p-floatLabel class="w-full" 
+  *ngIf="passwordtype">
+    <p-password
+      [formControl]="form | getFormControl: fieldId"
+      [style]="{
+        width: '100%',
+        'background-color': 'white',
+        'font-family': 'Kanit, serif;',
+        fontSize: '15px',
+      }"
+      class="w-full"
+    />
     <label for="password">Password</label>
-</p-floatLabel>
+  </p-floatLabel> -->
 </span>
+<div *ngIf="passwordtype">
+  <small class="text-xs" *ngIf="!shouldShowError()" id="username-help">
+    {{ HelperText }}
+  </small>
+  <br />
+  <small
+    class="text-xs"
+    *ngIf="availibilityCheckSuccessShow"
+    id="username-help"
+  >
+    {{ userCheckMessage }}
+  </small>
+  <br />
+  <small
+    *ngIf="shouldShowError() || availibilityCheckErrorShow"
+    class="text-xs text-red-500 p-error"
+  >
+    {{ errorMessage }}
+  </small>
+</div>
