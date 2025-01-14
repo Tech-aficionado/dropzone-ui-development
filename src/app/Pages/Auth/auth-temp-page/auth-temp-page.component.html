@@ -1,3 +1,67 @@
-<div class="card auth-page">
-    <img src="../../../../assets/api.gif">
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap" rel="stylesheet">
+<div class="card auth-page lines">
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+
+  <div
+    class="auth-card p-1 animate__animated animate__backInDown animate__delay-1s animate__fast"
+  >
+    <div class="pt-3 pl-2 pb-2 flex auth-card-top-header flex-row">
+      <div class="flex">
+        <img
+          src="../../../../assets/parachute.png"
+          height="36px"
+          width="36px"
+          alt=""
+        />
+      </div>
+      <div class="flex">
+        <h3 style="    font-family: 'Doto', serif;
+        font-optical-sizing: auto;
+        font-weight: 300;
+        font-style: normal;
+        font-variation-settings: 'ROND' 0;
+        margin: 0px;
+        padding: 0px;
+        font-size: 35px;">DropZone</h3>
+      </div>
+    </div>
+
+    <div
+      class="pl-3 pt-3 auth-card-header "
+    >
+      Verifying
+    </div>
+    <div
+      class="pl-3 pb-1 font-semibold  auth-card-subheader"
+    >
+      <p>Connecting your account with our database</p>
+    </div>
+    <div
+      class="p-1 flex flex-column auth-card-content"
+    >
+    <div class="p-1 flex flex-column auth-card-content">
+      <app-google-auth-button
+      [show]="true"
+      [loading]="true"
+      *ngIf="show"
+        class="w-full pt-2 pl-3    pr-3"
+      ></app-google-auth-button>
+      <app-github-auth-button
+      *ngIf="!show"
+      [show]="true"
+      [loading]="true"
+        class="w-full pt-2 pl-3    pr-3"
+      ></app-github-auth-button>
+
+      
+    </div>
+    </div>
+  </div>
 </div>
