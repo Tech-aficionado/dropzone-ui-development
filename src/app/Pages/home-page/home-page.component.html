@@ -1,14 +1,104 @@
-<app-custom-top-bar [items]="items"></app-custom-top-bar>
-
-<div class="home__page__1__parent__div">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap" rel="stylesheet">
+<div class="card home-page lines flex-column">
+  <div class="center-patch"></div>
+  <div class="dot-overlay"></div>
   <div
-    class="home__page__1__center__content flex justify-content-center p-4 border-round-4 align-items-center"
+    class="flex justify-content-between align-items-center home-page1-header"
   >
-    <div>
-      <h3></h3>
+
+  
+    <div
+      (click)="route.navigate(['home'])"
+      class="cursor-pointer animate__animated animate__backInLeft animate__delay-1s pl-2 justify-content-start flex flex-row align-items-center"
+    >
+      <div class="flex">
+        <img
+          src="../../../../assets/parachute.png"
+          height="36px"
+          width="36px"
+          alt=""
+        />
+      </div>
+      <div class="flex">
+        <h2 style="    font-family: 'Doto', serif;
+        font-optical-sizing: auto;
+        font-weight: 200;
+        font-style: normal;
+        font-variation-settings: 'ROND' 0;
+        margin: 0px;
+        padding: 0px;
+        font-size: 43px;">DropZone</h2>
+      </div>
     </div>
-    <div>
-      <h6></h6>
+    <div
+      class="block lg:hidden xl:hidder justify-content-end align-items-center mr-2"
+    >
+      <div class="fluent--list-16-filled"></div>
     </div>
+    <div
+      class="hidden lg:block xl:block justify-content-end align-items-center mr-2"
+    >
+      <div
+        class="flex animate__animated animate__backInDown animate__delay-1s align-items-center justify-content-center pt-3"
+      >
+        <app-home-top-nav></app-home-top-nav>
+      </div>
+    </div>
+    <div
+      class="cursor-pointer hidden lg:block xl:block justify-content-end animate__animated animate__backInRight animate__delay-1s align-items-center mr-4"
+    >
+      <p
+        class="px-2 py-2 border-round bg-white font-semibold"
+        style="
+          color: black;
+          letter-spacing: 1px;
+
+          font-weight: bold;
+        "
+      >
+        Get Started
+      </p>
+    </div>
+  </div>
+  <div class="flex flex-column pt-5 home-page1-content">
+    <div
+      class="flex animate__animated animate__lightSpeedInRight animate__delay-2s align-items-center flex-column"
+    >
+      <h1 class="flex transform-text">Transform</h1>
+      <h1 class="flex experience-text">Your</h1>
+      <h1 class="flex digital-text">Digital Experience</h1>
+    </div>
+    <div
+      class="flex animate__animated animate__fadeInUp animate__delay-2s align-items-center flex-column"
+    >
+      <p
+        style="
+          font-size: 18px;
+          font-family: 'Samsung Sharp Sans', sans-serif;
+          margin: 10px;
+          font-weight: 800;
+          color: darksalmon;
+        "
+      >
+        [ Discover a seamless blend of e-commerce and digital services all in one
+        zone. ]
+      </p>
+      <p
+        style="
+          font-size: 18px;
+          font-family: 'Samsung Sharp Sans', sans-serif;
+          margin: 0px;
+          margin-top: 10px;
+          font-weight: 800;
+          color: rgb(194, 85, 48);
+        "
+      >
+      Experience the future of online retail... <app-animated-text></app-animated-text>
+      </p>
+    </div>
+  </div>
+  <div class="flex align-items-center home-page1-footer">
   </div>
 </div>
