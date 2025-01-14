@@ -1,4 +1,4 @@
-/* From Uiverse.io by TCdesign-dev */ 
+/* From Uiverse.io by TCdesign-dev */
 .button {
   display: inline-block;
   border-radius: 7px;
@@ -9,7 +9,7 @@
   text-align: center;
   width: 100%;
   font-size: 13px;
-  padding: .9em;
+  padding: 0.9em;
   transition: all 0.4s;
   cursor: pointer;
- }
+}
