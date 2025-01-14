@@ -12,7 +12,9 @@ body {
   color: rgb(0, 0, 0);
   margin: 0px;
   padding: 0px;
-  background-color: black;
+  height: 100dvh;
+  width: 100dvw;
+  background-color: rgb(255, 255, 255);
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none;
 }
@@ -32,7 +34,10 @@ input:-internal-autofill-selected {
   background-color: transparent !important;
   color: inherit !important;
 }
-
+.p-password .p-inputtext {
+  background-color: white !important;
+  color: #000000;
+}
 .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link {
   background: transparent !important;
   color: white;
@@ -90,7 +95,8 @@ input:-internal-autofill-selected {
 
 .p-float-label {
   font-size: medium;
-  font-family: cursive;
+  font-weight: 500;
+  font-family: fangsong;
 }
 .p-divider .p-divider-content {
   background: white !important;
