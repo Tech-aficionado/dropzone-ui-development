@@ -8,10 +8,9 @@ describe('DeleteAllComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DeleteAllComponent]
-    })
-    .compileComponents();
-    
+      declarations: [DeleteAllComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(DeleteAllComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
