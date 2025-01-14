@@ -4,14 +4,24 @@
 <router-outlet [style]="{ position: 'relative' }"> </router-outlet>
 
 <p-speedDial
-  icon="pi pi-shopping-cart"
   size="large"
-  
-  [model]="items" 
+  radius="120"
+  type="quarter-circle"
+  direction="up-left"
+  showIcon="pi pi-bars"
+  hideIcon="pi pi-times"
+  [model]="items"
   [style]="{
     position: 'fixed',
     bottom: '20px',
     right: '20px',
   }"
 />
-<p-toast styleClass="pl-4 sm:pl-4 md:pl-4 lg:pl-0 xl:pl-0"></p-toast>
+
+<p-toast
+  [breakpoints]="{
+    '600px': { width: '80%', right: '5%', left: '15%' },
+  }"
+  class="pl-9 sm:pl-6 md:pl-5 lg:pl-0 xl:pl-0"
+>
+</p-toast>

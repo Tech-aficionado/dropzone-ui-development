@@ -2,6 +2,8 @@ import { Injectable, Type } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { AdminComponent } from 'src/app/Pages/admin/admin.component';
 import { AuthTempPageComponent } from 'src/app/Pages/Auth/auth-temp-page/auth-temp-page.component';
+import { OnboardingComponent } from 'src/app/Pages/Auth/onboarding/onboarding.component';
+import { VerifyauthComponent } from 'src/app/Pages/Auth/verifyauth/verifyauth.component';
 
 interface SerializableRoute {
   path: string;
@@ -11,12 +13,15 @@ interface SerializableRoute {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DynamicRouteService {
   private componentRegistry: { [key: string]: Type<any> } = {
-    'admin': AdminComponent,
-    'auth-temp': AuthTempPageComponent
+    admin: AdminComponent,
+    'auth-temp': AuthTempPageComponent,
+    'verify-auth': VerifyauthComponent,
+    'verify-account': VerifyauthComponent,
+    onboarding: OnboardingComponent,
   };
 
   constructor(private router: Router) {
@@ -34,27 +39,28 @@ export class DynamicRouteService {
     const newRoute: Route = {
       path,
       component,
-      data
+      title: data,
     };
-    
+
     const currentRoutes = this.loadRoutes();
     currentRoutes.push(newRoute);
-    
+
     this.saveRoutes(currentRoutes);
     this.updateRouterConfig(currentRoutes);
   }
 
   removeRoute(path: string) {
     const currentRoutes = this.loadRoutes();
-    const filteredRoutes = currentRoutes.filter(route => route.path !== path);
-    
+    const filteredRoutes = currentRoutes.filter((route) => route.path !== path);
+
     this.saveRoutes(filteredRoutes);
     this.updateRouterConfig(filteredRoutes);
   }
 
   private updateRouterConfig(routes: Route[]) {
-    const baseRoutes = this.router.config.filter(route => 
-      !this.componentRegistry[this.getComponentPath(route.component)]
+    const baseRoutes = this.router.config.filter(
+      (route) =>
+        !this.componentRegistry[this.getComponentPath(route.component)],
     );
     this.router.resetConfig([...baseRoutes, ...routes]);
   }
@@ -68,7 +74,7 @@ export class DynamicRouteService {
       path: route.path!,
       componentPath: this.getComponentPath(route.component),
       data: route.data,
-      children: route.children?.map(child => this.serializeRoute(child))
+      children: route.children?.map((child) => this.serializeRoute(child)),
     };
   }
 
@@ -76,32 +82,39 @@ export class DynamicRouteService {
     const route: Route = {
       path: serialized.path,
       component: this.componentRegistry[serialized.componentPath],
-      data: serialized.data
+      data: serialized.data,
     };
-    
+
     if (serialized.children) {
-      route.children = serialized.children.map(child => this.deserializeRoute(child));
+      route.children = serialized.children.map((child) =>
+        this.deserializeRoute(child),
+      );
     }
-    
+
     return route;
   }
 
   saveRoutes(routes: Route[]) {
-    const serializedRoutes = routes.map(route => this.serializeRoute(route));
+    const serializedRoutes = routes.map((route) => this.serializeRoute(route));
     sessionStorage.setItem('dynamicRoutes', JSON.stringify(serializedRoutes));
   }
 
   loadRoutes(): Route[] {
     const saved = sessionStorage.getItem('dynamicRoutes');
     if (!saved) return [];
-    
+
     const serializedRoutes = JSON.parse(saved);
-    return serializedRoutes.map((route: SerializableRoute) => this.deserializeRoute(route));
+    return serializedRoutes.map((route: SerializableRoute) =>
+      this.deserializeRoute(route),
+    );
   }
 
   private getComponentPath(component: any): string {
-    return Object.entries(this.componentRegistry)
-      .find(([_, comp]) => comp === component)?.[0] || '';
+    return (
+      Object.entries(this.componentRegistry).find(
+        ([_, comp]) => comp === component,
+      )?.[0] || ''
+    );
   }
 
   clearRoutes() {

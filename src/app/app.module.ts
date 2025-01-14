@@ -56,6 +56,7 @@ import { NgOptimizedImage } from '@angular/common';
 import { DragDropModule } from 'primeng/dragdrop';
 import { BadgeModule } from 'primeng/badge';
 import {
+  withDevtools,
   provideTanStackQuery,
   QueryClient,
 } from '@tanstack/angular-query-experimental';
@@ -72,12 +73,12 @@ import { PromptImageGeneratorComponent } from './components/prompt-image-generat
 import { DividerModule } from 'primeng/divider';
 import { AuthCardButtonComponent } from './Elements/auth-card-button/auth-card-button.component';
 import { GoogleAuthButtonComponent } from './Elements/google-auth-button/google-auth-button.component';
-import { FacebookAuthButtonComponent } from './Elements/facebook-auth-button/facebook-auth-button.component';
+import { GithubAuthButtonComponent } from './Elements/github-auth-button/github-auth-button.component';
 import { NotUserSvgComponent } from './Icons/not-user-svg/not-user-svg.component';
 import { CrossSvgComponent } from './Icons/cross-svg/cross-svg.component';
 import { PasswordModule } from 'primeng/password';
 import { FloatLabelModule } from 'primeng/floatlabel';
-import { SocialLoginModule, SocialAuthServiceConfig, GoogleLoginProvider, } from "@abacritt/angularx-social-login";
+
 import { OAuthService, provideOAuthClient } from 'angular-oauth2-oidc';
 import { AuthTempPageComponent } from './Pages/Auth/auth-temp-page/auth-temp-page.component';
 import { PrivacyComponent } from './Pages/Extras/privacy/privacy.component';
@@ -86,16 +87,25 @@ import { DeleteAllComponent } from './Pages/Extras/delete-all/delete-all.compone
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { MessagesModule } from 'primeng/messages';
-
+import { EmailAuthButtonComponent } from './Elements/email-auth-button/email-auth-button.component';
+import { VerifyauthComponent } from './Pages/Auth/verifyauth/verifyauth.component';
+import { OnboardingComponent } from './Pages/Auth/onboarding/onboarding.component';
+import { HomeTopNavComponent } from './components/home-top-nav/home-top-nav.component';
+import { MainServicePageComponent } from './Pages/Services/main-service-page/main-service-page.component';
+import { ProductTrackPageComponent } from './Pages/Services/product-track-page/product-track-page.component';
+import { AnimatedTextComponent } from './components/animated-text/animated-text.component';
+import { TextMarqueeComponent } from './components/text-marquee/text-marquee.component';
+import { ProductSearchPageComponent } from './Pages/Services/product-search-page/product-search-page.component';
+import { SharedModule } from './Shared.module';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCaIXFDRaspdyI7fy1dtU2fESwjTIAjQCo",
-  authDomain: "dropzone-20a6d.firebaseapp.com",
-  projectId: "dropzone-20a6d",
-  storageBucket: "dropzone-20a6d.firebasestorage.app",
-  messagingSenderId: "801561768381",
-  appId: "1:801561768381:web:e22815cb0adfc3247a22d4",
-  measurementId: "G-ZMT69PGC4G"
+  apiKey: 'AIzaSyCaIXFDRaspdyI7fy1dtU2fESwjTIAjQCo',
+  authDomain: 'dropzone-20a6d.firebaseapp.com',
+  projectId: 'dropzone-20a6d',
+  storageBucket: 'dropzone-20a6d.firebasestorage.app',
+  messagingSenderId: '801561768381',
+  appId: '1:801561768381:web:e22815cb0adfc3247a22d4',
+  measurementId: 'G-ZMT69PGC4G',
 };
 
 @NgModule({
@@ -129,12 +139,18 @@ const firebaseConfig = {
     PromptImageGeneratorComponent,
     AuthCardButtonComponent,
     GoogleAuthButtonComponent,
-    FacebookAuthButtonComponent,
+    GithubAuthButtonComponent,
     NotUserSvgComponent,
     CrossSvgComponent,
     AuthTempPageComponent,
     PrivacyComponent,
     DeleteAllComponent,
+    EmailAuthButtonComponent,
+    VerifyauthComponent,
+    OnboardingComponent,
+    ProductTrackPageComponent,
+    AnimatedTextComponent,
+    TextMarqueeComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),
@@ -142,6 +158,7 @@ const firebaseConfig = {
     BrowserModule,
     MenubarModule,
     FloatLabelModule,
+    SharedModule,
     MessagesModule,
     DragDropModule,
     ToolbarModule,
@@ -194,9 +211,8 @@ const firebaseConfig = {
         },
       }),
     ),
-    
+
     provideOAuthClient(),
-    
   ],
   bootstrap: [AppComponent],
 })

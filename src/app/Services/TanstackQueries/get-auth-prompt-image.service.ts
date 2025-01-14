@@ -13,7 +13,7 @@ export class GetPromptIamgeService {
       prompt: prompt,
     };
     return {
-      queryKey: ['products',prompt],
+      queryKey: ['products', prompt],
       queryFn: () =>
         lastValueFrom(
           this.http.post<any>(

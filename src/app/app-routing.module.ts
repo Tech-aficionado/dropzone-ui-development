@@ -19,6 +19,10 @@ import { AdminComponent } from './Pages/admin/admin.component';
 import { DynamicRouteService } from './Services/Routes/dynamic-route.service';
 import { PrivacyComponent } from './Pages/Extras/privacy/privacy.component';
 import { DeleteAllComponent } from './Pages/Extras/delete-all/delete-all.component';
+import { VerifyauthComponent } from './Pages/Auth/verifyauth/verifyauth.component';
+import { MainServicePageComponent } from './Pages/Services/main-service-page/main-service-page.component';
+import { AuthTempPageComponent } from './Pages/Auth/auth-temp-page/auth-temp-page.component';
+import { ProductSearchPageComponent } from './Pages/Services/product-search-page/product-search-page.component';
 
 const AppName = ' |  DropZone';
 
@@ -50,12 +54,15 @@ const routes: Routes = [
     path: 'products',
     component: ProductsComponent,
     title: `Products${AppName}`,
-    canActivate: [AuthenticationGaurds],
+  },
+  {
+    path: 'services',
+    loadChildren: () => import('./Pages/Services/services.module')
+      .then(m => m.ServiceModule)
   },
   {
     path: 'cart',
     component: CartComponent,
-    canActivate: [AuthenticationGaurds],
     title: `Cart${AppName}`,
   },
   {
@@ -83,18 +90,19 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes, { bindToComponentInputs: true })],
   exports: [RouterModule],
-  providers: [{
-    provide: APP_INITIALIZER,
-    useFactory: (routeConfig: DynamicRouteService) => {
-      return () => routeConfig.initializeRoutes();
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (routeConfig: DynamicRouteService) => {
+        return () => routeConfig.initializeRoutes();
+      },
+      deps: [DynamicRouteService],
+      multi: true,
     },
-    deps: [DynamicRouteService],
-    multi: true
-  }]
+  ],
 })
 export class AppRoutingModule {
   constructor(private dynamicRouteService: DynamicRouteService) {
-    
     this.dynamicRouteService.initializeRoutes();
   }
 }

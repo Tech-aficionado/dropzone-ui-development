@@ -4,7 +4,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { SecureLocalStorageService } from '../SecureLocalStorage/secure-local-storage.service';
 import { queryOptions } from '@tanstack/angular-query-experimental';
 import { lastValueFrom } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BackendIP } from 'Konstants';
 
 type ProductType = {
@@ -24,7 +24,12 @@ type ProductType = {
   }[];
   status: number;
 };
-
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    'ngrok-skip-browser-warning': 'true',
+  }),
+};
 @Injectable({
   providedIn: 'root',
 })
@@ -43,6 +48,7 @@ export class GetProductsService {
         lastValueFrom(
           this.http.get<ProductType>(
             `${BackendIP}/jholi-services/products/getProducts`,
+            httpOptions,
           ),
         ),
     };

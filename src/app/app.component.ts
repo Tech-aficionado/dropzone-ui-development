@@ -8,9 +8,11 @@ import {
   Router,
   RouterEvent,
 } from '@angular/router';
+
 import { QueryClient } from '@tanstack/angular-query-experimental';
 import { createSyncStoragePersister } from '@tanstack/query-sync-storage-persister';
 import { MessageService } from 'primeng/api';
+import { AuthService } from './Services/Auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -23,6 +25,8 @@ export class AppComponent implements OnInit {
   constructor(
     private router: Router,
     private messageService: MessageService,
+    private auth: AuthService,
+    private authService: AuthService,
   ) {
     this.router.events.subscribe((event: any) => {
       this.checkRouterEvent(event);
@@ -47,33 +51,42 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.items = [
       {
-          icon: 'pi pi-pencil',
-          command: () => {
-              this.messageService.add({ severity: 'info', summary: 'Add', detail: 'Data Added' ,sticky:true});
-          }
+        icon: 'pi pi-pencil',
+        command: () => {
+          this.messageService.add({
+            severity: 'info',
+            summary: 'Add',
+            detail: 'Data Added',
+            sticky: true,
+          });
+        },
       },
       {
-          icon: 'pi pi-refresh',
-          command: () => {
-              this.messageService.add({ severity: 'success', summary: 'Update', detail: 'Data Updated' });
-          }
+        icon: this.auth.isAuthenticated() ? 'pi pi-sign-out' : 'pi pi-sign-in',
+        command: () => {
+          this.authService.logout();
+          this.router.navigate(['login']);
+        },
       },
       {
-          icon: 'pi pi-trash',
-          command: () => {
-              this.messageService.add({ severity: 'error', summary: 'Delete', detail: 'Data Deleted' });
-          }
+        icon: 'ph ph-house-line',
+        command: () => {
+          this.router.navigate(['home']);
+        },
       },
       {
-          icon: 'pi pi-upload',
-          routerLink: ['/fileupload']
+        icon: 'ph ph-wrench',
+        command: () => {
+          this.router.navigate(['services']);
+        },
       },
       {
-          icon: 'pi pi-external-link',
-          target: '_blank',
-          url: 'http://angular.io'
-      }
-  ];
+        icon: 'ph ph-user-gear',
+        command: () => {
+          this.router.navigate(['account']);
+        },
+      },
+    ];
   }
   persister = createSyncStoragePersister({ storage: window.localStorage });
 }
