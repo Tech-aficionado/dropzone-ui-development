@@ -1,0 +1,64 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap" rel="stylesheet">
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<div class="card auth-page lines">
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+
+  <div class="auth-card p-1">
+    <div class="pt-3 pl-2 pb-2 flex auth-card-top-header flex-row">
+      <div class="flex">
+        <img
+          src="../../../../assets/parachute.png"
+          height="36px"
+          width="36px"
+          alt=""
+        />
+      </div>
+      <div class="flex">
+        <h3 style="    font-family: 'Doto', serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        font-variation-settings: 'ROND' 0;
+        margin: 0px;
+        padding: 0px;
+        font-size: 35px;">DropZone</h3>
+      </div>
+    </div>
+
+    <div class="pl-3 pt-3 auth-card-header">Verify</div>
+    <div class="pl-3 pb-1 font-semibold auth-card-subheader">
+      <p>Please enter the code sent to your mail</p>
+      <div>
+        <div class="logos--google-gmail"></div>
+        Open
+      </div>
+    </div>
+    <div class="p-1 flex flex-column auth-card-content">
+      <p-inputOtp [(ngModel)]="value" [integerOnly]="true" />
+      <app-email-auth-button
+        [loading]="loading"
+        (click)="Phase2Authentication()"
+        class="pt-4 pl-3 pr-3 w-full"
+      ></app-email-auth-button>
+
+      <div class="pt-2">
+        <p class="text-xs flex-end font-semibold">
+          Didn't got the code ?
+          <a
+            class="text-blue-500 font-normal font-semibold"
+            href="register?mode=all"
+            >Resend</a
+          >
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p-toast styleClass="pl-4 sm:pl-4 md:pl-4 lg:pl-0 xl:pl-0"> </p-toast>
