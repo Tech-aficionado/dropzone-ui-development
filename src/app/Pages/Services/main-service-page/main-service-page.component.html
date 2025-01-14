@@ -1,0 +1,46 @@
+<div class="home-image"></div>
+<div class="card home-page lines flex-column">
+  <div class="center-patch"></div>
+  <div class="center-patch"></div>
+  <!-- <div class="dot-overlay"></div> -->
+  <div
+    class="flex justify-content-between align-items-center home-page1-header"
+  >
+    <div
+      (click)="router.navigate(['home'])"
+      class="animate__animated animate__backInDown animate__delay-1s pl-2 justify-content-start flex flex-row align-items-center"
+    >
+      <div class="flex">
+        <h2 style="margin: 0px; padding: 0px">Services</h2>
+      </div>
+    </div>
+    <div
+      class="block lg:hidden xl:hidder justify-content-end align-items-center mr-2"
+    >
+      <div class="fluent--list-16-filled"></div>
+    </div>
+    <div
+      class="hidden lg:block xl:block justify-content-end align-items-center mr-2"
+    >
+      <div
+        class="flex animate__animated animate__backInDown animate__delay-2s align-items-center justify-content-center pt-3"
+      >
+        <app-home-top-nav
+          class="animate__animated animate__rubberBand animate__delay-4s"
+        ></app-home-top-nav>
+      </div>
+    </div>
+    <div
+      class="hidden lg:block xl:block justify-content-end animate__animated animate__backInDown animate__delay-3s align-items-center mr-4"
+    >
+      <p
+        class="px-2 py-2 border-round bg-white font-semibold"
+        style="color: black"
+      >
+        Get Started
+      </p>
+    </div>
+  </div>
+  <div class="flex justify-content-center pt-5 home-page1-content"></div>
+  <div class="flex align-items-center home-page1-footer"></div>
+</div>
