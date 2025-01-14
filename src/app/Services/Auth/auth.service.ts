@@ -1,10 +1,22 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector, runInInjectionContext } from '@angular/core';
 import { Observable, Observer } from 'rxjs';
 import { DatabaseOperationsService } from '../database-services/database-operations.service';
-import { ExistingUserSchema, NewUserSchema } from '../Schemas/Auth-schema';
+import {
+  ExistingUserSchema,
+  NewUserSchema,
+  UserLoginPhase2VerificationSchema,
+  usernameCheck,
+  UserOtpSchema,
+} from '../Schemas/Auth-schema';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { SecureLocalStorageService } from '../SecureLocalStorage/secure-local-storage.service';
 import { result } from 'lodash';
+import {
+  CreateMutationResult,
+  injectMutation,
+  injectQuery,
+  MutateOptions,
+} from '@tanstack/angular-query-experimental';
 const CurrentDate = new Date();
 // import * as tt from 'jsonwebtoken'
 
@@ -16,48 +28,58 @@ const SECRET =
 export class AuthService {
   public isUserLoggedIn!: Observer<boolean>;
   UserToken!: any;
-  res!: any;
+  res!: CreateMutationResult<Object, Error, ExistingUserSchema, unknown>;
   constructor(
     private databaseOperation: DatabaseOperationsService,
     private JWTService: JwtHelperService,
     private localStorage: SecureLocalStorageService,
+    private injector: Injector,
   ) {}
 
-  public login(
-    UserDetails: ExistingUserSchema,
-    callback: (result: any) => void,
-  ) {
-    return this.databaseOperation.loginExistingUser(UserDetails).subscribe({
-      next: (value) => {
-        const res = this.Phase1Verification(value);
-        callback(res);
-      },
-      error: (err) => {
-        this.res = err;
-      },
-    });
+  public login(): CreateMutationResult<
+    Object,
+    Error,
+    ExistingUserSchema,
+    unknown
+  > {
+    return this.databaseOperation.loginExistingUser({} as ExistingUserSchema);
   }
 
-  public register(UserDetails: NewUserSchema): Observable<any> | undefined {
-    let res: string | undefined = undefined;
-    this.databaseOperation.registerUser(UserDetails).subscribe({
-      next(response) {
-        res = response;
-      },
-      error(err) {
-        res = err;
-      },
-    });
-    return res;
+  public OtpAuth(): CreateMutationResult<
+    Object,
+    Error,
+    UserOtpSchema,
+    unknown
+  > {
+    return this.databaseOperation.sendOtp({} as UserOtpSchema);
   }
 
-  public isAuthenticated(token: string) {
-    this.UserToken = token;
-    const t = this.JWTService.isTokenExpired(token);
-    if (!this.JWTService.isTokenExpired(token)) {
+  public Phase2Verification(): CreateMutationResult<
+    Object,
+    Error,
+    UserLoginPhase2VerificationSchema,
+    unknown
+  > {
+    return this.databaseOperation.verifyOtp(
+      {} as UserLoginPhase2VerificationSchema,
+    );
+  }
+
+  public register(): CreateMutationResult<
+    Object,
+    Error,
+    NewUserSchema,
+    unknown
+  > {
+    return this.databaseOperation.registerUser({} as NewUserSchema);
+  }
+
+  public isAuthenticated() {
+    this.UserToken = this.localStorage.getItem('Access_token');
+    const t = this.JWTService.isTokenExpired(this.UserToken);
+    if (!this.JWTService.isTokenExpired(this.UserToken)) {
       return true;
     } else {
-      alert('InValid Token');
       return false;
     }
   }
@@ -95,63 +117,54 @@ export class AuthService {
     let responseCode = response.status_code;
     if (responseCode == 203) {
       return {
-        LoginStatus: 'No Entries',
+        Status: 'No Entries',
       };
     } else {
       if (responseCode == 404) {
         return {
-          LoginStatus: 'User Not Found',
+          Status: 'User Not Found',
         };
       } else {
-        if (responseCode == 401) {
+        if (responseCode == 208) {
           return {
-            LoginStatus: "Password didn't match",
+            Status: 'Already Reported',
           };
         } else {
-          return {
-            LoginStatus: 'Success',
-          };
+          if (responseCode == 401) {
+            return {
+              Status: "Password didn't match",
+            };
+          } else {
+            if (responseCode == 202 || responseCode == 201) {
+              return {
+                Status: 'Success',
+              };
+            } else {
+              return {
+                Status: 'error',
+                response: response.detail,
+              };
+            }
+          }
         }
       }
     }
-  }
-
-  public OtpAuth(useremail: string, callback: (result: any) => void) {
-    return this.databaseOperation.sendOtp(useremail).subscribe({
-      next(value) {
-        callback(value);
-      },
-    });
-  }
-
-  public Phase2Verification(response: any, callback: (result: any) => void) {
-    this.databaseOperation.verifyOtp(response).subscribe({
-      next: (value) => {
-        const verify = this.authentications180(value);
-        callback(verify);
-      },
-    });
   }
 
   public logout() {
     this.localStorage.clear();
   }
 
-  public checkUsernameAvailability(
-    username: any,
-    callback: (result: any) => void,
-  ) {
-    this.databaseOperation.checkUsername(username).subscribe({
-      next(value) {
-        callback(value);
-      },
-    });
+  public checkUsernameAvailability(): CreateMutationResult<
+    Object,
+    Error,
+    usernameCheck,
+    unknown
+  > {
+    return this.databaseOperation.checkUsername({} as usernameCheck);
   }
 
-  public checkEmailRegistery(
-    email: any,
-    callback: (result: any) => void,
-  ) {
+  public checkEmailRegistery(email: any, callback: (result: any) => void) {
     this.databaseOperation.checkEmail(email).subscribe({
       next(value) {
         callback(value);

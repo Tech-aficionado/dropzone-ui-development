@@ -20,7 +20,7 @@ export const AuthenticationGaurds: CanActivateFn = (route: any, state: any) => {
       detail: 'Kindly Login / Register to Access',
     });
     return false;
-  } else if (authService.isAuthenticated(token)) {
+  } else if (authService.isAuthenticated()) {
     if (location.path() == '/login' || location.path() == '/register') {
       messageService.add({
         severity: 'info',
@@ -32,7 +32,7 @@ export const AuthenticationGaurds: CanActivateFn = (route: any, state: any) => {
     }
 
     return true;
-  } else if (!authService.isAuthenticated(token)) {
+  } else if (!authService.isAuthenticated()) {
     messageService.add({
       severity: 'error',
       summary: 'Session Expired',

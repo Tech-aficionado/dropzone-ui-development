@@ -5,16 +5,13 @@ import { DynamicRouteService } from '../Routes/dynamic-route.service';
 import { AdminComponent } from 'src/app/Pages/admin/admin.component';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthGoogleService {
-
   private oAuthService = inject(OAuthService);
   private router = inject(Router);
 
-  constructor(
-    private dynamicRoute: DynamicRouteService
-  ) {
+  constructor(private dynamicRoute: DynamicRouteService) {
     this.initConfiguration();
   }
 
@@ -22,10 +19,11 @@ export class AuthGoogleService {
     const authConfig: AuthConfig = {
       issuer: 'https://accounts.google.com',
       strictDiscoveryDocumentValidation: false,
-      clientId: '329132298298-h0rt4dcphtfh1eja6v3stl5fbk50m489.apps.googleusercontent.com',
+      clientId:
+        '329132298298-h0rt4dcphtfh1eja6v3stl5fbk50m489.apps.googleusercontent.com',
       redirectUri: window.location.origin + '/app-google-signin-temp',
       scope: 'openid profile email',
-  responseType: 'id_token token'
+      responseType: 'id_token token',
     };
 
     this.oAuthService.configure(authConfig);
@@ -36,7 +34,7 @@ export class AuthGoogleService {
   login() {
     this.oAuthService.initImplicitFlow();
     const profile = this.oAuthService.getIdentityClaims();
-    console.log(profile)
+    console.log(profile);
   }
 
   logout() {
@@ -46,7 +44,7 @@ export class AuthGoogleService {
 
   getProfile() {
     const profile = this.oAuthService.getIdentityClaims();
-    console.log(profile)
+    console.log(profile);
     return profile;
   }
 
