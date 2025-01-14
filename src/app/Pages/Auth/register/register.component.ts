@@ -20,20 +20,27 @@ import { user_register_props } from './register-response-map';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MenuItem, MessageService } from 'primeng/api';
 import { BehaviorSubject, tap } from 'rxjs';
-import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { GetPromptIamgeService } from 'src/app/Services/TanstackQueries/get-auth-prompt-image.service';
-import { injectQuery } from '@tanstack/angular-query-experimental';
+import {
+  CreateMutationResult,
+  injectQuery,
+} from '@tanstack/angular-query-experimental';
 import { DomSanitizer } from '@angular/platform-browser';
+import { AuthGithubService } from 'src/app/Services/Auth/auth-github.service';
+import { AuthGoogleService } from 'src/app/Services/Auth/auth-google.service';
+import { DynamicRouteService } from 'src/app/Services/Routes/dynamic-route.service';
+import { AuthTempPageComponent } from '../auth-temp-page/auth-temp-page.component';
+import {
+  NewUserSchema,
+  usernameCheck,
+} from 'src/app/Services/Schemas/Auth-schema';
+import { SecureLocalStorageService } from 'src/app/Services/SecureLocalStorage/secure-local-storage.service';
+import { VerifyauthComponent } from '../verifyauth/verifyauth.component';
+import { OnboardingComponent } from '../onboarding/onboarding.component';
 const emailRegex = /^[^\s@]+@([^\s@]+)$/i;
-const passwordRegex = new RegExp([
-  '^',
-  '(?=.*[A-Z])',  
-  '(?=.*[a-z])',  
-  '(?=.*[0-9])',  
-  '(?=.*[!@#$%^&*()_+\\-=\\[\\]{};\':"\\\\|,.<>/?])',  
-  '.{8,}',  
-  '$'
-].join(''));
+const passwordRegex = new RegExp(
+  ['^', '(?=.*[A-Z])', '(?=.*[a-z])', '(?=.*[0-9])', '.{8,}', '$'].join(''),
+);
 interface UploadEvent {
   originalEvent: Event;
   files: File[];
@@ -45,7 +52,7 @@ interface UploadEvent {
   providers: [MessageService],
   styleUrls: ['./register.component.css'],
 })
-export class RegisterComponent implements OnInit,AfterViewInit {
+export class RegisterComponent implements OnInit, AfterViewInit {
   form: FormGroup;
   @Input() usernameId!: string;
   @Input() tt!: any;
@@ -56,68 +63,178 @@ export class RegisterComponent implements OnInit,AfterViewInit {
   userCheckFail: any = true;
   userCheckPass: any = true;
   active: number | undefined = 0;
-  userCheck!: any;
+  usernameCheckMutateFn!: CreateMutationResult<
+    Object,
+    Error,
+    usernameCheck,
+    unknown
+  >;
+  registerUserMutateFn!: CreateMutationResult<
+    Object,
+    Error,
+    NewUserSchema,
+    unknown
+  >;
+  userCheck: any;
   progress: number = 0;
   timeProgress: number = 0;
-    interval!: any;
-    preservedEmail:string = ''
-    mode!:boolean
-  
+  interval!: any;
+  preservedEmail: string = '';
+  mode!: boolean;
+
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
     private sanitizer: DomSanitizer,
-    private router: Router,
+    public router: Router,
     private messageService: MessageService,
+    private localstorage: SecureLocalStorageService,
     private route: ActivatedRoute,
     public getProduct: GetPromptIamgeService,
+    private googlesign: AuthGoogleService,
+    private githubsign: AuthGithubService,
+    private dynamicRoute: DynamicRouteService,
     private injector: Injector,
   ) {
+    this.usernameCheckMutateFn = this.authService.checkUsernameAvailability();
+    this.registerUserMutateFn = this.authService.register();
     this.form = this.fb.group({
       register_username: ['', Validators.required],
       register_firstname: ['', Validators.required],
       register_lastname: ['', Validators.required],
-      register_email: ['', [Validators.required, Validators.pattern(emailRegex)]],
-      register_password: ['', [Validators.required,Validators.pattern(passwordRegex)]],
+      register_email: [
+        '',
+        [Validators.required, Validators.pattern(emailRegex)],
+      ],
+      register_password: [
+        '',
+        [Validators.required, Validators.pattern(passwordRegex)],
+      ],
     });
   }
-  next() {
-    if (this.otpValue == '1234') {
-      this.loading = true;
-      setTimeout(() => {
-        this.isloading = this.isloading ? false : true;
-        this.loading = false;
-      }, 2000);
-    } else {
-      this.messageService.add({
+
+  onFormSubmit() {
+    if (this.form.invalid)
+      return this.messageService.add({
         severity: 'error',
         summary: 'Input Error',
-        detail: 'Errorororororo 🧐🧐🧐',
+        key: 'other',
+        detail: 'Kindly fill the inputs properly...',
       });
-    }
-  }
-  onFormSubmit() {
+
     const values = {
-      [user_register_props.fullanme]: this.form.value['register_fullname'],
+      [user_register_props.firstname]: this.form.value['register_firstname'],
+      [user_register_props.lastname]: this.form.value['register_lastname'],
       [user_register_props.userId]: this.form.value['register_username'],
       [user_register_props.email]: this.form.value['register_email'],
       [user_register_props.password]: this.form.value['register_password'],
     };
 
-    this.visible = true;
+    this.loading = true;
+    this.registerUserMutateFn.mutate(values, {
+      onSuccess: (res) => {
+        console.log(res);
+        const response = this.authService.Phase1Verification(res);
+        if (response.Status == 'Already Reported') {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Input Error',
+            detail: 'Username and Password can not be empty 🧐🧐🧐',
+          });
+        } else if (response.Status == 'Success') {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Thanks for registering',
+            detail: 'Please Proceed further to authenticate 😀😀😀',
+          });
+
+          this.loading = false;
+          this.localstorage.setItem(
+            'UserEmail',
+            values[user_register_props.email],
+          );
+          this.localstorage.setItem(
+            'UserFirstName',
+            values[user_register_props.firstname],
+          );
+          this.localstorage.setItem(
+            'UserLastName',
+            values[user_register_props.lastname],
+          );
+          this.dynamicRoute.addRoute(
+            'verify-account',
+            VerifyauthComponent,
+            'Verify Your Account | Dropzone',
+          );
+          this.router.navigate(['verify-account']);
+        }
+      },
+    });
+
     console.log(values);
   }
 
-  visible: boolean = false;
+  signInWithGoogle() {
+    this.dynamicRoute.addRoute(
+      'app-google-signin-temp',
+      AuthTempPageComponent,
+      'Authorize',
+    );
+    this.googlesign.login();
+  }
+  signInWithGithub() {
+    this.dynamicRoute.addRoute(
+      'app-github-signin-temp',
+      AuthTempPageComponent,
+      {
+        title: 'Authorize',
+      },
+    );
+    this.githubsign
+      .login()
+      .then((result) =>
+        this.router.navigate(['app-github-signin-temp'], {
+          queryParams: { tokenization: JSON.stringify(result) },
+        }),
+      )
+      .catch((error) => console.error('Login failed', error));
+  }
 
-  showDialog() {
-    this.visible = true;
+  ngOnInit(): void {
+    this.dynamicRoute.addRoute(
+      'onboarding',
+      VerifyauthComponent,
+
+      'OnBoarding | Dropzone',
+    );
+    // this.router.navigate(['onboarding'],{queryParams: {firstname: this.localstorage.getItem('UserFirstName'),lastname:this.localstorage.getItem('UserLastName')}});
+    this.route.queryParams.subscribe((params) => {
+      console.log(params['email']); // { order: "popular" }
+      this.preservedEmail = params['email'];
+      this.mode = params['mode'] == 'all' ? true : false;
+    });
+
+    const currentUrl = this.router.url.toLowerCase();
+    if (currentUrl.includes('register') && !currentUrl.includes('?')) {
+      this.router.navigate(['/register'], { queryParams: { mode: 'all' } });
+    }
+  }
+
+  ngAfterViewInit(): void {
+    this.form.get('register_email')?.setValue(this.preservedEmail);
+    if (this.preservedEmail)
+      this.form.get('register_email')?.markAllAsTouched();
   }
   checkUsernameIfAlreadyExists() {
-    if (this.form.value['register_username'] == '') return;
-    this.authService.checkUsernameAvailability(
-      this.form.value['register_username'],
-      (response) => {
+    if (this.form.value['register_username'] == '') {
+      this.userCheck = 'Username is Required';
+      return;
+    }
+    const payload: usernameCheck = {
+      user_name: this.form.value['register_username'],
+    };
+    this.usernameCheckMutateFn.mutate(payload, {
+      onSuccess: (response) => {
         if (response == 208) {
           this.userCheckPass = true;
           this.userCheckFail = false;
@@ -129,40 +246,12 @@ export class RegisterComponent implements OnInit,AfterViewInit {
           this.userCheck = 'Available';
           setTimeout(() => {
             this.userCheckPass = true;
-          }, 2000);
-        } else {
-          console.error(response);
+          }, 1000);
         }
       },
-    );
+      onError: (error) => {
+        console.error(error);
+      },
+    });
   }
-  ngOnInit(): void {
-    this.route.queryParams
-      .subscribe(params => {
-        console.log(params['email']); // { order: "popular" }
-        this.preservedEmail = params['email']
-        this.mode = params['mode'] == 'all' ? true : false
-      }
-    );
-  }
-
-  ngAfterViewInit(): void {
-    this.form.get('register_email')?.setValue(this.preservedEmail)
-  }
-
-   onSignIn(googleUser:any) {
-    var profile = googleUser.getBasicProfile();
-    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-    console.log('Name: ' + profile.getName());
-    console.log('Image URL: ' + profile.getImageUrl());
-    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-  }
-
-  onClose() {
-    this.visible = false;
-    this.messageService.clear('confirm')
-}
-
-
-  
 }

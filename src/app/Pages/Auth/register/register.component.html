@@ -1,3 +1,6 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap" rel="stylesheet">
 <div class="card auth-page lines">
   <div class="line"></div>
   <div class="line"></div>
@@ -5,93 +8,220 @@
   <div class="line"></div>
   <div class="line"></div>
 
-<div class="auth-card p-1">
-  <div class="pt-3 pl-2 pb-2 flex auth-card-top-header flex-row"><div class="flex"><img src="../../../../assets/parachute.png" height="36px" width="36px" alt=""></div><div class="flex"><h3 style="margin: 0px;padding: 0px;">DropZone</h3></div></div>
-  
-  <div class="pl-3 pt-3 auth-card-header">Register</div>
-  <div class="pl-3 pb-2 auth-card-subheader"><p>Join for exclusive deals and perks</p></div>
-  <div class="p-1 flex flex-column auth-card-content" *ngIf="!mode">
-    
-    <ng-input-box
-      [form]="form"
-      [marginBottom]="'10px'"
-      [width]="'100%'"
-      label_color="black"
-      tabindex="1"
-      input_bg="transparent"
-      input_color="#222222"
-      color="black"
-      class="w-full pl-3 pr-3 pb-2"
-      [fieldIconName]="'pi pi-envelope'"
-      [fieldId]="'register_email'"
-      [fieldLabel]="'E-mail'"
-      [inputType]="'email'"
-    >
-    </ng-input-box>
-    <div class="flex pl-3 pr-3 pb-3 gap-3 w-full flex-row  justify-content-center align-items-center">
-      <div class="flex w-full ">
-        <ng-input-box
-        [form]="form"
-        [width]="'100%'"
-        label_color="black"
-        input_bg="transparent"
-        input_color="#222222"
-        tabindex="2"
-        color="black"
-        class=" w-full "
-        [fieldIconName]="'pi pi-user'"
-        [fieldId]="'register_firstname'"
-        [fieldLabel]="'First Name'"
-        [inputType]="'text'"
-      >
-      </ng-input-box>
+  <div
+    class="auth-card animate__animated animate__backInDown animate__delay-1s animate__fast p-1"
+  >
+    <div class="pt-3 pl-2 pb-2 flex auth-card-top-header flex-row">
+      <div class="flex">
+        <img
+          src="../../../../assets/parachute.png"
+          height="36px"
+          width="36px"
+          alt=""
+        />
       </div>
-      <div class="flex w-full ">
-        <ng-input-box
-        [form]="form"
-        [width]="'100%'"
-        label_color="black"
-        input_bg="transparent"
-        input_color="#222222"
-        color="black"
-        class=" w-full "
-        tabindex="3"
-        [fieldIconName]="'pi pi-user'"
-        [fieldId]="'register_lastname'"
-        [fieldLabel]="'Last Name'"
-        [inputType]="'text'"
-      >
-      </ng-input-box>
+      <div class="flex">
+        <h3 style="    font-family: 'Doto', serif;
+        font-optical-sizing: auto;
+        font-weight: 300;
+        font-style: normal;
+        font-variation-settings: 'ROND' 0;
+        margin: 0px;
+        padding: 0px;
+        font-size: 35px;">DropZone</h3>
       </div>
     </div>
-    <ng-input-box
-    [form]="form"
-    [marginBottom]="'10px'"
-    [width]="'100%'"
-    label_color="black"
-    input_bg="transparent"
-    input_color="#222222"
-    color="black"
-    class="w-full pl-3 pr-3"
-    tabindex="4"
-    [fieldIconName]="'pi pi-key'"
-    [fieldId]="'register__password'"
-    [toggleMask]="true"
-    [fieldLabel]="'Password'"
-    [inputType]="'password'"
-  >
-  </ng-input-box>
-    <app-auth-card-button [style]="{'width':'100%'}"  class="pt-2 pl-3 pr-3" Title="Get Started"></app-auth-card-button>
-  <div>
-    <p class="text-xs">Already user ? <a class="text-blue-500 font-italic" href="login" >Login <i class="text-xs underline text-blue-500 pi pi-arrow-right"></i></a></p>
+
+    <div
+      class="pl-3 pt-3 auth-card-header animate__animated animate__lightSpeedInRight animate__delay-2s auth-card-header"
+    >
+      Register
+    </div>
+    <div
+      class="pl-3 pb-2 auth-card-header animate__animated animate__lightSpeedInRight animate__delay-2s auth-card-subheader"
+    >
+      <p>Join for exclusive deals and perks</p>
+    </div>
+    <div
+      class="p-1 flex  flex-column auth-card-content"
+      *ngIf="!mode"
+    >
+      <ng-input-box
+        [form]="form"
+        [width]="'100%'"
+        label_color="black"
+        tabindex="1"
+        input_bg="transparent"
+        HelperText="Enter a valid email address (e.g., john@doe.com)"
+        input_color="#222222"
+        errorMessage="Email address is Required"
+        color="black"
+        class="w-full pl-3 animate__animated animate__flipInX animate__delay-3s pr-3 pb-3"
+        [fieldIconName]="'ph ph-microsoft-outlook-logo'"
+        [fieldId]="'register_email'"
+        [fieldLabel]="'E-mail'"
+        [inputType]="'email'"
+      >
+      </ng-input-box>
+      <div
+        class="flex pl-3 pr-3 pb-3 gap-3 w-full lg:flex-row xl:flex-row flex-column justify-content-center align-items-center"
+      >
+        <div class="flex w-full">
+          <ng-input-box
+            [form]="form"
+            [width]="'100%'"
+            label_color="black"
+            input_bg="transparent"
+            input_color="#222222"
+            color="black"
+            HelperText="Enter your legal first name"
+            errorMessage="First name is required"
+            class="w-full animate__animated animate__flipInX animate__delay-3s "
+            tabindex="2"
+            [fieldIconName]="'ph ph-user-circle-dashed'"
+            [fieldId]="'register_firstname'"
+            [fieldLabel]="'First Name'"
+            [inputType]="'text'"
+          >
+          </ng-input-box>
+        </div>
+        <div class="flex w-full">
+          <ng-input-box
+            [form]="form"
+            [width]="'100%'"
+            label_color="black"
+            input_bg="transparent"
+            input_color="#222222"
+            color="black"
+            HelperText="Enter your legal last name"
+            errorMessage="Last name is required"
+            class="w-full animate__animated animate__flipInX animate__delay-3s "
+            tabindex="3"
+            [fieldIconName]="'ph ph-user-circle-dashed'"
+            [fieldId]="'register_lastname'"
+            [fieldLabel]="'Last Name'"
+            [inputType]="'text'"
+          >
+          </ng-input-box>
+        </div>
+      </div>
+      <div
+        class="flex pl-3 pr-3 pb-3 gap-3 w-full lg:flex-row xl:flex-row flex-column justify-content-center align-items-center"
+      >
+        <div class="flex w-full">
+          <ng-input-box
+            [form]="form"
+            [width]="'100%'"
+            label_color="black"
+            input_bg="transparent"
+            input_color="#222222"
+            HelperText="Choose a unique username"
+            color="black"
+            class="w-full animate__animated animate__flipInX animate__delay-3s "
+            tabindex="4"
+            [fieldIconName]="'ph ph-bug-droid'"
+            [fieldId]="'register_username'"
+            [errorMessage]="userCheck"
+            [toggleMask]="true"
+            [availibilityCheckErrorShow]="!userCheckFail"
+            [availibilityCheckSuccessShow]="!userCheckPass"
+            [userCheckMessage]="userCheck"
+            [fieldLabel]="'Username'"
+            [inputType]="'text'"
+            (blur)="checkUsernameIfAlreadyExists()"
+          >
+          </ng-input-box>
+        </div>
+        <div class="flex w-full">
+          <ng-input-box
+            [form]="form"
+            [width]="'100%'"
+            label_color="black"
+            input_bg="transparent"
+            input_color="#222222"
+            color="black"
+            class="w-full animate__animated animate__flipInX animate__delay-3s "
+            [pTooltip]="tooltipContent"
+            tooltipEvent="focus"
+            HelperText="Create a strong password"
+            [errorMessage]="'Password is not accepted'"
+            tabindex="5"
+            [fieldIconName]="'ph ph-password'"
+            [fieldId]="'register_password'"
+            [toggleMask]="true"
+            [fieldLabel]="'Password'"
+            [inputType]="'password'"
+          >
+          </ng-input-box>
+          <ng-template #tooltipContent class="w-full">
+            <div>
+              <h3>Pick a password</h3>
+            </div>
+            <div>
+              <p-divider />
+              <p class="mt-1">Required</p>
+              <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+                <li>At least one lowercase</li>
+                <li>At least one uppercase</li>
+                <li>At least one numeric</li>
+                <li>Minimum 8 characters</li>
+              </ul>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+
+      <app-email-auth-button
+        tabindex="6"
+        (click)="onFormSubmit()"
+        class="pt-2 pl-3 pr-3  animate__animated animate__flipInX animate__delay-3s  w-full"
+      ></app-email-auth-button>
+
+      <div
+        class="pt-2  animate__animated animate__flipInX animate__delay-3s "
+      >
+        <p class="text-xs">
+          Already user ?
+          <a class="text-blue-500 font-italic" href="login"
+            >Login
+            <i class="text-xs underline text-blue-500 pi pi-arrow-right"></i
+          ></a>
+        </p>
+      </div>
+    </div>
+    <div class="p-1 flex flex-column auth-card-content" *ngIf="mode">
+      <app-google-auth-button
+      
+      [loading]="false"
+        (click)="signInWithGoogle()"
+        class="w-full pt-2 pl-3  animate__animated animate__flipInX animate__delay-3s  pr-3"
+      ></app-google-auth-button>
+      <app-github-auth-button
+      
+      [loading]="false"
+        (click)="signInWithGithub()"
+        class="w-full pt-2 pl-3  animate__animated animate__flipInX animate__delay-3s  pr-3"
+      ></app-github-auth-button>
+      <app-email-auth-button
+        (click)="
+          router.navigate(['register'], { queryParams: { mode: 'email' } })
+        "
+        class="w-full pt-2  animate__animated animate__flipInX animate__delay-3s  pl-3 pr-3"
+      ></app-email-auth-button>
+
+      <div
+        class="pt-2  animate__animated animate__flipInX animate__delay-3s "
+      >
+        <p class="text-xs">
+          Already user ?
+          <a class="text-blue-500 font-italic" href="login"
+            >Login
+            <i class="text-xs underline text-blue-500 pi pi-arrow-right"></i
+          ></a>
+        </p>
+      </div>
+    </div>
   </div>
 </div>
-<div class="p-1 flex flex-column auth-card-content" *ngIf="mode">
-    
-  <app-auth-card-button [style]="{'width':'100%'}"  class="pt-2 pl-3 pr-3" Title="Get Started"></app-auth-card-button>
-<div>
-  <p class="text-xs">Already user ? <a class="text-blue-500 font-italic" href="login" >Login <i class="text-xs underline text-blue-500 pi pi-arrow-right"></i></a></p>
-</div>
-</div>
-</div>
-</div>
+
+<p-toast class="pl-9 sm:pl-6 md:pl-5 lg:pl-0 xl:pl-0"> </p-toast>
