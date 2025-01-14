@@ -8,10 +8,9 @@ describe('CrossSvgComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CrossSvgComponent]
-    })
-    .compileComponents();
-    
+      declarations: [CrossSvgComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(CrossSvgComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
