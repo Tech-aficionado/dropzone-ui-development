@@ -1,0 +1,121 @@
+<div class="home-image"></div>
+<div class="card home-page lines flex-column">
+  <div class="center-patch"></div>
+  <div class="center-patch"></div>
+  <!-- <div class="dot-overlay"></div> -->
+  <div
+    class="flex justify-content-between align-items-center home-page1-header"
+  >
+    <div
+      (click)="router.navigate(['home'])"
+      class="animate__animated animate__backInLeft animate__delay-1s pl-2 justify-content-start flex flex-row align-items-center"
+    >
+      <div class="flex">
+        <h2 style="margin: 0px; padding: 0px">Product Search</h2>
+      </div>
+    </div>
+    <div
+      class="block lg:hidden xl:hidder justify-content-end align-items-center mr-2"
+    >
+      <div class="fluent--list-16-filled"></div>
+    </div>
+    <div
+      class="hidden lg:block xl:block justify-content-end align-items-center mr-2"
+    >
+      <div
+        class="flex animate__animated animate__backInDown animate__delay-1s align-items-center justify-content-center pt-3"
+      >
+        <app-home-top-nav
+        ></app-home-top-nav>
+      </div>
+    </div>
+    <div
+      class="hidden lg:block xl:block justify-content-end animate__animated animate__backInRight animate__delay-1s align-items-center mr-4"
+    >
+      <p
+        class="px-2 py-2 border-round bg-white font-semibold"
+        style="color: black"
+      >
+        Get Started
+      </p>
+    </div>
+  </div>
+  <div class="flex justify-content-center home-page1-content">
+    <div class="flex  flex-column justify-content-center align-items-center animate__animated animate__animated animate__backInDown animate__delay-2s animate__delay-1s page-content-search-panel">
+        <div class="w-full flex lg:px-8 lg:mx-8 px-1 mx-1">
+            <p-inputGroup class="w-full ">
+                <p-inputGroupAddon>
+                    <i class="ph ph-magnifying-glass"></i>
+                </p-inputGroupAddon>
+                <input     [style]="{
+                    width: '100%',
+                    'background-color': 'white',
+                    'font-family': 'Kanit, serif;',
+                    fontSize: '15px',
+                    color: 'black',
+                  }" type="text" pInputText placeholder="Keyword" (keyup)="productSearch($event)" />
+    <p-button type="button"  pButton icon="ph ph-faders" (onClick)="op.toggle($event)" />
+                </p-inputGroup>
+        </div>
+        <div class="flex w-full xl:px-8 xl:mx-8 px-1 mx-1" >
+            <div class="w-full product-search-results-panel" >
+                <p-table [value]="products" [tableStyle]="{'min-width': '60rem'}">
+                    <ng-template pTemplate="body" let-product>
+                        <tr>
+                            <td>{{product.name}}</td>
+                            <td><img [src]="'https://primefaces.org/cdn/primeng/images/demo/product/' + product.image" [alt]="product.name" width="100" class="shadow-4" /></td>
+                            <td>{{product.price | currency:'USD'}}</td>
+                            <td>{{product.category}}</td>
+                            <td><p-rating [(ngModel)]="product.rating" [readonly]="true" [cancel]="false" /></td>
+                            <td><p-tag [value]="product.inventoryStatus"  /></td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="summary">
+                        <div class="flex align-items-center justify-content-between">
+                            In total there are {{products ? products.length : 0 }} results.
+                        </div>
+                    </ng-template>
+                </p-table>
+                
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="flex align-items-center home-page1-footer"></div>
+</div>
+
+<p-overlayPanel #op [style]="{ width: '450px' }" [showCloseIcon]="true">
+    <ng-template pTemplate="content">
+        <h3>Providers</h3>
+        <div class="card flex justify-content-center gap-3">
+            <div class="flex align-items-center">
+                <p-checkbox 
+                    [(ngModel)]="provider"
+                    label="Amazon" 
+                    name="provider" 
+                    value="Amazon" />
+            </div>
+            <div class="flex align-items-center">
+                <p-checkbox 
+                    [(ngModel)]="provider"
+                    label="Flipkart"
+                    name="provider" 
+                    value="Flipkart" />
+            </div>
+            <div class="flex align-items-center">
+                <p-checkbox 
+                    [(ngModel)]="provider"
+                    label="Meesho" 
+                    name="provider" 
+                    value="Meesho" />
+            </div>
+            <div class="flex align-items-center">
+                <p-checkbox 
+                    [(ngModel)]="provider"
+                    label="Myntra" 
+                    name="provider" 
+                    value="Myntra" />
+            </div>
+        </div>
+    </ng-template>
+</p-overlayPanel>
