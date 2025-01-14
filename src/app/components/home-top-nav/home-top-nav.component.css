@@ -1,0 +1,40 @@
+/* From Uiverse.io by andrei0x309 */
+.input {
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  background-color: transparent;
+  justify-content: center;
+  border-radius: 5px;
+  gap: 7.5px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem;
+  padding-left: 10px;
+  padding-right: 10px;
+  transition: all 0.2s ease;
+  font-size: 1.9rem;
+}
+
+.value {
+  background-color: transparent;
+  border: none;
+  padding: 10px;
+  color: aliceblue;
+  display: flex;
+  position: relative;
+  gap: 5px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.value svg {
+  width: 19px;
+  /* margin-top: 4px; */
+}
+
+.value svg.normal {
+  /* width: 30px; */
+  margin-top: 1px;
+}
