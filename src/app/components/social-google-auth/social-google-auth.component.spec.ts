@@ -8,10 +8,9 @@ describe('SocialGoogleAuthComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SocialGoogleAuthComponent]
-    })
-    .compileComponents();
-    
+      imports: [SocialGoogleAuthComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(SocialGoogleAuthComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

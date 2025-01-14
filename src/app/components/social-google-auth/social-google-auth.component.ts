@@ -5,8 +5,6 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './social-google-auth.component.html',
-  styleUrl: './social-google-auth.component.css'
+  styleUrl: './social-google-auth.component.css',
 })
-export class SocialGoogleAuthComponent {
-
-}
+export class SocialGoogleAuthComponent {}
