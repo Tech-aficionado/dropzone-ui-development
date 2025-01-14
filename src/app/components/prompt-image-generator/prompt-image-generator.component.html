@@ -1,46 +1,54 @@
 <div class="flex flex-column">
-    <div class="flex justify-content-center align-items-center">
-      <img class="generated_propic" [attr.src]="imageUrl" *ngIf="!generating__image">
-      <app-prompt-image-loading class="m-3" *ngIf="generating__image"></app-prompt-image-loading>
-    </div>
-    <div class="flex flex-column justify-content-center align-items-center">
-      <span class="p-input-icon-left p-float-label">
-        <i class="pi pi-microchip-ai" [style]="{ color: 'white' }"></i>
-        <input
-          pFocusTrapDisabled
-          type="text"
-          autocomplete="off"
-          [style]="{ width: '300px', 'background-color': 'transparent' }"
-          style="color: input_color !important"
-          type="text"
-          id="gen_prompt_image"
-          [autocomplete]="false"
-          [disabled]="generating__image"
-          [autofocus]="false"
-          pInputText
-          [(ngModel)] = "prompt"
-          class=""
-        />
-        <label
-          [style]="{ color: 'white', fontWeight: '400' }"
-          style="font-weight: 900"
-          htmlFor="gen_prompt_image"
-          >Enter your Prompt</label
-        >
-        
-      </span>
-      
-    </div>
-    <div class="flex align-items-end justify-content-end m-2 ">
-      <i class="prompt__image__info pi pi-exclamation-circle" [pTooltip]="info" ></i>
-    </div>
+  <div class="flex justify-content-center align-items-center">
+    <img
+      class="generated_propic"
+      [attr.src]="imageUrl"
+      *ngIf="!generating__image"
+    />
+    <app-prompt-image-loading
+      class="m-3"
+      *ngIf="generating__image"
+    ></app-prompt-image-loading>
   </div>
-  <div class="flex pt-4 justify-content-end">
-    <p-button
+  <div class="flex flex-column justify-content-center align-items-center">
+    <span class="p-input-icon-left p-float-label">
+      <i class="pi pi-microchip-ai" [style]="{ color: 'white' }"></i>
+      <input
+        pFocusTrapDisabled
+        type="text"
+        autocomplete="off"
+        [style]="{ width: '300px', 'background-color': 'transparent' }"
+        style="color: input_color !important"
+        type="text"
+        id="gen_prompt_image"
+        [autocomplete]="false"
+        [disabled]="generating__image"
+        [autofocus]="false"
+        pInputText
+        [(ngModel)]="prompt"
+        class=""
+      />
+      <label
+        [style]="{ color: 'white', fontWeight: '400' }"
+        style="font-weight: 900"
+        htmlFor="gen_prompt_image"
+        >Enter your Prompt</label
+      >
+    </span>
+  </div>
+  <div class="flex align-items-end justify-content-end m-2">
+    <i
+      class="prompt__image__info pi pi-exclamation-circle"
+      [pTooltip]="info"
+    ></i>
+  </div>
+</div>
+<div class="flex pt-4 justify-content-end">
+  <p-button
     label="Generate"
     icon="pi pi-sparkles"
     [loading]="generating__image"
     iconPos="left"
     (click)="onimgProcess($event)"
   />
-  </div>
+</div>
