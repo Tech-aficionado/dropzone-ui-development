@@ -48,12 +48,11 @@
 .auth-card-subheader {
   font-weight: 500;
   font-style: normal;
-  font-family: 'Samsung Sharp Sans', sans-serif;
+  font-family: "Samsung Sharp Sans", sans-serif;
   font-size: 13px;
   color: rgba(0, 0, 0, 0.459);
 }
-.auth-card-footer{
-  
+.auth-card-footer {
   font-family: "Samsung Sharp Sans", sans-serif;
 }
 

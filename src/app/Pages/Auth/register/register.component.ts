@@ -199,6 +199,23 @@ export class RegisterComponent implements OnInit, AfterViewInit {
       )
       .catch((error) => console.error('Login failed', error));
   }
+  checkEmail() {
+    if (this.form.value['register_email'] == '') return;
+    this.authService.checkEmailRegistery(
+      this.validateAndNormalizeEmail(this.form.value['register_email']),
+      (response) => {
+        if (response == 208) {
+          this.messageService.add({
+            severity: 'error',
+            detail: 'Please use different email id',
+            summary: 'Already Reported',
+          });
+        }
+        if (response == 404) {
+        }
+      },
+    );
+  }
 
   ngOnInit(): void {
     this.dynamicRoute.addRoute(
@@ -253,5 +270,14 @@ export class RegisterComponent implements OnInit, AfterViewInit {
         console.error(error);
       },
     });
+  }
+  validateAndNormalizeEmail(email: any) {
+    const match = email.match(emailRegex);
+    if (match) {
+      const [, domain] = match;
+      console.log(email.replace(domain, domain.toLowerCase()));
+      return email.replace(domain, domain.toLowerCase());
+    }
+    return null; // Invalid email
   }
 }

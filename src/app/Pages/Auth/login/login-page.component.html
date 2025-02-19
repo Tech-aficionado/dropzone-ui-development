@@ -1,7 +1,10 @@
 <script src="https://accounts.google.com/gsi/client" async defer></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap"
+  rel="stylesheet"
+/>
 <div class="card auth-page lines">
   <div class="line"></div>
   <div class="line"></div>
@@ -22,14 +25,20 @@
         />
       </div>
       <div class="flex">
-        <h3 style="    font-family: 'Doto', serif;
-        font-optical-sizing: auto;
-        font-weight: 300;
-        font-style: normal;
-        font-variation-settings: 'ROND' 0;
-        margin: 0px;
-        padding: 0px;
-        font-size: 35px;">DropZone</h3>
+        <h3
+          style="
+            font-family: 'Doto', serif;
+            font-optical-sizing: auto;
+            font-weight: 300;
+            font-style: normal;
+            font-variation-settings: 'ROND' 0;
+            margin: 0px;
+            padding: 0px;
+            font-size: 35px;
+          "
+        >
+          DropZone
+        </h3>
       </div>
     </div>
 
@@ -43,9 +52,7 @@
     >
       <p>Access your exclusive shopping experience</p>
     </div>
-    <div
-      class="p-1 flex flex-column auth-card-content"
-    >
+    <div class="p-1 flex flex-column auth-card-content">
       <ng-input-box
         [form]="form"
         [width]="'100%'"
@@ -53,7 +60,7 @@
         input_bg="transparent"
         input_color="#222222"
         color="black"
-        class="w-full pl-3  animate__animated animate__flipInX animate__delay-3s  pr-3 pt-1"
+        class="w-full pl-3 animate__animated animate__flipInX animate__delay-3s pr-3 pt-1"
         [fieldIconName]="'ph ph-microsoft-outlook-logo'"
         [fieldId]="'login__email'"
         [fieldLabel]="'E-mail'"
@@ -73,7 +80,7 @@
         input_bg="transparent"
         [hidden]="isEmailRegistered"
         input_color="#222222"
-        class="w-full pl-3  animate__animated animate__flipInX animate__delay-3s  pr-3 pt-4"
+        class="w-full pl-3 animate__animated animate__flipInX pr-3 pt-4"
         color="black"
         errorMessage="Password is Required"
         [fieldIconName]="'ph ph-password'"
@@ -86,7 +93,7 @@
       <app-email-auth-button
         [loading]="loading"
         (click)="onFormSubmit()"
-        class="pt-4 pl-3 pr-3 w-full animate__animated animate__flipInX animate__delay-3s "
+        class="pt-4 pl-3 pr-3 w-full animate__animated animate__flipInX animate__delay-3s"
       ></app-email-auth-button>
 
       <p-divider
@@ -101,26 +108,24 @@
         class="flex flex-row align-items-center justify-content-center gap-5 pt-1"
       >
         <app-google-auth-button
-        [show]="false"
-        [loading]="false"
-          class=" animate__animated animate__flipInX animate__delay-3s "
+          [show]="false"
+          [loading]="false"
+          class="animate__animated animate__flipInX animate__delay-3s"
           (click)="signInWithGoogle()"
         ></app-google-auth-button>
         <app-github-auth-button
-        [show]="false"
-        [loading]="false"
-          class=" animate__animated animate__flipInX animate__delay-3s "
+          [show]="false"
+          [loading]="false"
+          class="animate__animated animate__flipInX animate__delay-3s"
           (click)="signInWithGithub()"
         ></app-github-auth-button>
       </div>
-      <div
-        class="pt-2  animate__animated animate__flipInX animate__delay-3s "
-      >
+      <div class="pt-2 animate__animated animate__flipInX animate__delay-3s">
         <p class="text-xs flex-end font-semibold">
           New to Dropzone ?
           <a
             class="text-blue-500 font-italic font-medium"
-            href="register?mode=all"
+            href="auth/register?mode=all"
             >Get Started
             <i class="text-xs underline text-blue-500 pi pi-arrow-right"></i
           ></a>

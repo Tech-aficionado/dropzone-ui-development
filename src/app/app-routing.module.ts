@@ -11,7 +11,7 @@ import { ProductsComponent } from './Pages/products/products.component';
 import { CartComponent } from './Pages/cart/cart.component';
 import { AboutUsComponent } from './Pages/about-us/about-us.component';
 import { HomePageComponent } from './Pages/home-page/home-page.component';
-import { AuthenticationGaurds } from './Services/Auth/auth-gaurds.guard';
+import { AuthenticationGaurds } from './Services/Auth/auth.guard';
 import { provideHttpClient } from '@angular/common/http';
 import { ImageCropperUiComponent } from './Features/image-cropper-ui/image-cropper-ui.component';
 import { AccountComponent } from './Pages/account/account.component';
@@ -28,23 +28,11 @@ const AppName = ' |  DropZone';
 
 const routes: Routes = [
   {
-    path: 'login',
-    component: LoginPageComponent,
-    // canActivate: [AuthenticationGaurds],
-    title: `Login${AppName}`,
+    path: 'auth',
+    loadChildren: () =>
+      import('./Pages/Auth/auth.module').then((m) => m.AuthModule),
   },
-  {
-    path: 'register',
-    component: RegisterComponent,
-    // canActivate: [AuthenticationGaurds],
-    title: `Register${AppName}`,
-  },
-  {
-    path: 'account',
-    component: AccountComponent,
-    canActivate: [AuthenticationGaurds],
-    title: `Account Section${AppName}`,
-  },
+
   {
     path: 'home',
     component: HomePageComponent,
@@ -53,12 +41,13 @@ const routes: Routes = [
   {
     path: 'products',
     component: ProductsComponent,
+    canActivate: [AuthenticationGaurds],
     title: `Products${AppName}`,
   },
   {
     path: 'services',
-    loadChildren: () => import('./Pages/Services/services.module')
-      .then(m => m.ServiceModule)
+    loadChildren: () =>
+      import('./Pages/Services/services.module').then((m) => m.ServiceModule),
   },
   {
     path: 'cart',
@@ -82,7 +71,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'auth',
     pathMatch: 'full',
   },
 ];

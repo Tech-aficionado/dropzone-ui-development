@@ -11,6 +11,7 @@ export class GoogleAuthButtonComponent implements OnInit {
   @Input() loading: boolean = true;
   constructor(private router: Router) {}
   ngOnInit(): void {
-    if (this.router.url.toLowerCase().includes('register')) this.show = this.router.url.toLowerCase().includes('all') ? true : false;
+    if (this.router.url.toLowerCase().includes('register'))
+      this.show = this.router.url.toLowerCase().includes('all') ? true : false;
   }
 }

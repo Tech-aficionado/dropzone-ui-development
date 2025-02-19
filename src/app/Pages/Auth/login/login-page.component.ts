@@ -244,7 +244,7 @@ export class LoginPageComponent implements OnInit {
       if (this.progress >= 100) {
         this.progress = 100;
         if (this.visible)
-          this.router.navigate(['register'], {
+          this.router.navigate(['auth/register'], {
             queryParams: {
               email: this.validateAndNormalizeEmail(
                 this.form.value['login__email'],

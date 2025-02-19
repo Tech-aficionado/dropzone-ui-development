@@ -25,8 +25,7 @@
       <div
         class="flex animate__animated animate__backInDown animate__delay-1s align-items-center justify-content-center pt-3"
       >
-        <app-home-top-nav
-        ></app-home-top-nav>
+        <app-home-top-nav></app-home-top-nav>
       </div>
     </div>
     <div
@@ -40,82 +39,220 @@
       </p>
     </div>
   </div>
-  <div class="flex justify-content-center home-page1-content">
-    <div class="flex  flex-column justify-content-center align-items-center animate__animated animate__animated animate__backInDown animate__delay-2s animate__delay-1s page-content-search-panel">
-        <div class="w-full flex lg:px-8 lg:mx-8 px-1 mx-1">
-            <p-inputGroup class="w-full ">
-                <p-inputGroupAddon>
-                    <i class="ph ph-magnifying-glass"></i>
-                </p-inputGroupAddon>
-                <input     [style]="{
-                    width: '100%',
-                    'background-color': 'white',
-                    'font-family': 'Kanit, serif;',
-                    fontSize: '15px',
-                    color: 'black',
-                  }" type="text" pInputText placeholder="Keyword" (keyup)="productSearch($event)" />
-    <p-button type="button"  pButton icon="ph ph-faders" (onClick)="op.toggle($event)" />
-                </p-inputGroup>
-        </div>
-        <div class="flex w-full xl:px-8 xl:mx-8 px-1 mx-1" >
-            <div class="w-full product-search-results-panel" >
-                <p-table [value]="products" [tableStyle]="{'min-width': '60rem'}">
-                    <ng-template pTemplate="body" let-product>
-                        <tr>
-                            <td>{{product.name}}</td>
-                            <td><img [src]="'https://primefaces.org/cdn/primeng/images/demo/product/' + product.image" [alt]="product.name" width="100" class="shadow-4" /></td>
-                            <td>{{product.price | currency:'USD'}}</td>
-                            <td>{{product.category}}</td>
-                            <td><p-rating [(ngModel)]="product.rating" [readonly]="true" [cancel]="false" /></td>
-                            <td><p-tag [value]="product.inventoryStatus"  /></td>
-                        </tr>
-                    </ng-template>
-                    <ng-template pTemplate="summary">
-                        <div class="flex align-items-center justify-content-between">
-                            In total there are {{products ? products.length : 0 }} results.
-                        </div>
-                    </ng-template>
-                </p-table>
-                
-            </div>
-        </div>
+  <div class="flex home-page1-content">
+    <div
+      style="position: absolute"
+      class="flex flex-column pt-4 align-items-center animate__animated animate__animated animate__backInDown animate__delay-2s animate__delay-1s page-content-search-panel"
+    >
+      <div class="w-full flex lg:px-8 lg:mx-8 px-1 mx-1">
+        <p-inputGroup class="w-full">
+          <p-inputGroupAddon>
+            <i class="ph ph-magnifying-glass"></i>
+          </p-inputGroupAddon>
+          <input
+            [style]="{
+              width: '100%',
+              'background-color': 'white',
+              'font-family': 'Kanit, serif;',
+              fontSize: '15px',
+              color: 'black',
+            }"
+            type="text"
+            pInputText
+            placeholder="Keyword"
+            (keyup)="productSearch($event)"
+          />
+          <p-button
+            type="button"
+            pButton
+            icon="ph ph-faders"
+            (onClick)="op.toggle($event)"
+          />
+        </p-inputGroup>
+      </div>
+      <div class="flex w-full xl:px-8 xl:mx-8 px-1 mx-1">
+        <p-table
+          [loading]="loading"
+          [scrollable]="true"
+          selectionMode="single"
+          [(selection)]="productsselect"
+          (onRowSelect)="exampl($event)"
+          metaKeySelection="true"
+          scrollHeight="600px"
+          [style]="{ zIndex: '99999' }"
+          [rows]="4"
+          [value]="products"
+          dataKey="id"
+          [tableStyle]="{ width: '100%' }"
+          class="lg:px-5"
+        >
+          <ng-template pTemplate="body" let-product>
+            <tr
+              [style]="{ background: 'rgb(250 250 250 / 0%)' }"
+              [pSelectableRow]="product"
+            >
+              <td>
+                <img
+                  [src]="
+                    'https://primefaces.org/cdn/primeng/images/demo/product/' +
+                    product.image
+                  "
+                  [alt]="product.name"
+                  width="100"
+                  class="shadow-4"
+                />
+              </td>
+              <td>{{ product.name }}</td>
+              <td>{{ product.price | currency: "INR" }}</td>
+              <td>{{ product.category }}</td>
+              <td><p-tag [value]="product.provider" /></td>
+            </tr>
+          </ng-template>
+          <ng-template *ngIf="loading" pTemplate="loadingbody">
+            <tr style="height: 70px">
+              <td>
+                <p-skeleton [width]="'90px'" />
+              </td>
+              <td>
+                <p-skeleton [width]="'600px'" />
+              </td>
+              <td>
+                <p-skeleton [width]="'85px'" />
+              </td>
+              <td>
+                <p-skeleton [width]="'85px'" />
+              </td>
+              <td>
+                <p-skeleton [width]="'85px'" />
+              </td>
+              <td>
+                <p-skeleton [width]="'80px'" />
+              </td>
+            </tr>
+            <tr style="height: 70px">
+              <td>
+                <p-skeleton [width]="'90px'" />
+              </td>
+              <td>
+                <p-skeleton [width]="'600px'" />
+              </td>
+              <td>
+                <p-skeleton [width]="'85px'" />
+              </td>
+              <td>
+                <p-skeleton [width]="'85px'" />
+              </td>
+              <td>
+                <p-skeleton [width]="'85px'" />
+              </td>
+              <td>
+                <p-skeleton [width]="'80px'" />
+              </td>
+            </tr>
+            <tr style="height: 70px">
+              <td>
+                <p-skeleton [width]="'90px'" />
+              </td>
+              <td>
+                <p-skeleton [width]="'600px'" />
+              </td>
+              <td>
+                <p-skeleton [width]="'85px'" />
+              </td>
+              <td>
+                <p-skeleton [width]="'85px'" />
+              </td>
+              <td>
+                <p-skeleton [width]="'85px'" />
+              </td>
+              <td>
+                <p-skeleton [width]="'80px'" />
+              </td>
+            </tr>
+            <tr style="height: 70px">
+              <td>
+                <p-skeleton [width]="'90px'" />
+              </td>
+              <td>
+                <p-skeleton [width]="'600px'" />
+              </td>
+              <td>
+                <p-skeleton [width]="'85px'" />
+              </td>
+              <td>
+                <p-skeleton [width]="'85px'" />
+              </td>
+              <td>
+                <p-skeleton [width]="'85px'" />
+              </td>
+              <td>
+                <p-skeleton [width]="'80px'" />
+              </td>
+            </tr>
+            <tr style="height: 70px">
+              <td>
+                <p-skeleton [width]="'90px'" />
+              </td>
+              <td>
+                <p-skeleton [width]="'600px'" />
+              </td>
+              <td>
+                <p-skeleton [width]="'85px'" />
+              </td>
+              <td>
+                <p-skeleton [width]="'85px'" />
+              </td>
+              <td>
+                <p-skeleton [width]="'85px'" />
+              </td>
+              <td>
+                <p-skeleton [width]="'80px'" />
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
     </div>
   </div>
   <div class="flex align-items-center home-page1-footer"></div>
 </div>
 
 <p-overlayPanel #op [style]="{ width: '450px' }" [showCloseIcon]="true">
-    <ng-template pTemplate="content">
-        <h3>Providers</h3>
-        <div class="card flex justify-content-center gap-3">
-            <div class="flex align-items-center">
-                <p-checkbox 
-                    [(ngModel)]="provider"
-                    label="Amazon" 
-                    name="provider" 
-                    value="Amazon" />
-            </div>
-            <div class="flex align-items-center">
-                <p-checkbox 
-                    [(ngModel)]="provider"
-                    label="Flipkart"
-                    name="provider" 
-                    value="Flipkart" />
-            </div>
-            <div class="flex align-items-center">
-                <p-checkbox 
-                    [(ngModel)]="provider"
-                    label="Meesho" 
-                    name="provider" 
-                    value="Meesho" />
-            </div>
-            <div class="flex align-items-center">
-                <p-checkbox 
-                    [(ngModel)]="provider"
-                    label="Myntra" 
-                    name="provider" 
-                    value="Myntra" />
-            </div>
-        </div>
-    </ng-template>
+  <ng-template pTemplate="content">
+    <h3>Providers</h3>
+    <div class="card flex justify-content-center gap-3">
+      <div class="flex align-items-center">
+        <p-checkbox
+          [(ngModel)]="provider"
+          label="Amazon"
+          name="provider"
+          value="Amazon"
+        />
+      </div>
+      <div class="flex align-items-center">
+        <p-checkbox
+          [(ngModel)]="provider"
+          label="Flipkart"
+          name="provider"
+          value="Flipkart"
+        />
+      </div>
+      <div class="flex align-items-center">
+        <p-checkbox
+          [(ngModel)]="provider"
+          label="Meesho"
+          name="provider"
+          value="Meesho"
+        />
+      </div>
+      <div class="flex align-items-center">
+        <p-checkbox
+          [(ngModel)]="provider"
+          label="Myntra"
+          name="provider"
+          value="Myntra"
+        />
+      </div>
+    </div>
+  </ng-template>
 </p-overlayPanel>

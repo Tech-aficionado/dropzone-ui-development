@@ -15,11 +15,18 @@
 .p-float-label .p-inputwrapper-filled ~ label {
   top: 1px;
   font-size: 11px;
-  background: #18181b;
+  background: #ffffff;
   padding: 1px 8px;
 
   font-family: cursive;
   border-radius: 22px;
+  color: #000000;
+}
+.p-inputtext:enabled:focus {
+  outline: 1px solid black;
+  outline-offset: -1px;
+  box-shadow: none;
+  border-color: #52525b;
 }
 
 .p-inputtext {
@@ -29,8 +36,8 @@
 .p-inputtext:-webkit-autofill,
 .p-inputtext:-webkit-autofill:hover,
 .p-inputtext:-webkit-autofill:focus {
-  -webkit-box-shadow: 0 0 0 1000px #ffffff00 inset !important;
-  -webkit-text-fill-color: #ffffff !important;
+  -webkit-box-shadow: 0 0 0 1000px #00000000 inset !important;
+  -webkit-text-fill-color: #000000 !important;
   transition: background-color 5000s ease-in-out 0s;
   font-family: cursive;
 }

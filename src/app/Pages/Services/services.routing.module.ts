@@ -6,31 +6,30 @@ import { ProductSearchPageComponent } from './product-search-page/product-search
 const AppName = ' |  DropZone';
 
 const routes: Routes = [
-    {
-      path: '',
-      children: [
-        {
-          path: '',
-          redirectTo: 'main',
-          pathMatch: 'full'
-        },
-        {
-          path: 'main',
-          component: MainServicePageComponent,
-          title: `Services${AppName}`
-        },
-        {
-          path: 'product-search',
-          component: ProductSearchPageComponent,
-          title: `Product Search${AppName}`
-        },
-      ]
-    }
-  ];
-  
+  {
+    path: '',
+    children: [
+      {
+        path: '',
+        redirectTo: 'main',
+        pathMatch: 'full',
+      },
+      {
+        path: 'main',
+        component: MainServicePageComponent,
+        title: `Services${AppName}`,
+      },
+      {
+        path: 'product-search',
+        component: ProductSearchPageComponent,
+        title: `Product Search${AppName}`,
+      },
+    ],
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class ServiceRouteModule { }
+export class ServiceRouteModule {}

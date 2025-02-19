@@ -1,1 +1,1 @@
-export const BackendIP = 'https://warm-gecko-typically.ngrok-free.app'
+export const BackendIP = 'http://127.0.0.1:8000'

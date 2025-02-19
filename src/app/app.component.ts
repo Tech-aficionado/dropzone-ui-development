@@ -65,7 +65,7 @@ export class AppComponent implements OnInit {
         icon: this.auth.isAuthenticated() ? 'pi pi-sign-out' : 'pi pi-sign-in',
         command: () => {
           this.authService.logout();
-          this.router.navigate(['login']);
+          this.router.navigate(['auth/login']);
         },
       },
       {
@@ -83,7 +83,7 @@ export class AppComponent implements OnInit {
       {
         icon: 'ph ph-user-gear',
         command: () => {
-          this.router.navigate(['account']);
+          this.router.navigate(['auth/account']);
         },
       },
     ];

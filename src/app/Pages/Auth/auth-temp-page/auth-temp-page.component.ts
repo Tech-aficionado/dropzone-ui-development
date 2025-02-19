@@ -8,13 +8,11 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   styleUrl: './auth-temp-page.component.css',
 })
 export class AuthTempPageComponent implements OnInit {
-  
   show: boolean = true;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private JWTService: JwtHelperService,
-
   ) {}
   ngOnInit(): void {
     const hashFragment = window.location.hash.substring(1); // Remove the # symbol
@@ -29,9 +27,6 @@ export class AuthTempPageComponent implements OnInit {
 
     console.log(this.JWTService.decodeToken(authUser!));
 
-
-      
-        this.show = this.router.url.toLowerCase().includes('google') ? true : false;
-
+    this.show = this.router.url.toLowerCase().includes('google') ? true : false;
   }
 }

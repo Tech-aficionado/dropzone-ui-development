@@ -51,8 +51,17 @@ export class VerifyauthComponent implements OnInit {
       otp: Number(this.value),
     };
     this.Phase2MutateFn.mutate(input, {
-      onSuccess: (data, variables, context) => {
-        this.loading = false;
+      onSuccess: (data: any, variables, context) => {
+        console.log(data.status_code)
+        if(data.status_code == 401){
+          this.loading = false;
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Verification Failed',
+            detail: "Resend the otp to re-verify your account",
+          });
+        }else{
+          this.loading = false;
         this.messageService.add({
           severity: 'success',
           summary: 'Login Successful',
@@ -62,21 +71,17 @@ export class VerifyauthComponent implements OnInit {
 
         if (res) {
           if (this.newUser) {
-            this.dynamicRoute.addRoute(
-              'onboarding',
-              OnboardingComponent,
-
-              'OnBoarding | Dropzone',
-            );
-            this.router.navigate(['onboarding'], {
+            this.router.navigate(['auth/onboarding'], {
               queryParams: {
                 firstname: this.localstorage.getItem('UserFirstName'),
                 lastname: this.localstorage.getItem('UserLastName'),
               },
             });
+          } else {
+            this.router.navigate(['products']);
+            this.dynamicRoute.clearRoutes();
           }
-          this.router.navigate(['products']);
-          this.dynamicRoute.clearRoutes();
+        }
         }
       },
 

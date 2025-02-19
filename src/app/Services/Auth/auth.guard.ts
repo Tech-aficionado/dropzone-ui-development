@@ -13,7 +13,7 @@ export const AuthenticationGaurds: CanActivateFn = (route: any, state: any) => {
   const localstorage = inject(SecureLocalStorageService);
   const token = localstorage.getItem('Access_token') ?? false;
   if (token == false) {
-    router.navigate(['/login']);
+    router.navigate(['auth/login']);
     messageService.add({
       severity: 'error',
       summary: 'Unauthorised Access',

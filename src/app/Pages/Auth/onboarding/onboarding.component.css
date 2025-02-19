@@ -13,7 +13,7 @@
 }
 
 .auth-card {
-  width: calc(100vh - 26%);
+  width: calc(100vh - 32%);
   border-radius: 20px;
   position: relative;
   background-color: white;
@@ -41,7 +41,13 @@
   font-family: "Samsung Sharp Sans", sans-serif;
   font-weight: 700;
   font-style: normal;
-  font-size: 24px;
+  font-size: 30px;
+}
+.auth-card-content-profile{
+  font-weight: 500;
+  font-style: normal;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.495);
 }
 
 .auth-card-subheader {

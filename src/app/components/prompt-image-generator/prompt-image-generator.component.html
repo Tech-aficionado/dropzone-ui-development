@@ -1,9 +1,17 @@
 <div class="flex flex-column">
   <div class="flex justify-content-center align-items-center">
-    <img
-      class="generated_propic"
-      [attr.src]="imageUrl"
+    <p-image
+   
+    height="200px"
+    width="200px"
+    [imageStyle]="{'border-radius':'50%'}"
+    [style]="{'border-radius':'50%','margin':'0px'}"
+    class="border-circle"
+    shape="circle"
+      [src]="imageUrl"
       *ngIf="!generating__image"
+      preview="true"
+      [previewImageSrc]="imageUrl"
     />
     <app-prompt-image-loading
       class="m-3"
@@ -12,13 +20,13 @@
   </div>
   <div class="flex flex-column justify-content-center align-items-center">
     <span class="p-input-icon-left p-float-label">
-      <i class="pi pi-microchip-ai" [style]="{ color: 'white' }"></i>
+      <i class="pi pi-microchip-ai" [style]="{ color: 'black' }"></i>
       <input
         pFocusTrapDisabled
         type="text"
         autocomplete="off"
         [style]="{ width: '300px', 'background-color': 'transparent' }"
-        style="color: input_color !important"
+        style="color: black !important"
         type="text"
         id="gen_prompt_image"
         [autocomplete]="false"
@@ -29,7 +37,7 @@
         class=""
       />
       <label
-        [style]="{ color: 'white', fontWeight: '400' }"
+        [style]="{ color: 'black', fontWeight: '400' }"
         style="font-weight: 900"
         htmlFor="gen_prompt_image"
         >Enter your Prompt</label

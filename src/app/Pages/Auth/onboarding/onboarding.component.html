@@ -1,6 +1,9 @@
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap"
+  rel="stylesheet"
+/>
 <div class="card auth-page lines">
   <div class="line"></div>
   <div class="line"></div>
@@ -9,32 +12,48 @@
   <div class="line"></div>
 
   <div class="auth-card p-1">
-    <div class="pt-3 pl-2 pb-2 flex auth-card-top-header flex-row">
-      <div class="flex">
-        <img
-          src="../../../../assets/parachute.png"
-          height="36px"
-          width="36px"
-          alt=""
-        />
-      </div>
-      <div class="flex">
-        <h3 style="    font-family: 'Doto', serif;
-        font-optical-sizing: auto;
-        font-weight: 400;
-        font-style: normal;
-        font-variation-settings: 'ROND' 0;
-        margin: 0px;
-        padding: 0px;
-        font-size: 35px;">DropZone</h3>
+    <div class="flex flex-row justify-content-between">
+      <div class="pt-3 pl-2 pb-2 flex auth-card-top-header flex-row">
+        <div class="flex">
+          <img
+            src="../../../../assets/parachute.png"
+            height="36px"
+            width="36px"
+            alt=""
+          />
+        </div>
+        <div class="flex">
+          <h3
+            style="
+              font-family: 'Doto', serif;
+              font-optical-sizing: auto;
+              font-weight: 400;
+              font-style: normal;
+              font-variation-settings: 'ROND' 0;
+              margin: 0px;
+              padding: 0px;
+              font-size: 35px;
+            "
+          >
+            DropZone
+          </h3>
+        </div>
       </div>
     </div>
 
-    <div class="pl-3 pt-3 auth-card-header">Onboarding</div>
-    <div class="pl-3 pb-2 auth-card-subheader">
-      <p>Please fill the following Details</p>
-    </div>
-    <div class="p-1 flex flex-column auth-card-content"></div>
+    <div class="pl-3 pt-2 pb-3 flex  auth-card-content">
+      <!-- <div class="flex w-5 flex-column  align-items-center">
+
+        <div class="pl-3 flex pb-2 auth-card-content-profile">
+          <p>Choose your Avatar</p>
+        </div>
+        <div class="flex justify-content-center">
+          <app-prompt-image-generator></app-prompt-image-generator>
+        </div>
+      </div> -->
+      <div>
+        <app-profile-card [Name]="UserName" Email="UserMail"></app-profile-card>
+      </div>
   </div>
 </div>
 

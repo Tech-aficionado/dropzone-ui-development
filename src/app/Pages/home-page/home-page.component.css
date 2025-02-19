@@ -1,5 +1,5 @@
 .home-page {
-  background-color: #070C18;
+  background-color: #070c18;
   position: relative;
   height: 100dvh;
   width: 100dvw;
@@ -21,8 +21,9 @@
 
 .home-page::before,
 .home-page::after {
-  animation: gradientColorPulse 12s ease-in-out infinite,
-             moveUpDown 6s ease-in-out infinite;
+  animation:
+    gradientColorPulse 12s ease-in-out infinite,
+    moveUpDown 6s ease-in-out infinite;
 }
 
 .home-page::before {
@@ -33,7 +34,9 @@
 .home-page::after {
   bottom: 10%;
   left: 10%;
-  animation-delay: -3s, -6s;
+  animation-delay:
+    -3s,
+    -6s;
 }
 
 .center-patch {

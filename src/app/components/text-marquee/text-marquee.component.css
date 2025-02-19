@@ -1,18 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap');
-.text{
-    font-family: "Doto";
-    font-optical-sizing:auto;
-    font-weight: 800;
-    font-style: normal;
-    font-variation-settings:
-      "ROND" 0;
-      font-size: 189px;
+@import url("https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap");
+.text {
+  font-family: "Doto";
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+  font-variation-settings: "ROND" 0;
+  font-size: 189px;
 }
 
 .marquee {
-	display: flex;
-	overflow: hidden;
-	gap: 5rem;
+  display: flex;
+  overflow: hidden;
+  gap: 5rem;
   position: relative;
   user-select: none;
 }
@@ -21,7 +20,7 @@
   display: flex;
   justify-content: space-around;
   min-width: 150%;
-	gap: 8rem; /* match to gap above */
+  gap: 8rem; /* match to gap above */
 }
 
 @keyframes scroll {
@@ -36,4 +35,3 @@
 .scroll {
   animation: scroll 10s linear infinite;
 }
-
