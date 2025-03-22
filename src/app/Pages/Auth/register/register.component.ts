@@ -142,11 +142,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
             detail: 'Username and Password can not be empty 🧐🧐🧐',
           });
         } else if (response.Status == 'Success') {
-          this.messageService.add({
-            severity: 'success',
-            summary: 'Thanks for registering',
-            detail: 'Please Proceed further to authenticate 😀😀😀',
-          });
+          
 
           this.loading = false;
           this.localstorage.setItem(

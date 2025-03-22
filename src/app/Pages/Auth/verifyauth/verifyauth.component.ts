@@ -28,7 +28,7 @@ export class VerifyauthComponent implements OnInit {
     unknown
   >;
   newUser: boolean = false;
-  loading!: boolean;
+  loading!: boolean;private readonly OTP_SENT_KEY = 'otpSentForVerifyAccount';
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -41,8 +41,14 @@ export class VerifyauthComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.activateOtpAuthentication(this.localstorage.getItem('UserEmail'));
     this.newUser = this.router.url.includes('verify-account');
+    const otpSent = this.localstorage.getItem(this.OTP_SENT_KEY);
+
+      // Only send OTP if it hasn't been sent yet
+      if (!otpSent) {
+        this.activateOtpAuthentication(this.localstorage.getItem('UserEmail'));
+        this.localstorage.setItem(this.OTP_SENT_KEY, 'true'); // Mark as sent
+      }
   }
   Phase2Authentication() {
     this.loading = true;
@@ -71,12 +77,9 @@ export class VerifyauthComponent implements OnInit {
 
         if (res) {
           if (this.newUser) {
-            this.router.navigate(['auth/onboarding'], {
-              queryParams: {
-                firstname: this.localstorage.getItem('UserFirstName'),
-                lastname: this.localstorage.getItem('UserLastName'),
-              },
-            });
+            this.router.navigate(['products']
+              
+            );
           } else {
             this.router.navigate(['products']);
             this.dynamicRoute.clearRoutes();

@@ -116,3 +116,6 @@ input:-internal-autofill-selected {
   background: white !important;
   z-index: 144;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
