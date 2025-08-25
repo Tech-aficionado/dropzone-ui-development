@@ -148,7 +148,6 @@
             input_color="#222222"
             color="black"
             class="w-full animate__animated animate__flipInX animate__delay-3s"
-            [pTooltip]="tooltipContent"
             tooltipEvent="focus"
             HelperText="Create a strong password"
             [errorMessage]="'Password is not accepted'"
@@ -160,21 +159,7 @@
             [inputType]="'password'"
           >
           </ng-input-box>
-          <ng-template #tooltipContent class="w-full">
-            <div>
-              <h3>Pick a password</h3>
-            </div>
-            <div>
-              <p-divider />
-              <p class="mt-1">Required</p>
-              <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
-                <li>At least one lowercase</li>
-                <li>At least one uppercase</li>
-                <li>At least one numeric</li>
-                <li>Minimum 8 characters</li>
-              </ul>
-            </div>
-          </ng-template>
+          
         </div>
       </div>
 
